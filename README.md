@@ -1,5 +1,5 @@
 # pythonVDC
-Python 3 GUI aplication for vehicle damage calculation. The application was developed in VB.NET and is in production operation and this is a practice attempt to transcribe it to Python
+Python 3 GUI aplication for Vehicle value calculation. The application was developed in VB.NET and is in production operation and this is a practice attempt to transcribe it to Python
 
 # Depencies
  - wxPython (https://wxpython.org/) use pip install -U wxPython
