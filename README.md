@@ -24,4 +24,4 @@ pyinstaller VDC.py -F -w --icon="Car.ico" --add-binary "Car.ico;." --clean --log
 # To Do
  - dokončiť výpočet
  - vytvoriť tlač
- - ukladanie/mačítanie do/z súboru / databaze
+ - ukladanie/načítanie do/z súboru / databaze
