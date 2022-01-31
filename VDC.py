@@ -67,9 +67,10 @@ class VDCFrame(formVDCmain.VDCmain):
             if (x == self.ComboBoxPodkategoriaMV.GetStringSelection()[0:3]):                
                 break
             i += 1
-        for x in constantVDC.pouzitiek4[2:]:
-            if(x[i] != ""):
-                self.ComboBoxKPV_prevadzka.Append(x[0])
+        if (i < 17):
+            for x in constantVDC.pouzitiek4[2:]:
+                if(x[i] != ""):
+                    self.ComboBoxKPV_prevadzka.Append(x[0])
         self.ComboBoxKPV_prevadzka.SetSelection(0)
 
     def DateTimePickerPrideleneECVOnDateChanged(self, event):

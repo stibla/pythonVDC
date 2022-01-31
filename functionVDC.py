@@ -400,30 +400,13 @@ def PocitajVSH(parent, ktoVola):
                     
     parent.TextBoxKPV_K3.SetValue("0,9500")
     if(parent.TextBoxKPVPocetDrzitelov.GetValue() != "" and not parent.CheckBoxKPVk3Nezistene.IsChecked()):
-        print("parent.TextBoxKPVPocetDrzitelov.GetValue() ", parent.TextBoxKPVPocetDrzitelov.GetValue())
         parent.TextBoxKPV_K3.SetValue(FormatujCisloFloat(1.01 - 0.01 * (parent.TextBoxKPVPocetDrzitelov.GetValue()), 4))
 
-    #     TextBoxKPV_K4.Text = "1,0000"
-    #     If ComboBoxKPV_prevadzka.Text <> "" And ComboBoxPodkategoriaMV.Text <> "" Then
-    #         Dim N As Long = 2
-    #         Do While N <= ConstantVDC.pouzitiek4.GetUpperBound(0)
-    #             If ComboBoxKPV_prevadzka.Text = ConstantVDC.pouzitiek4(N, 0) Then
-    #                 Dim M As Long = 1
-    #                 Do While M <= ConstantVDC.pouzitiek4.GetUpperBound(1)
-    #                     If ConstantVDC.pouzitiek4(0, M) = Mid(ComboBoxPodkategoriaMV.Text, 1, 3) Then
-    #                         TextBoxKPV_K4.Text = FormatDoubleMoje(CDblMoje(ConstantVDC.pouzitiek4(N, M)), "0.0000")
-    #                     End If
-    #                     M = M + 1
-    #                 Loop
-    #             End If
-    #             N = N + 1
-    #         Loop
-    #     End If
-    # pass
-
-    # for x in constantVDC.kategorie:
-    #         if (x[0] + ". " + x[2] == parent.ComboBoxPodkategoriaMV.GetStringSelection()):
-    #             parent.TextBoxTHkKM.SetValue(
-    #                 FormatujCisloFloatString(x[5], 4))
-    #             
-    #             break
+    parent.TextBoxKPV_K4.SetValue("1,0000")
+    if (parent.ComboBoxKPV_prevadzka.GetStringSelection() != "" and parent.ComboBoxPodkategoriaMV.GetStringSelection() != ""):
+        for x in constantVDC.pouzitiek4:
+            if (x[0] == parent.ComboBoxKPV_prevadzka.GetStringSelection()):                
+                for i in range(1, len(constantVDC.pouzitiek4[0])):
+                    if (constantVDC.pouzitiek4[0][i] == parent.ComboBoxPodkategoriaMV.GetStringSelection()[0:3]):
+                        parent.TextBoxKPV_K4.SetValue(FormatujCisloFloat(StringToFloat(x[i]), 4))
+                        break
