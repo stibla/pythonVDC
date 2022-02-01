@@ -377,7 +377,6 @@ def PocitajVSH(parent, ktoVola):
             StringToFloat(parent.TextBoxHV_TSV.GetValue()) / 100, 2))
             pass
 
-
     parent.TextBoxKPV_K1.SetValue("1,0000")
     if (parent.TextBoxDatumPU.GetValue() != "" and parent.TextBoxKPV_koniecTK.GetValue() != "" and parent.TextBoxVprevadzkeOd.GetValue() != ""):
         if (parent.LabelKPV_k1lehotaTKsuStazPodm.GetLabel() != "1"): tempLehota = StringToFloat(parent.LabelKPV_k1lehotaTKstazPodm.GetLabel()) 
@@ -410,3 +409,179 @@ def PocitajVSH(parent, ktoVola):
                     if (constantVDC.pouzitiek4[0][i] == parent.ComboBoxPodkategoriaMV.GetStringSelection()[0:3]):
                         parent.TextBoxKPV_K4.SetValue(FormatujCisloFloat(StringToFloat(x[i]), 4))
                         break
+
+
+    #    PocitajTSV(TextBoxKPV_K5vPrevadzke1, TextBoxKPV_K5km1, TextBoxKPV_K5TSV1, TextBoxKPV_K5TSV1edit)
+    # Sub PocitajTSV(TBKPV_K5vPrevadzke As Windows.Forms.TextBox, KPV_K5km As Windows.Forms.TextBox, TBKPV_K5TSV As Windows.Forms.TextBox, TextBoxKPV_K5TSVedit As Windows.Forms.TextBox)
+    #     Dim tempTHZAV, tempTHZA, tempDobaPrevadzkyMesiac, tempTHPRKM As Double
+    #     Dim tempOldTBKPV_K5TSV As String
+    #     tempTHZAV = 0
+    #     tempTHZA = 0
+    #     tempDobaPrevadzkyMesiac = 0
+    #     tempTHPRKM = 0
+    #     tempOldTBKPV_K5TSV = TBKPV_K5TSV.Text
+    #     TBKPV_K5TSV.Text = ""
+    #     If TextBoxTHPZTS.Text <> "" And KPV_K5km.Text <> "" And TextBoxDatumPU.Text <> "" And TBKPV_K5vPrevadzke.Text <> "" Then
+    #         tempDobaPrevadzkyMesiac = Math.Round((Year(DateValueMoje(TextBoxDatumPU.Text)) * 12 + Month(DateValueMoje(TextBoxDatumPU.Text)) + (Microsoft.VisualBasic.DateAndTime.Day(DateValueMoje(TextBoxDatumPU.Text)) / 31)) - (Year(DateValueMoje(TBKPV_K5vPrevadzke.Text)) * 12 + Month(DateValueMoje(TBKPV_K5vPrevadzke.Text)) + (Microsoft.VisualBasic.DateAndTime.Day(DateValueMoje(TBKPV_K5vPrevadzke.Text)) / 31)), 4)
+
+    #         If LabelTHZAVd.Text = "" Then
+    #             tempTHZAV = Math.Round(CDblMoje(LabelTHZAVa.Text) + ((tempDobaPrevadzkyMesiac + CDblMoje(LabelTHZAVb.Text)) / CDblMoje(LabelTHZAVc.Text)) ^ 0.5, 4)
+    #         Else
+    #             tempTHZAV = Math.Round(CDblMoje(LabelTHZAVd.Text) * tempDobaPrevadzkyMesiac, 4)
+    #         End If
+    #         If CDblMoje(tempTHZAV) > 100 - CDblMoje(TextBoxTHPZTS.Text) Then tempTHZAV = 100 - CDblMoje(TextBoxTHPZTS.Text)
+
+    #         If TextBoxTHkKM.Text <> "" And TextBoxTHPKV.Text <> "" Then
+    #             tempTHPRKM = Math.Round((CDblMoje(TextBoxTHPKV.Text) * tempDobaPrevadzkyMesiac / 12), 4)
+    #             If tempTHPRKM > CDblMoje(TextBoxTHPKV.Text) * CDblMoje(TextBoxTHPEZ.Text) Then tempTHPRKM = Math.Round(CDblMoje(TextBoxTHPKV.Text) * CDblMoje(TextBoxTHPEZ.Text), 4)
+    #             tempTHZA = Math.Round((100 - (tempTHZAV)) * (((CDblMoje(KPV_K5km.Text) - tempTHPRKM) * CDblMoje(TextBoxTHkKM.Text) / 1000) / 100) + (tempTHZAV), 4)
+    #         Else
+    #             tempTHZA = tempTHZAV
+    #         End If
+
+    #         If CDblMoje(TextBoxTHPZTS.Text) > ((100 * (100 - CDblMoje(tempTHZA)))) / 100 Then
+    #             TBKPV_K5TSV.Text = FormatDoubleMoje(TextBoxTHPZTS.Text, "0.0000")
+    #         Else
+    #             TBKPV_K5TSV.Text = FormatDoubleMoje(((100 * (100 - CDblMoje(tempTHZA)))) / 100, "0.0000")
+    #         End If
+
+    #     End If
+    #     If TextBoxKPV_K5TSVedit.Text = "" Or tempOldTBKPV_K5TSV <> TBKPV_K5TSV.Text Then
+    #         TextBoxKPV_K5TSVedit.Text = TBKPV_K5TSV.Text
+    #     End If
+
+    # End Sub
+    #     PocitajTSV(TextBoxKPV_K5vPrevadzke2, TextBoxKPV_K5km2, TextBoxKPV_K5TSV2, TextBoxKPV_K5TSV2edit)
+    #     PocitajTSV(TextBoxKPV_K5vPrevadzke3, TextBoxKPV_K5km3, TextBoxKPV_K5TSV3, TextBoxKPV_K5TSV3edit)
+    #     PocitajTSV(TextBoxKPV_K5vPrevadzke4, TextBoxKPV_K5km4, TextBoxKPV_K5TSV4, TextBoxKPV_K5TSV4edit)
+    #     PocitajTSV(TextBoxKPV_K5vPrevadzke5, TextBoxKPV_K5km5, TextBoxKPV_K5TSV5, TextBoxKPV_K5TSV5edit)
+
+        
+
+    #     TextBoxKPV_K5TH1.Text = ""
+    #     TextBoxKPV_K5TH2.Text = ""
+    #     TextBoxKPV_K5TH3.Text = ""
+    #     TextBoxKPV_K5TH4.Text = ""
+    #     TextBoxKPV_K5TH5.Text = ""
+
+    #     If TextBoxKPV_K5VHV1.Text <> "" And TextBoxKPV_K5TSV1edit.Text <> "" And TextBoxKPV_K5Cena1.Text <> "" Then
+    #         If TextBoxKPV_K5VHMV1.Text <> "" And TextBoxKPV_K5TSMV1.Text <> "" Then
+    #             TextBoxKPV_K5TH1.Text = FormatDoubleMoje(((CDblMoje(TextBoxKPV_K5VHV1.Text) * CDblMoje(TextBoxKPV_K5TSV1edit.Text)) / 100) + ((CDblMoje(TextBoxKPV_K5VHMV1.Text) * CDblMoje(TextBoxKPV_K5TSMV1.Text)) / 100), "# ##0.00")
+    #         Else
+    #             TextBoxKPV_K5TH1.Text = FormatDoubleMoje(((CDblMoje(TextBoxKPV_K5VHV1.Text) * CDblMoje(TextBoxKPV_K5TSV1edit.Text)) / 100), "# ##0.00")
+    #         End If
+    #     End If
+
+    #     If TextBoxKPV_K5VHV2.Text <> "" And TextBoxKPV_K5TSV2edit.Text <> "" And TextBoxKPV_K5Cena2.Text <> "" Then
+    #         If TextBoxKPV_K5VHMV2.Text <> "" And TextBoxKPV_K5TSMV2.Text <> "" Then
+    #             TextBoxKPV_K5TH2.Text = FormatDoubleMoje(((CDblMoje(TextBoxKPV_K5VHV2.Text) * CDblMoje(TextBoxKPV_K5TSV2edit.Text)) / 100) + ((CDblMoje(TextBoxKPV_K5VHMV2.Text) * CDblMoje(TextBoxKPV_K5TSMV2.Text)) / 100), "# ##0.00")
+    #         Else
+    #             TextBoxKPV_K5TH2.Text = FormatDoubleMoje(((CDblMoje(TextBoxKPV_K5VHV2.Text) * CDblMoje(TextBoxKPV_K5TSV2edit.Text)) / 100), "# ##0.00")
+    #         End If
+    #     End If
+
+    #     If TextBoxKPV_K5VHV3.Text <> "" And TextBoxKPV_K5TSV3edit.Text <> "" And TextBoxKPV_K5Cena3.Text <> "" Then
+    #         If TextBoxKPV_K5VHMV3.Text <> "" And TextBoxKPV_K5TSMV3.Text <> "" Then
+    #             TextBoxKPV_K5TH3.Text = FormatDoubleMoje(((CDblMoje(TextBoxKPV_K5VHV3.Text) * CDblMoje(TextBoxKPV_K5TSV3edit.Text)) / 100) + ((CDblMoje(TextBoxKPV_K5VHMV3.Text) * CDblMoje(TextBoxKPV_K5TSMV3.Text)) / 100), "# ##0.00")
+    #         Else
+    #             TextBoxKPV_K5TH3.Text = FormatDoubleMoje(((CDblMoje(TextBoxKPV_K5VHV3.Text) * CDblMoje(TextBoxKPV_K5TSV3edit.Text)) / 100), "# ##0.00")
+    #         End If
+    #     End If
+
+    #     If TextBoxKPV_K5VHV4.Text <> "" And TextBoxKPV_K5TSV4edit.Text <> "" And TextBoxKPV_K5Cena4.Text <> "" Then
+    #         If TextBoxKPV_K5VHMV4.Text <> "" And TextBoxKPV_K5TSMV4.Text <> "" Then
+    #             TextBoxKPV_K5TH4.Text = FormatDoubleMoje(((CDblMoje(TextBoxKPV_K5VHV4.Text) * CDblMoje(TextBoxKPV_K5TSV4edit.Text)) / 100) + ((CDblMoje(TextBoxKPV_K5VHMV4.Text) * CDblMoje(TextBoxKPV_K5TSMV4.Text)) / 100), "# ##0.00")
+    #         Else
+    #             TextBoxKPV_K5TH4.Text = FormatDoubleMoje(((CDblMoje(TextBoxKPV_K5VHV4.Text) * CDblMoje(TextBoxKPV_K5TSV4edit.Text)) / 100), "# ##0.00")
+    #         End If
+    #     End If
+
+    #     If TextBoxKPV_K5VHV5.Text <> "" And TextBoxKPV_K5TSV5edit.Text <> "" And TextBoxKPV_K5Cena5.Text <> "" Then
+    #         If TextBoxKPV_K5VHMV5.Text <> "" And TextBoxKPV_K5TSMV5.Text <> "" Then
+    #             TextBoxKPV_K5TH5.Text = FormatDoubleMoje(((CDblMoje(TextBoxKPV_K5VHV5.Text) * CDblMoje(TextBoxKPV_K5TSV5edit.Text)) / 100) + ((CDblMoje(TextBoxKPV_K5VHMV5.Text) * CDblMoje(TextBoxKPV_K5TSMV5.Text)) / 100), "# ##0.00")
+    #         Else
+    #             TextBoxKPV_K5TH5.Text = FormatDoubleMoje(((CDblMoje(TextBoxKPV_K5VHV5.Text) * CDblMoje(TextBoxKPV_K5TSV5edit.Text)) / 100), "# ##0.00")
+    #         End If
+    #     End If
+
+    #     TextBoxKPVpriemPredajCena.Text = ""
+
+    #     Dim tempCena As Double = 0
+    #     Dim tempPocet As Double = 0
+
+    #     If TextBoxKPV_K5Cena1.Text <> "" And TextBoxKPV_K5TH1.Text <> "" Then
+    #         tempCena = tempCena + CDblMoje(TextBoxKPV_K5Cena1.Text)
+    #         tempPocet = tempPocet + 1
+    #     End If
+
+    #     If TextBoxKPV_K5Cena2.Text <> "" And TextBoxKPV_K5TH2.Text <> "" Then
+    #         tempCena = tempCena + CDblMoje(TextBoxKPV_K5Cena2.Text)
+    #         tempPocet = tempPocet + 1
+    #     End If
+
+    #     If TextBoxKPV_K5Cena3.Text <> "" And TextBoxKPV_K5TH3.Text <> "" Then
+    #         tempCena = tempCena + CDblMoje(TextBoxKPV_K5Cena3.Text)
+    #         tempPocet = tempPocet + 1
+    #     End If
+
+    #     If TextBoxKPV_K5Cena4.Text <> "" And TextBoxKPV_K5TH4.Text <> "" Then
+    #         tempCena = tempCena + CDblMoje(TextBoxKPV_K5Cena4.Text)
+    #         tempPocet = tempPocet + 1
+    #     End If
+
+    #     If TextBoxKPV_K5Cena5.Text <> "" And TextBoxKPV_K5TH5.Text <> "" Then
+    #         tempCena = tempCena + CDblMoje(TextBoxKPV_K5Cena5.Text)
+    #         tempPocet = tempPocet + 1
+    #     End If
+
+    #     If tempPocet > 0 Then TextBoxKPVpriemPredajCena.Text = FormatDoubleMoje(tempCena / tempPocet, "# ##0.00")
+
+    #     tempCena = 0
+    #     tempPocet = 0
+    #     TextBoxKPVpriemTechHodnVozidla.Text = ""
+
+    #     If TextBoxKPV_K5TH1.Text <> "" Then
+    #         tempCena = tempCena + CDblMoje(TextBoxKPV_K5TH1.Text)
+    #         tempPocet = tempPocet + 1
+    #     End If
+
+    #     If TextBoxKPV_K5TH2.Text <> "" Then
+    #         tempCena = tempCena + CDblMoje(TextBoxKPV_K5TH2.Text)
+    #         tempPocet = tempPocet + 1
+    #     End If
+
+    #     If TextBoxKPV_K5TH3.Text <> "" Then
+    #         tempCena = tempCena + CDblMoje(TextBoxKPV_K5TH3.Text)
+    #         tempPocet = tempPocet + 1
+    #     End If
+
+    #     If TextBoxKPV_K5TH4.Text <> "" Then
+    #         tempCena = tempCena + CDblMoje(TextBoxKPV_K5TH4.Text)
+    #         tempPocet = tempPocet + 1
+    #     End If
+
+    #     If TextBoxKPV_K5TH5.Text <> "" Then
+    #         tempCena = tempCena + CDblMoje(TextBoxKPV_K5TH5.Text)
+    #         tempPocet = tempPocet + 1
+    #     End If
+
+    #     If tempPocet > 0 Then TextBoxKPVpriemTechHodnVozidla.Text = FormatDoubleMoje(tempCena / tempPocet, "# ##0.00")
+
+    #     If (TextBoxKPVpriemPredajCena.Text = "" Or TextBoxKPVpriemTechHodnVozidla.Text = "") And TextBoxKPV_K5.Text = "" Then TextBoxKPV_K5.Text = "1,0000"
+    #     If TextBoxKPVpriemTechHodnVozidla.Text <> "" And TextBoxKPVpriemPredajCena.Text <> "" Then TextBoxKPV_K5.Text = FormatDoubleMoje(CDblMoje(TextBoxKPVpriemPredajCena.Text) / CDblMoje(TextBoxKPVpriemTechHodnVozidla.Text), "0.0000")
+    #     If TextBoxKPV_K5.Text = "" Then TextBoxKPV_K5.Text = "1,0000"
+
+    #     Dim tempKP As Double = 1
+    #     TextBoxKPV_Kp.Text = ""
+    #     If TextBoxKPV_K1.Text <> "" Then tempKP = tempKP * CDblMoje(TextBoxKPV_K1.Text)
+    #     If TextBoxKPV_K2.Text <> "" Then tempKP = tempKP * CDblMoje(TextBoxKPV_K2.Text)
+    #     If TextBoxKPV_K3.Text <> "" Then tempKP = tempKP * CDblMoje(TextBoxKPV_K3.Text)
+    #     If TextBoxKPV_K4.Text <> "" Then tempKP = tempKP * CDblMoje(TextBoxKPV_K4.Text)
+    #     If TextBoxKPV_K5.Text <> "" Then tempKP = tempKP * CDblMoje(TextBoxKPV_K5.Text)
+    #     TextBoxKPV_Kp.Text = FormatDoubleMoje(tempKP, "0.0000")
+
+    #     TextBoxHV_VSH.Text = ""
+    #     If TextBoxHV_TH.Text <> "" And TextBoxKPV_Kp.Text <> "" Then
+    #         TextBoxHV_VSH.Text = FormatDoubleMoje(CDblMoje(TextBoxHV_TH.Text) * CDblMoje(TextBoxKPV_Kp.Text), "# ##0.00")
+    #         TextBoxNNO_VSH.Text = TextBoxHV_VSH.Text
+    #     End If

@@ -17992,8 +17992,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">1</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5ZdrojOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -18059,8 +18060,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">1</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5VHVOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -18116,7 +18118,7 @@
                                                                             <property name="resize">Resizable</property>
                                                                             <property name="show">1</property>
                                                                             <property name="size"></property>
-                                                                            <property name="style"></property>
+                                                                            <property name="style">wxTE_RIGHT</property>
                                                                             <property name="subclass">; ; forward_declare</property>
                                                                             <property name="toolbar_pane">0</property>
                                                                             <property name="tooltip"></property>
@@ -18126,8 +18128,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">1</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5vPrevadzkeOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -18193,8 +18196,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">1</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5kmOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -18260,8 +18264,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">1</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5CenaOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -18327,8 +18332,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">1</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5TSVeditOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -18394,8 +18400,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">1</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5VHMVOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -18461,8 +18468,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">1</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5TSMVOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -18528,7 +18536,7 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">1</property>
                                                                             <property name="window_style"></property>
                                                                         </object>
                                                                     </object>
@@ -18595,8 +18603,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">2</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5ZdrojOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -18662,8 +18671,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">2</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5VHVOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -18719,7 +18729,7 @@
                                                                             <property name="resize">Resizable</property>
                                                                             <property name="show">1</property>
                                                                             <property name="size"></property>
-                                                                            <property name="style"></property>
+                                                                            <property name="style">wxTE_RIGHT</property>
                                                                             <property name="subclass">; ; forward_declare</property>
                                                                             <property name="toolbar_pane">0</property>
                                                                             <property name="tooltip"></property>
@@ -18729,8 +18739,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">2</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5vPrevadzkeOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -18796,8 +18807,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">2</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5kmOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -18863,8 +18875,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">2</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5CenaOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -18930,8 +18943,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">2</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5TSVeditOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -18997,8 +19011,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">2</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5VHMVOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -19064,8 +19079,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">2</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5TSMVOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -19131,7 +19147,7 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">2</property>
                                                                             <property name="window_style"></property>
                                                                         </object>
                                                                     </object>
@@ -19198,8 +19214,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">3</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5ZdrojOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -19265,8 +19282,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">3</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5VHVOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -19322,7 +19340,7 @@
                                                                             <property name="resize">Resizable</property>
                                                                             <property name="show">1</property>
                                                                             <property name="size"></property>
-                                                                            <property name="style"></property>
+                                                                            <property name="style">wxTE_RIGHT</property>
                                                                             <property name="subclass">; ; forward_declare</property>
                                                                             <property name="toolbar_pane">0</property>
                                                                             <property name="tooltip"></property>
@@ -19332,8 +19350,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">3</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5vPrevadzkeOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -19399,8 +19418,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">3</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5kmOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -19466,8 +19486,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">3</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5CenaOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -19533,8 +19554,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">3</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5TSVeditOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -19600,8 +19622,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">3</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5VHMVOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -19667,8 +19690,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">3</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5TSMVOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -19734,7 +19758,7 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">3</property>
                                                                             <property name="window_style"></property>
                                                                         </object>
                                                                     </object>
@@ -19801,8 +19825,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">4</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5ZdrojOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -19868,8 +19893,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">4</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5VHVOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -19925,7 +19951,7 @@
                                                                             <property name="resize">Resizable</property>
                                                                             <property name="show">1</property>
                                                                             <property name="size"></property>
-                                                                            <property name="style"></property>
+                                                                            <property name="style">wxTE_RIGHT</property>
                                                                             <property name="subclass">; ; forward_declare</property>
                                                                             <property name="toolbar_pane">0</property>
                                                                             <property name="tooltip"></property>
@@ -19935,8 +19961,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">4</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5vPrevadzkeOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -20002,8 +20029,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">4</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5kmOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -20069,8 +20097,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">4</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5CenaOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -20136,8 +20165,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">4</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5TSVeditOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -20203,8 +20233,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">4</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5VHMVOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -20270,8 +20301,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">4</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5TSMVOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -20337,7 +20369,7 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">4</property>
                                                                             <property name="window_style"></property>
                                                                         </object>
                                                                     </object>
@@ -20404,8 +20436,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">4</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5ZdrojOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -20471,8 +20504,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">4</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5VHVOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -20528,7 +20562,7 @@
                                                                             <property name="resize">Resizable</property>
                                                                             <property name="show">1</property>
                                                                             <property name="size"></property>
-                                                                            <property name="style"></property>
+                                                                            <property name="style">wxTE_RIGHT</property>
                                                                             <property name="subclass">; ; forward_declare</property>
                                                                             <property name="toolbar_pane">0</property>
                                                                             <property name="tooltip"></property>
@@ -20538,8 +20572,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">4</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5vPrevadzkeOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -20605,8 +20640,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">4</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5kmOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -20672,8 +20708,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">4</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5CenaOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -20739,8 +20776,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">4</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5TSVeditOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -20806,8 +20844,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">4</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5VHMVOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -20873,8 +20912,9 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">4</property>
                                                                             <property name="window_style"></property>
+                                                                            <event name="OnKillFocus">TextBoxKPV_K5TSMVOnKillFocus</event>
                                                                         </object>
                                                                     </object>
                                                                     <object class="gbsizeritem" expanded="0">
@@ -20940,7 +20980,7 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name"></property>
+                                                                            <property name="window_name">4</property>
                                                                             <property name="window_style"></property>
                                                                         </object>
                                                                     </object>
