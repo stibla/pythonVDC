@@ -1157,6 +1157,9 @@ class VDCmain ( wx.Frame ):
 		self.TextBoxKPV_K5TSVedit1 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"1" )
 		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5TSVedit1, wx.GBPosition( 1, 5 ), wx.GBSpan( 1, 1 ), wx.ALL|wx.EXPAND, 0 )
 
+		self.TextBoxKPV_K5TSV1 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"1" )
+		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5TSV1, wx.GBPosition( 1, 9 ), wx.GBSpan( 1, 1 ), wx.ALL, 0 )
+
 		self.TextBoxKPV_K5VHMV1 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"1" )
 		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5VHMV1, wx.GBPosition( 1, 6 ), wx.GBSpan( 1, 1 ), wx.ALL|wx.EXPAND, 0 )
 
@@ -1183,6 +1186,9 @@ class VDCmain ( wx.Frame ):
 
 		self.TextBoxKPV_K5TSVedit2 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"2" )
 		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5TSVedit2, wx.GBPosition( 2, 5 ), wx.GBSpan( 1, 1 ), wx.ALL|wx.EXPAND, 0 )
+
+		self.TextBoxKPV_K5TSV2 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"2" )
+		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5TSV2, wx.GBPosition( 2, 9 ), wx.GBSpan( 1, 1 ), wx.ALL, 0 )
 
 		self.TextBoxKPV_K5VHMV2 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"2" )
 		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5VHMV2, wx.GBPosition( 2, 6 ), wx.GBSpan( 1, 1 ), wx.ALL|wx.EXPAND, 0 )
@@ -1211,6 +1217,9 @@ class VDCmain ( wx.Frame ):
 		self.TextBoxKPV_K5TSVedit3 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"3" )
 		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5TSVedit3, wx.GBPosition( 3, 5 ), wx.GBSpan( 1, 1 ), wx.ALL|wx.EXPAND, 0 )
 
+		self.TextBoxKPV_K5TSV3 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"3" )
+		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5TSV3, wx.GBPosition( 3, 9 ), wx.GBSpan( 1, 1 ), wx.ALL, 0 )
+
 		self.TextBoxKPV_K5VHMV3 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"3" )
 		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5VHMV3, wx.GBPosition( 3, 6 ), wx.GBSpan( 1, 1 ), wx.ALL|wx.EXPAND, 0 )
 
@@ -1238,6 +1247,9 @@ class VDCmain ( wx.Frame ):
 		self.TextBoxKPV_K5TSVedit4 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"4" )
 		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5TSVedit4, wx.GBPosition( 4, 5 ), wx.GBSpan( 1, 1 ), wx.ALL|wx.EXPAND, 0 )
 
+		self.TextBoxKPV_K5TSV4 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"4" )
+		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5TSV4, wx.GBPosition( 4, 9 ), wx.GBSpan( 1, 1 ), wx.ALL, 0 )
+
 		self.TextBoxKPV_K5VHMV4 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"4" )
 		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5VHMV4, wx.GBPosition( 4, 6 ), wx.GBSpan( 1, 1 ), wx.ALL|wx.EXPAND, 0 )
 
@@ -1264,6 +1276,9 @@ class VDCmain ( wx.Frame ):
 
 		self.TextBoxKPV_K5TSVedit5 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"4" )
 		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5TSVedit5, wx.GBPosition( 5, 5 ), wx.GBSpan( 1, 1 ), wx.ALL, 0 )
+
+		self.TextBoxKPV_K5TSV5 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"4" )
+		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5TSV5, wx.GBPosition( 5, 9 ), wx.GBSpan( 1, 1 ), wx.ALL, 0 )
 
 		self.TextBoxKPV_K5VHMV5 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"4" )
 		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5VHMV5, wx.GBPosition( 5, 6 ), wx.GBSpan( 1, 1 ), wx.ALL|wx.EXPAND, 0 )
@@ -1419,6 +1434,7 @@ class VDCmain ( wx.Frame ):
 		self.TextBoxKPV_K5km1.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5kmOnKillFocus )
 		self.TextBoxKPV_K5Cena1.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5CenaOnKillFocus )
 		self.TextBoxKPV_K5TSVedit1.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5TSVeditOnKillFocus )
+		self.TextBoxKPV_K5TSV1.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5TSVeditOnKillFocus )
 		self.TextBoxKPV_K5VHMV1.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5VHMVOnKillFocus )
 		self.TextBoxKPV_K5TSMV1.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5TSMVOnKillFocus )
 		self.TextBoxKPV_K5Zdroj2.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5ZdrojOnKillFocus )
@@ -1427,6 +1443,7 @@ class VDCmain ( wx.Frame ):
 		self.TextBoxKPV_K5km2.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5kmOnKillFocus )
 		self.TextBoxKPV_K5Cena2.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5CenaOnKillFocus )
 		self.TextBoxKPV_K5TSVedit2.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5TSVeditOnKillFocus )
+		self.TextBoxKPV_K5TSV2.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5TSVeditOnKillFocus )
 		self.TextBoxKPV_K5VHMV2.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5VHMVOnKillFocus )
 		self.TextBoxKPV_K5TSMV2.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5TSMVOnKillFocus )
 		self.TextBoxKPV_K5Zdroj3.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5ZdrojOnKillFocus )
@@ -1435,6 +1452,7 @@ class VDCmain ( wx.Frame ):
 		self.TextBoxKPV_K5km3.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5kmOnKillFocus )
 		self.TextBoxKPV_K5Cena3.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5CenaOnKillFocus )
 		self.TextBoxKPV_K5TSVedit3.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5TSVeditOnKillFocus )
+		self.TextBoxKPV_K5TSV3.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5TSVeditOnKillFocus )
 		self.TextBoxKPV_K5VHMV3.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5VHMVOnKillFocus )
 		self.TextBoxKPV_K5TSMV3.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5TSMVOnKillFocus )
 		self.TextBoxKPV_K5Zdroj4.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5ZdrojOnKillFocus )
@@ -1443,6 +1461,7 @@ class VDCmain ( wx.Frame ):
 		self.TextBoxKPV_K5km4.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5kmOnKillFocus )
 		self.TextBoxKPV_K5Cena4.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5CenaOnKillFocus )
 		self.TextBoxKPV_K5TSVedit4.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5TSVeditOnKillFocus )
+		self.TextBoxKPV_K5TSV4.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5TSVeditOnKillFocus )
 		self.TextBoxKPV_K5VHMV4.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5VHMVOnKillFocus )
 		self.TextBoxKPV_K5TSMV4.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5TSMVOnKillFocus )
 		self.TextBoxKPV_K5Zdroj5.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5ZdrojOnKillFocus )
@@ -1451,6 +1470,7 @@ class VDCmain ( wx.Frame ):
 		self.TextBoxKPV_K5km5.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5kmOnKillFocus )
 		self.TextBoxKPV_K5Cena5.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5CenaOnKillFocus )
 		self.TextBoxKPV_K5TSVedit5.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5TSVeditOnKillFocus )
+		self.TextBoxKPV_K5TSV5.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5TSVeditOnKillFocus )
 		self.TextBoxKPV_K5VHMV5.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5VHMVOnKillFocus )
 		self.TextBoxKPV_K5TSMV5.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5TSMVOnKillFocus )
 
@@ -1614,11 +1634,16 @@ class VDCmain ( wx.Frame ):
 	def TextBoxKPV_K5TSVeditOnKillFocus( self, event ):
 		pass
 
+
 	def TextBoxKPV_K5VHMVOnKillFocus( self, event ):
 		pass
 
 	def TextBoxKPV_K5TSMVOnKillFocus( self, event ):
 		pass
+
+
+
+
 
 
 

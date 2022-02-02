@@ -386,7 +386,6 @@ def PocitajVSH(parent, ktoVola):
                 parent.TextBoxKPV_K1.SetValue(FormatujCisloFloat(StringToFloat(parent.LabelKPV_k1a.GetLabel()) + StringToFloat(parent.LabelKPV_k1b.GetLabel()) * rozdielDatumovVmesiacoch(parent.TextBoxDatumPU.GetValue(), parent.TextBoxKPV_koniecTK.GetValue()), 4))
             if (StringToFloat(parent.LabelKPV_k1a.GetLabel()) > StringToFloat(parent.TextBoxKPV_K1.GetValue())):
                 parent.TextBoxKPV_K1.SetValue(FormatujCisloFloat(StringToFloat(parent.LabelKPV_k1a.GetLabel()), 4))
-
     
     parent.TextBoxKPV_K2.SetValue("1,0000")
     if (parent.ComboBoxKPV_poskodenie.GetStringSelection() != "" and parent.TextBoxDobaPrevadzkyMesiac.GetValue() != ""):
