@@ -34,6 +34,12 @@ class VDCFrame(formVDCmain.VDCmain):
 		self.TextBoxDatumPU.SetValue("08.03.2021")
 		self.TextBoxVprevadzkeOd.SetValue("18.07.2015")
 		self.TextBoxOdjazdene.SetValue("134 782")
+		self.TextBoxHV_VHV.SetValue("12 500,00")
+		self.TextBoxKPV_K5Zdroj1.SetValue("1")
+		self.TextBoxKPV_K5VHV1.SetValue("12 500,00")
+		self.TextBoxKPV_K5vPrevadzke1.SetValue("01.01.2015")
+		self.TextBoxKPV_K5km1.SetValue("130 000")
+		self.TextBoxKPV_K5Cena1.SetValue("1 000")
 
 		functionVDC.VypocitajDobuPrevadzky(self)
 
@@ -279,6 +285,8 @@ class VDCFrame(formVDCmain.VDCmain):
 	
 	def TextBoxKPV_K5VHVOnKillFocus( self, event ):
 		if (functionVDC.KontrolujFloatCislo(event.GetEventObject(), 2)):
+			exec('''if (self.TextBoxKPV_K5VHV''' + event.GetEventObject().GetName() + '''.GetValue() == '' and self.TextBoxKPV_K5Zdroj''' + event.GetEventObject().GetName() + '''.GetValue() != ''):
+	self.TextBoxKPV_K5VHV''' + event.GetEventObject().GetName() + '''.SetValue(self.TextBoxHV_VHV.GetValue())''')
 			functionVDC.PocitajVSH(self, "TextBoxKPV_K5VHVOnKillFocus")
 			event.Skip()
 

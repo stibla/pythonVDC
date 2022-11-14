@@ -410,52 +410,9 @@ def PocitajVSH(parent, ktoVola):
                         break
 
 
-    #    PocitajTSV(TextBoxKPV_K5vPrevadzke1, TextBoxKPV_K5km1, TextBoxKPV_K5TSV1, TextBoxKPV_K5TSV1edit)
-    # Sub PocitajTSV(TBKPV_K5vPrevadzke As Windows.Forms.TextBox, KPV_K5km As Windows.Forms.TextBox, TBKPV_K5TSV As Windows.Forms.TextBox, TextBoxKPV_K5TSVedit As Windows.Forms.TextBox)
-    #     Dim tempTHZAV, tempTHZA, tempDobaPrevadzkyMesiac, tempTHPRKM As Double
-    #     Dim tempOldTBKPV_K5TSV As String
-    #     tempTHZAV = 0
-    #     tempTHZA = 0
-    #     tempDobaPrevadzkyMesiac = 0
-    #     tempTHPRKM = 0
-    #     tempOldTBKPV_K5TSV = TBKPV_K5TSV.Text
-    #     TBKPV_K5TSV.Text = ""
-    #     If TextBoxTHPZTS.Text <> "" And KPV_K5km.Text <> "" And TextBoxDatumPU.Text <> "" And TBKPV_K5vPrevadzke.Text <> "" Then
-    #         tempDobaPrevadzkyMesiac = Math.Round((Year(DateValueMoje(TextBoxDatumPU.Text)) * 12 + Month(DateValueMoje(TextBoxDatumPU.Text)) + (Microsoft.VisualBasic.DateAndTime.Day(DateValueMoje(TextBoxDatumPU.Text)) / 31)) - (Year(DateValueMoje(TBKPV_K5vPrevadzke.Text)) * 12 + Month(DateValueMoje(TBKPV_K5vPrevadzke.Text)) + (Microsoft.VisualBasic.DateAndTime.Day(DateValueMoje(TBKPV_K5vPrevadzke.Text)) / 31)), 4)
-
-    #         If LabelTHZAVd.Text = "" Then
-    #             tempTHZAV = Math.Round(CDblMoje(LabelTHZAVa.Text) + ((tempDobaPrevadzkyMesiac + CDblMoje(LabelTHZAVb.Text)) / CDblMoje(LabelTHZAVc.Text)) ^ 0.5, 4)
-    #         Else
-    #             tempTHZAV = Math.Round(CDblMoje(LabelTHZAVd.Text) * tempDobaPrevadzkyMesiac, 4)
-    #         End If
-    #         If CDblMoje(tempTHZAV) > 100 - CDblMoje(TextBoxTHPZTS.Text) Then tempTHZAV = 100 - CDblMoje(TextBoxTHPZTS.Text)
-
-    #         If TextBoxTHkKM.Text <> "" And TextBoxTHPKV.Text <> "" Then
-    #             tempTHPRKM = Math.Round((CDblMoje(TextBoxTHPKV.Text) * tempDobaPrevadzkyMesiac / 12), 4)
-    #             If tempTHPRKM > CDblMoje(TextBoxTHPKV.Text) * CDblMoje(TextBoxTHPEZ.Text) Then tempTHPRKM = Math.Round(CDblMoje(TextBoxTHPKV.Text) * CDblMoje(TextBoxTHPEZ.Text), 4)
-    #             tempTHZA = Math.Round((100 - (tempTHZAV)) * (((CDblMoje(KPV_K5km.Text) - tempTHPRKM) * CDblMoje(TextBoxTHkKM.Text) / 1000) / 100) + (tempTHZAV), 4)
-    #         Else
-    #             tempTHZA = tempTHZAV
-    #         End If
-
-    #         If CDblMoje(TextBoxTHPZTS.Text) > ((100 * (100 - CDblMoje(tempTHZA)))) / 100 Then
-    #             TBKPV_K5TSV.Text = FormatDoubleMoje(TextBoxTHPZTS.Text, "0.0000")
-    #         Else
-    #             TBKPV_K5TSV.Text = FormatDoubleMoje(((100 * (100 - CDblMoje(tempTHZA)))) / 100, "0.0000")
-    #         End If
-
-    #     End If
-    #     If TextBoxKPV_K5TSVedit.Text = "" Or tempOldTBKPV_K5TSV <> TBKPV_K5TSV.Text Then
-    #         TextBoxKPV_K5TSVedit.Text = TBKPV_K5TSV.Text
-    #     End If
-
-    # End Sub
-    #     PocitajTSV(TextBoxKPV_K5vPrevadzke2, TextBoxKPV_K5km2, TextBoxKPV_K5TSV2, TextBoxKPV_K5TSV2edit)
-    #     PocitajTSV(TextBoxKPV_K5vPrevadzke3, TextBoxKPV_K5km3, TextBoxKPV_K5TSV3, TextBoxKPV_K5TSV3edit)
-    #     PocitajTSV(TextBoxKPV_K5vPrevadzke4, TextBoxKPV_K5km4, TextBoxKPV_K5TSV4, TextBoxKPV_K5TSV4edit)
-    #     PocitajTSV(TextBoxKPV_K5vPrevadzke5, TextBoxKPV_K5km5, TextBoxKPV_K5TSV5, TextBoxKPV_K5TSV5edit)
-
-        
+    for i in range(1, 5):
+        exec("PocitajTSV(parent, parent.TextBoxKPV_K5vPrevadzke" + str(i) + ", parent.TextBoxKPV_K5km" + str(i) +
+                ", parent.TextBoxKPV_K5TSV" + str(i) + ", parent.TextBoxKPV_K5TSVedit"+ str(i) + ")")
 
     #     TextBoxKPV_K5TH1.Text = ""
     #     TextBoxKPV_K5TH2.Text = ""
@@ -584,3 +541,77 @@ def PocitajVSH(parent, ktoVola):
     #         TextBoxHV_VSH.Text = FormatDoubleMoje(CDblMoje(TextBoxHV_TH.Text) * CDblMoje(TextBoxKPV_Kp.Text), "# ##0.00")
     #         TextBoxNNO_VSH.Text = TextBoxHV_VSH.Text
     #     End If
+
+def PocitajTSV(parent, TBKPV_K5vPrevadzke, KPV_K5km, TBKPV_K5TSV, TextBoxKPV_K5TSVedit):
+    tempTHZAV = 0
+    tempTHZA = 0
+    tempDobaPrevadzkyMesiac = 0
+    tempTHPRKM = 0
+    tempOldTBKPV_K5TSV = (TBKPV_K5TSV.GetValue())
+    TBKPV_K5TSV.SetValue("")
+    if (parent.TextBoxTHPZTS.GetValue() != "" and KPV_K5km.GetValue() != "" and parent.TextBoxDatumPU.GetValue() != "" and TBKPV_K5vPrevadzke.GetValue() != ""):
+        tempDobaPrevadzkyMesiac = rozdielDatumovVmesiacoch(TBKPV_K5vPrevadzke.GetValue(), parent.TextBoxDatumPU.GetValue())
+        if (parent.LabelTHZAVd.GetLabel() == ""):
+            tempTHZAV = round(StringToFloat(parent.LabelTHZAVa.GetLabel()) + ((tempDobaPrevadzkyMesiac + StringToFloat(parent.LabelTHZAVb.GetLabel())) / StringToFloat(parent.LabelTHZAVc.GetLabel())) ** 0.5, 4)
+        else: tempTHZAV = round(StringToFloat(parent.LabelTHZAVd.GetLabel()) * tempDobaPrevadzkyMesiac, 4)
+
+        if (tempTHZAV > 100 - StringToFloat(parent.TextBoxTHPZTS.GetValue())): tempTHZAV = 100 - StringToFloat(parent.TextBoxTHPZTS.GetValue())
+
+        if (parent.TextBoxTHkKM.GetValue() != "" and parent.TextBoxTHPKV.GetValue() != ""):
+            tempTHPRKM = round((StringToFloat(parent.TextBoxTHPKV.GetValue()) * tempDobaPrevadzkyMesiac / 12), 4)
+            if (tempTHPRKM > StringToFloat(parent.TextBoxTHPKV.GetValue()) * StringToFloat(parent.TextBoxTHPEZ.GetValue())): tempTHPRKM = round(StringToFloat(parent.TextBoxTHPKV.GetValue()) * StringToFloat(parent.TextBoxTHPEZ.GetValue()), 4)
+            tempTHZA = round((100 - (tempTHZAV)) * (((StringToFloat(KPV_K5km.GetValue()) - tempTHPRKM) * StringToFloat(parent.TextBoxTHkKM.GetValue()) / 1000) / 100) + (tempTHZAV), 4)
+        else: tempTHZA = tempTHZAV
+
+        if (StringToFloat(parent.TextBoxTHPZTS.GetValue()) > ((100 * (100 - tempTHZA))) / 100):
+            TBKPV_K5TSV.SetValue(FormatujCisloFloat(StringToFloat(parent.TextBoxTHPZTS.GetValue()),4))
+        else:
+            TBKPV_K5TSV.SetValue(FormatujCisloFloat(((100 * (100 - tempTHZA))) / 100, 4))            
+
+    if (TextBoxKPV_K5TSVedit.GetValue() == "" or tempOldTBKPV_K5TSV != (TBKPV_K5TSV.GetValue())):
+        TextBoxKPV_K5TSVedit.SetValue(TBKPV_K5TSV.GetValue())
+   
+    # Sub PocitajTSV(TBKPV_K5vPrevadzke As Windows.Forms.TextBox, KPV_K5km As Windows.Forms.TextBox, TBKPV_K5TSV As Windows.Forms.TextBox, TextBoxKPV_K5TSVedit As Windows.Forms.TextBox)
+    #     Dim tempTHZAV, tempTHZA, tempDobaPrevadzkyMesiac, tempTHPRKM As Double
+    #     Dim tempOldTBKPV_K5TSV As String
+    #     tempTHZAV = 0
+    #     tempTHZA = 0
+    #     tempDobaPrevadzkyMesiac = 0
+    #     tempTHPRKM = 0
+    #     tempOldTBKPV_K5TSV = TBKPV_K5TSV.Text
+    #     TBKPV_K5TSV.Text = ""
+    #     If TextBoxTHPZTS.Text <> "" And KPV_K5km.Text <> "" And TextBoxDatumPU.Text <> "" And TBKPV_K5vPrevadzke.Text <> "" Then
+    #         tempDobaPrevadzkyMesiac = Math.Round((Year(DateValueMoje(TextBoxDatumPU.Text)) * 12 + Month(DateValueMoje(TextBoxDatumPU.Text)) + (Microsoft.VisualBasic.DateAndTime.Day(DateValueMoje(TextBoxDatumPU.Text)) / 31)) - (Year(DateValueMoje(TBKPV_K5vPrevadzke.Text)) * 12 + Month(DateValueMoje(TBKPV_K5vPrevadzke.Text)) + (Microsoft.VisualBasic.DateAndTime.Day(DateValueMoje(TBKPV_K5vPrevadzke.Text)) / 31)), 4)
+
+    #         If LabelTHZAVd.Text = "" Then
+    #             tempTHZAV = Math.Round(CDblMoje(LabelTHZAVa.Text) + ((tempDobaPrevadzkyMesiac + CDblMoje(LabelTHZAVb.Text)) / CDblMoje(LabelTHZAVc.Text)) ^ 0.5, 4)
+    #         Else
+    #             tempTHZAV = Math.Round(CDblMoje(LabelTHZAVd.Text) * tempDobaPrevadzkyMesiac, 4)
+    #         End If
+    #         If CDblMoje(tempTHZAV) > 100 - CDblMoje(TextBoxTHPZTS.Text) Then tempTHZAV = 100 - CDblMoje(TextBoxTHPZTS.Text)
+
+    #         If TextBoxTHkKM.Text <> "" And TextBoxTHPKV.Text <> "" Then
+    #             tempTHPRKM = Math.Round((CDblMoje(TextBoxTHPKV.Text) * tempDobaPrevadzkyMesiac / 12), 4)
+    #             If tempTHPRKM > CDblMoje(TextBoxTHPKV.Text) * CDblMoje(TextBoxTHPEZ.Text) Then tempTHPRKM = Math.Round(CDblMoje(TextBoxTHPKV.Text) * CDblMoje(TextBoxTHPEZ.Text), 4)
+    #             tempTHZA = Math.Round((100 - (tempTHZAV)) * (((CDblMoje(KPV_K5km.Text) - tempTHPRKM) * CDblMoje(TextBoxTHkKM.Text) / 1000) / 100) + (tempTHZAV), 4)
+    #         Else
+    #             tempTHZA = tempTHZAV
+    #         End If
+
+    #         If CDblMoje(TextBoxTHPZTS.Text) > ((100 * (100 - CDblMoje(tempTHZA)))) / 100 Then
+    #             TBKPV_K5TSV.Text = FormatDoubleMoje(TextBoxTHPZTS.Text, "0.0000")
+    #         Else
+    #             TBKPV_K5TSV.Text = FormatDoubleMoje(((100 * (100 - CDblMoje(tempTHZA)))) / 100, "0.0000")
+    #         End If
+
+    #     End If
+    #     If TextBoxKPV_K5TSVedit.Text = "" Or tempOldTBKPV_K5TSV <> TBKPV_K5TSV.Text Then
+    #         TextBoxKPV_K5TSVedit.Text = TBKPV_K5TSV.Text
+    #     End If
+
+    # End Sub
+   
+
+        
+
+    
