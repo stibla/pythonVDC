@@ -551,7 +551,7 @@ class VDCmain ( wx.Frame ):
 		self.LabelTHZAVd = wx.StaticText( self.PageTechnickaHodnota, wx.ID_ANY, u"LabelTHZAVd", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.LabelTHZAVd.Wrap( -1 )
 
-		self.LabelTHZAVd.Hide()
+		self.LabelTHZAVd.Enable( False )
 
 		GbSizerPageTechnickaHodnota.Add( self.LabelTHZAVd, wx.GBPosition( 4, 0 ), wx.GBSpan( 1, 1 ), wx.ALL, 0 )
 
@@ -1085,7 +1085,7 @@ class VDCmain ( wx.Frame ):
 
 		GbSizerFrameKPV.Add( self.LabelKPV_K5, wx.GBPosition( 4, 0 ), wx.GBSpan( 1, 1 ), wx.ALL|wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_RIGHT, 2 )
 
-		self.TextBoxKPV_K5 = wx.TextCtrl( FrameKPV.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.TextBoxKPV_K5 = wx.TextCtrl( FrameKPV.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.TE_RIGHT )
 		GbSizerFrameKPV.Add( self.TextBoxKPV_K5, wx.GBPosition( 4, 1 ), wx.GBSpan( 1, 1 ), wx.ALL|wx.EXPAND, 2 )
 
 		FrameHV_KK = wx.StaticBoxSizer( wx.StaticBox( FrameKPV.GetStaticBox(), wx.ID_ANY, u"Porovnateľné vozidlá" ), wx.VERTICAL )
@@ -1331,8 +1331,12 @@ class VDCmain ( wx.Frame ):
 		GbSizerPageHodnotaVozidla.Fit( self.PageHodnotaVozidla )
 		self.MultiPageVDC.AddPage( self.PageHodnotaVozidla, u"Hodnota vozidla", True )
 		self.PageNakladyNaOpravu = wx.Panel( self.MultiPageVDC, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		self.PageNakladyNaOpravu.Hide()
+
 		self.MultiPageVDC.AddPage( self.PageNakladyNaOpravu, u"Náklady na opravu", False )
 		self.PageZnehodnotenie = wx.Panel( self.MultiPageVDC, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		self.PageZnehodnotenie.Hide()
+
 		self.MultiPageVDC.AddPage( self.PageZnehodnotenie, u"Znehodnotenie", False )
 
 		mainGbSizer.Add( self.MultiPageVDC, wx.GBPosition( 1, 0 ), wx.GBSpan( 1, 6 ), wx.EXPAND |wx.ALL, 5 )
@@ -1428,6 +1432,7 @@ class VDCmain ( wx.Frame ):
 		self.TextBoxKPVPocetDrzitelov.Bind( wx.EVT_SPINCTRL, self.TextBoxKPVPocetDrzitelovOnSpinCtrl )
 		self.CheckBoxKPVk3Nezistene.Bind( wx.EVT_CHECKBOX, self.CheckBoxKPVk3NezisteneOnCheckBox )
 		self.ComboBoxKPV_prevadzka.Bind( wx.EVT_CHOICE, self.ComboBoxKPV_prevadzkaOnChoice )
+		self.TextBoxKPV_K5.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5OnKillFocus )
 		self.TextBoxKPV_K5Zdroj1.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5ZdrojOnKillFocus )
 		self.TextBoxKPV_K5VHV1.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5VHVOnKillFocus )
 		self.TextBoxKPV_K5vPrevadzke1.Bind( wx.EVT_KILL_FOCUS, self.TextBoxKPV_K5vPrevadzkeOnKillFocus )
@@ -1614,6 +1619,9 @@ class VDCmain ( wx.Frame ):
 		pass
 
 	def ComboBoxKPV_prevadzkaOnChoice( self, event ):
+		pass
+
+	def TextBoxKPV_K5OnKillFocus( self, event ):
 		pass
 
 	def TextBoxKPV_K5ZdrojOnKillFocus( self, event ):

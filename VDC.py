@@ -320,6 +320,11 @@ class VDCFrame(formVDCmain.VDCmain):
 			functionVDC.PocitajVSH(self, "TextBoxKPV_K5TSMVOnKillFocus")
 			event.Skip()
 
+	def TextBoxKPV_K5OnKillFocus( self, event ):
+		if (functionVDC.KontrolujFloatCislo(event.GetEventObject(), 4)):
+			functionVDC.PocitajVSH(self, "TextBoxKPV_K5TSMVOnKillFocus")
+			event.Skip()
+
 
 # mandatory in wx, create an app
 app = wx.App(False)
