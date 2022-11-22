@@ -99,8 +99,8 @@ class VDCmain ( wx.Frame ):
 		self.TextBoxPoskodeny = wx.TextCtrl( self.PageZakladneUdaje, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 400,-1 ), 0 )
 		GbSizerPageZakladneUdaje.Add( self.TextBoxPoskodeny, wx.GBPosition( 3, 1 ), wx.GBSpan( 1, 2 ), wx.ALL, 3 )
 
-		self.ComboBoxPlatcaDPH = wx.CheckBox( self.PageZakladneUdaje, wx.ID_ANY, u"Platca DPH:", wx.DefaultPosition, wx.DefaultSize, 0 )
-		GbSizerPageZakladneUdaje.Add( self.ComboBoxPlatcaDPH, wx.GBPosition( 3, 3 ), wx.GBSpan( 1, 1 ), wx.ALIGN_CENTER_VERTICAL|wx.ALL, 3 )
+		self.CheckBoxPlatcaDPH = wx.CheckBox( self.PageZakladneUdaje, wx.ID_ANY, u"Platca DPH:", wx.DefaultPosition, wx.DefaultSize, 0 )
+		GbSizerPageZakladneUdaje.Add( self.CheckBoxPlatcaDPH, wx.GBPosition( 3, 3 ), wx.GBSpan( 1, 1 ), wx.ALIGN_CENTER_VERTICAL|wx.ALL, 3 )
 
 		self.LabelPoskodenyAdresa = wx.StaticText( self.PageZakladneUdaje, wx.ID_ANY, u"Adresa:", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.LabelPoskodenyAdresa.Wrap( -1 )
@@ -154,7 +154,7 @@ class VDCmain ( wx.Frame ):
 		self.PageZakladneUdaje.SetSizer( GbSizerPageZakladneUdaje )
 		self.PageZakladneUdaje.Layout()
 		GbSizerPageZakladneUdaje.Fit( self.PageZakladneUdaje )
-		self.MultiPageVDC.AddPage( self.PageZakladneUdaje, u"Základné údaje", False )
+		self.MultiPageVDC.AddPage( self.PageZakladneUdaje, u"Základné údaje", True )
 		self.PageVozidlo = wx.Panel( self.MultiPageVDC, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		GbSizerPageVozidlo = wx.GridBagSizer( 0, 0 )
 		GbSizerPageVozidlo.SetFlexibleDirection( wx.BOTH )
@@ -939,18 +939,22 @@ class VDCmain ( wx.Frame ):
 		self.LabelKPV_k1a = wx.StaticText( self.PageHodnotaVozidla, wx.ID_ANY, u"LabelKPV_k1a", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.LabelKPV_k1a.Wrap( -1 )
 
+		self.LabelKPV_k1a.Hide()
+
 		GbSizerPageHodnotaVozidla.Add( self.LabelKPV_k1a, wx.GBPosition( 0, 2 ), wx.GBSpan( 1, 1 ), wx.ALL, 0 )
 
-		self.m_staticText64 = wx.StaticText( self.PageHodnotaVozidla, wx.ID_ANY, u"Technický stav vozidla (TSV):", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText64.Wrap( -1 )
+		self.LabelHV_TSV = wx.StaticText( self.PageHodnotaVozidla, wx.ID_ANY, u"Technický stav vozidla (TSV):", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.LabelHV_TSV.Wrap( -1 )
 
-		GbSizerPageHodnotaVozidla.Add( self.m_staticText64, wx.GBPosition( 1, 0 ), wx.GBSpan( 1, 1 ), wx.ALL|wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_RIGHT, 2 )
+		GbSizerPageHodnotaVozidla.Add( self.LabelHV_TSV, wx.GBPosition( 1, 0 ), wx.GBSpan( 1, 1 ), wx.ALL|wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_RIGHT, 2 )
 
 		self.TextBoxHV_TSV = wx.TextCtrl( self.PageHodnotaVozidla, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.TE_READONLY|wx.TE_RIGHT )
 		GbSizerPageHodnotaVozidla.Add( self.TextBoxHV_TSV, wx.GBPosition( 1, 1 ), wx.GBSpan( 1, 1 ), wx.ALL, 2 )
 
 		self.LabelKPV_k1b = wx.StaticText( self.PageHodnotaVozidla, wx.ID_ANY, u"LabelKPV_k1b", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.LabelKPV_k1b.Wrap( -1 )
+
+		self.LabelKPV_k1b.Hide()
 
 		GbSizerPageHodnotaVozidla.Add( self.LabelKPV_k1b, wx.GBPosition( 1, 2 ), wx.GBSpan( 1, 1 ), wx.ALL, 0 )
 
@@ -965,6 +969,8 @@ class VDCmain ( wx.Frame ):
 		self.LabelKPV_k1lehotaTK = wx.StaticText( self.PageHodnotaVozidla, wx.ID_ANY, u"LabelKPV_k1lehotaTK", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.LabelKPV_k1lehotaTK.Wrap( -1 )
 
+		self.LabelKPV_k1lehotaTK.Hide()
+
 		GbSizerPageHodnotaVozidla.Add( self.LabelKPV_k1lehotaTK, wx.GBPosition( 2, 2 ), wx.GBSpan( 1, 1 ), wx.ALL, 0 )
 
 		self.LabelHV_TSMV = wx.StaticText( self.PageHodnotaVozidla, wx.ID_ANY, u"Technický stav mimoriadnej výbavy (TSMV):", wx.DefaultPosition, wx.DefaultSize, 0 )
@@ -978,6 +984,8 @@ class VDCmain ( wx.Frame ):
 		self.LabelKPV_k1lehotaTKstazPodm = wx.StaticText( self.PageHodnotaVozidla, wx.ID_ANY, u"LabelKPV_k1lehotaTKstazPodm", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.LabelKPV_k1lehotaTKstazPodm.Wrap( -1 )
 
+		self.LabelKPV_k1lehotaTKstazPodm.Hide()
+
 		GbSizerPageHodnotaVozidla.Add( self.LabelKPV_k1lehotaTKstazPodm, wx.GBPosition( 3, 2 ), wx.GBSpan( 1, 1 ), wx.ALL, 0 )
 
 		self.LabelHV_TH = wx.StaticText( self.PageHodnotaVozidla, wx.ID_ANY, u"Technická hodnota vozidla (TH)=VHV.TSV/100+VHVM.TSVM/100:", wx.DefaultPosition, wx.DefaultSize, 0 )
@@ -990,6 +998,8 @@ class VDCmain ( wx.Frame ):
 
 		self.LabelKPV_k1lehotaTKsuStazPodm = wx.StaticText( self.PageHodnotaVozidla, wx.ID_ANY, u"LabelKPV_k1lehotaTKsuStazPodm", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.LabelKPV_k1lehotaTKsuStazPodm.Wrap( -1 )
+
+		self.LabelKPV_k1lehotaTKsuStazPodm.Hide()
 
 		GbSizerPageHodnotaVozidla.Add( self.LabelKPV_k1lehotaTKsuStazPodm, wx.GBPosition( 4, 2 ), wx.GBSpan( 1, 1 ), wx.ALL, 0 )
 
@@ -1157,7 +1167,7 @@ class VDCmain ( wx.Frame ):
 		self.TextBoxKPV_K5TSVedit1 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"1" )
 		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5TSVedit1, wx.GBPosition( 1, 5 ), wx.GBSpan( 1, 1 ), wx.ALL|wx.EXPAND, 0 )
 
-		self.TextBoxKPV_K5TSV1 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"1" )
+		self.TextBoxKPV_K5TSV1 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 0,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"1" )
 		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5TSV1, wx.GBPosition( 1, 9 ), wx.GBSpan( 1, 1 ), wx.ALL, 0 )
 
 		self.TextBoxKPV_K5VHMV1 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"1" )
@@ -1187,7 +1197,7 @@ class VDCmain ( wx.Frame ):
 		self.TextBoxKPV_K5TSVedit2 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"2" )
 		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5TSVedit2, wx.GBPosition( 2, 5 ), wx.GBSpan( 1, 1 ), wx.ALL|wx.EXPAND, 0 )
 
-		self.TextBoxKPV_K5TSV2 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"2" )
+		self.TextBoxKPV_K5TSV2 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 0,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"2" )
 		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5TSV2, wx.GBPosition( 2, 9 ), wx.GBSpan( 1, 1 ), wx.ALL, 0 )
 
 		self.TextBoxKPV_K5VHMV2 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"2" )
@@ -1217,7 +1227,7 @@ class VDCmain ( wx.Frame ):
 		self.TextBoxKPV_K5TSVedit3 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"3" )
 		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5TSVedit3, wx.GBPosition( 3, 5 ), wx.GBSpan( 1, 1 ), wx.ALL|wx.EXPAND, 0 )
 
-		self.TextBoxKPV_K5TSV3 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"3" )
+		self.TextBoxKPV_K5TSV3 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 0,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"3" )
 		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5TSV3, wx.GBPosition( 3, 9 ), wx.GBSpan( 1, 1 ), wx.ALL, 0 )
 
 		self.TextBoxKPV_K5VHMV3 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"3" )
@@ -1247,7 +1257,7 @@ class VDCmain ( wx.Frame ):
 		self.TextBoxKPV_K5TSVedit4 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"4" )
 		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5TSVedit4, wx.GBPosition( 4, 5 ), wx.GBSpan( 1, 1 ), wx.ALL|wx.EXPAND, 0 )
 
-		self.TextBoxKPV_K5TSV4 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"4" )
+		self.TextBoxKPV_K5TSV4 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 0,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"4" )
 		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5TSV4, wx.GBPosition( 4, 9 ), wx.GBSpan( 1, 1 ), wx.ALL, 0 )
 
 		self.TextBoxKPV_K5VHMV4 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"4" )
@@ -1277,7 +1287,7 @@ class VDCmain ( wx.Frame ):
 		self.TextBoxKPV_K5TSVedit5 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"4" )
 		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5TSVedit5, wx.GBPosition( 5, 5 ), wx.GBSpan( 1, 1 ), wx.ALL, 0 )
 
-		self.TextBoxKPV_K5TSV5 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"4" )
+		self.TextBoxKPV_K5TSV5 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 0,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"4" )
 		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5TSV5, wx.GBPosition( 5, 9 ), wx.GBSpan( 1, 1 ), wx.ALL, 0 )
 
 		self.TextBoxKPV_K5VHMV5 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"4" )
@@ -1329,9 +1339,9 @@ class VDCmain ( wx.Frame ):
 		self.PageHodnotaVozidla.SetSizer( GbSizerPageHodnotaVozidla )
 		self.PageHodnotaVozidla.Layout()
 		GbSizerPageHodnotaVozidla.Fit( self.PageHodnotaVozidla )
-		self.MultiPageVDC.AddPage( self.PageHodnotaVozidla, u"Hodnota vozidla", True )
+		self.MultiPageVDC.AddPage( self.PageHodnotaVozidla, u"Hodnota vozidla", False )
 		self.PageNakladyNaOpravu = wx.Panel( self.MultiPageVDC, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		self.PageNakladyNaOpravu.Hide()
+		self.PageNakladyNaOpravu.Enable( False )
 
 		self.MultiPageVDC.AddPage( self.PageNakladyNaOpravu, u"Náklady na opravu", False )
 		self.PageZnehodnotenie = wx.Panel( self.MultiPageVDC, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
@@ -1355,6 +1365,7 @@ class VDCmain ( wx.Frame ):
 		# Connect Events
 		self.ButtonNovyVypocet.Bind( wx.EVT_BUTTON, self.NovyVypocet )
 		self.ButtonOtvoritFromFile.Bind( wx.EVT_BUTTON, self.OtvorZoSuboru )
+		self.ButtonUlozitToFile.Bind( wx.EVT_BUTTON, self.ButtonUlozitToFileOnButtonClick )
 		self.DateTimePickerDatumPU.Bind( wx.adv.EVT_DATE_CHANGED, self.DateTimePickerDatumPUOnDateChanged )
 		self.TextBoxDatumPU.Bind( wx.EVT_KILL_FOCUS, self.TextBoxDatumPUOnKillFocus )
 		self.TextBoxPrideleneECV.Bind( wx.EVT_KILL_FOCUS, self.TextBoxPrideleneECVOnKillFocus )
@@ -1488,6 +1499,9 @@ class VDCmain ( wx.Frame ):
 		pass
 
 	def OtvorZoSuboru( self, event ):
+		pass
+
+	def ButtonUlozitToFileOnButtonClick( self, event ):
 		pass
 
 	def DateTimePickerDatumPUOnDateChanged( self, event ):

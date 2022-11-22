@@ -1,4 +1,5 @@
 # importing wx files
+import json
 import wx
 
 # import the newly created GUI file
@@ -48,6 +49,32 @@ class VDCFrame(formVDCmain.VDCmain):
 
 	def OtvorZoSuboru(self, event):
 		print("Label of pressed button = ", event.GetEventObject().GetLabel())
+	
+	def ButtonUlozitToFileOnButtonClick(self, event):
+		dictData = {}
+		for item in vars(self).items():
+			if(item[0][0:7] == "TextBox"):
+				if(item[1].GetValue() != ""):
+					dictData[item[0]] = item[1].GetValue()
+			if(item[0][0:8] == "ComboBox"):			
+				if(item[1].GetStringSelection() != ""):
+					dictData[item[0]] = item[1].GetStringSelection()
+			if(item[0][0:8] == "CheckBox"):
+				dictData[item[0]] = item[1].IsChecked()
+		
+		with wx.FileDialog(self, "Save VDC JSON file", wildcard="VDC JSON files (*.vdcJson)|*.vdcJson",
+                       style=wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT) as fileDialog:
+			if fileDialog.ShowModal() == wx.ID_CANCEL:
+				return     
+			pathname = fileDialog.GetPath()
+			try:
+				with open(pathname, 'w') as file:
+					json.dump(dictData, file, ensure_ascii=False)
+			except IOError:
+				wx.LogError("Cannot save current data in file '%s'." % pathname)
+			finally:
+				pass
+
 
 	def ComboBoxKategoriaMVOnChoice(self, event):
 		self.ComboBoxPodkategoriaMV.Clear()
