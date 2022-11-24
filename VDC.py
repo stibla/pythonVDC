@@ -48,7 +48,29 @@ class VDCFrame(formVDCmain.VDCmain):
 		print("Label of pressed button = ", event.GetEventObject().GetLabel())
 
 	def OtvorZoSuboru(self, event):
-		print("Label of pressed button = ", event.GetEventObject().GetLabel())
+		with wx.FileDialog(self, "VDC JSON fil", wildcard="VDC JSON files (*.vdcJSON)|*.vdcJson",
+                       style=wx.FD_OPEN | wx.FD_FILE_MUST_EXIST) as fileDialog:
+
+			if fileDialog.ShowModal() == wx.ID_CANCEL:
+				return    
+
+			pathname = fileDialog.GetPath()
+			try:
+				with open(pathname, 'r') as json_file:
+					dictData = json.load(json_file)
+					for item in vars(self).items():
+						if item[0] in dictData:
+							if(item[0][0:7] == "TextBox"):
+								item[1].SetValue(dictData[item[0]])
+							if(item[0][0:8] == "ComboBox"):
+								item[1].SetStringSelection(dictData[item[0]])
+							if(item[0][0:8] == "CheckBox"):
+								item[1].SetValue(dictData[item[0]])
+			except IOError:
+				wx.LogError("Cannot open file '%s'." % pathname)
+			except Exception as err:
+				wx.MessageBox("Error: " + err.__str__(), "Attention",
+                         wx.ICON_ERROR | wx.OK, self)
 	
 	def ButtonUlozitToFileOnButtonClick(self, event):
 		dictData = {}
@@ -62,7 +84,7 @@ class VDCFrame(formVDCmain.VDCmain):
 			if(item[0][0:8] == "CheckBox"):
 				dictData[item[0]] = item[1].IsChecked()
 		
-		with wx.FileDialog(self, "Save VDC JSON file", wildcard="VDC JSON files (*.vdcJson)|*.vdcJson",
+		with wx.FileDialog(self, "Save VDC JSON file", wildcard="VDC JSON files (*.vdcJSON)|*.vdcJson",
                        style=wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT) as fileDialog:
 			if fileDialog.ShowModal() == wx.ID_CANCEL:
 				return     
@@ -72,9 +94,6 @@ class VDCFrame(formVDCmain.VDCmain):
 					json.dump(dictData, file, ensure_ascii=False)
 			except IOError:
 				wx.LogError("Cannot save current data in file '%s'." % pathname)
-			finally:
-				pass
-
 
 	def ComboBoxKategoriaMVOnChoice(self, event):
 		self.ComboBoxPodkategoriaMV.Clear()
