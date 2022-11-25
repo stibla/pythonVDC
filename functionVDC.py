@@ -460,11 +460,7 @@ def PocitajVSH(parent, ktoVola):
     parent.TextBoxHV_VSH.SetValue("")
     if(parent.TextBoxHV_TH.GetValue() !="" and parent.TextBoxKPV_Kp.GetValue() !=""):
         parent.TextBoxHV_VSH.SetValue(FormatujCisloFloat(StringToFloat(parent.TextBoxHV_TH.GetValue()) * StringToFloat(parent.TextBoxKPV_Kp.GetValue()),2))
-    #     TextBoxHV_VSH.Text = ""
-    #     If TextBoxHV_TH.Text <> "" And TextBoxKPV_Kp.Text <> "" Then
-    #         TextBoxHV_VSH.Text = FormatDoubleMoje(CDblMoje(TextBoxHV_TH.Text) * CDblMoje(TextBoxKPV_Kp.Text), "# ##0.00")
-    #         TextBoxNNO_VSH.Text = TextBoxHV_VSH.Text
-    #     End If
+
 
 def PocitajTSV(parent, TBKPV_K5vPrevadzke, KPV_K5km, TBKPV_K5TSV, TextBoxKPV_K5TSVedit):
     tempTHZAV = 0

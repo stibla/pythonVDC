@@ -32,6 +32,7 @@ class VDCFrame(formVDCmain.VDCmain):
 		self.ComboBoxKPV_poskodenie.Append(temp)
 		self.ComboBoxKPV_poskodenie.SetSelection(0)
 
+		# test data
 		self.TextBoxDatumPU.SetValue("08.03.2021")
 		self.TextBoxVprevadzkeOd.SetValue("18.07.2015")
 		self.TextBoxOdjazdene.SetValue("134 782")
@@ -41,11 +42,22 @@ class VDCFrame(formVDCmain.VDCmain):
 		self.TextBoxKPV_K5vPrevadzke1.SetValue("01.01.2015")
 		self.TextBoxKPV_K5km1.SetValue("130 000")
 		self.TextBoxKPV_K5Cena1.SetValue("1 000")
+		# test data end
 
 		functionVDC.VypocitajDobuPrevadzky(self)
 
 	def NovyVypocet(self, event):
-		print("Label of pressed button = ", event.GetEventObject().GetLabel())
+		for item in vars(self).items():
+			if(item[0][0:7] == "TextBox"):
+				item[1].SetValue("")
+			if(item[0][0:8] == "ComboBox"):
+				item[1].SetStringSelection("")
+			if(item[0][0:8] == "CheckBox"):
+				item[1].SetValue(False)
+		
+		self.ComboBoxKategoriaMV.SetSelection(2)		
+		self.ComboBoxKPV_poskodenie.SetSelection(0)
+		functionVDC.VypocitajDobuPrevadzky(self)
 
 	def OtvorZoSuboru(self, event):
 		with wx.FileDialog(self, "VDC JSON fil", wildcard="VDC JSON files (*.vdcJSON)|*.vdcJson",
@@ -58,6 +70,7 @@ class VDCFrame(formVDCmain.VDCmain):
 			try:
 				with open(pathname, 'r') as json_file:
 					dictData = json.load(json_file)
+					self.NovyVypocet(None)
 					for item in vars(self).items():
 						if item[0] in dictData:
 							if(item[0][0:7] == "TextBox"):
@@ -66,11 +79,12 @@ class VDCFrame(formVDCmain.VDCmain):
 								item[1].SetStringSelection(dictData[item[0]])
 							if(item[0][0:8] == "CheckBox"):
 								item[1].SetValue(dictData[item[0]])
+				functionVDC.VypocitajDobuPrevadzky(self)
 			except IOError:
 				wx.LogError("Cannot open file '%s'." % pathname)
 			except Exception as err:
 				wx.MessageBox("Error: " + err.__str__(), "Attention",
-                         wx.ICON_ERROR | wx.OK, self)
+                         wx.ICON_ERROR | wx.OK, self)	
 	
 	def ButtonUlozitToFileOnButtonClick(self, event):
 		dictData = {}
