@@ -47,16 +47,6 @@ def KontrolujFloatCislo(control, noOfDecimal):
         return False
 
 
-def JeFloat(cisloString):
-    if (len(cisloString) == 0):
-        return True
-    try:
-        float(cisloString.replace(" ", "").replace(",", "."))
-        return True
-    except ValueError:
-        return False
-
-
 def FormatujCisloFloatString(cisloString, noOfDecimal):
     if (len(cisloString) == 0):
         return ""
@@ -280,8 +270,7 @@ def PocitajTH(parent, ktoVola):
 
     globals()['temp'] = 0
     for i in range(1, 10):
-        exec("if (parent.TextBoxTHPDS" + str(i) + ".GetValue() != '' and JeFloat(parent.TextBoxTHPDS" + str(i) +
-                ".GetValue())): globals()['temp'] += StringToFloat(parent.TextBoxTHPDS" + str(i) + ".GetValue())")
+        exec("if (parent.TextBoxTHPDS" + str(i) + ".GetValue() != ''): globals()['temp'] += StringToFloat(parent.TextBoxTHPDS" + str(i) + ".GetValue())")
     
     parent.TextBoxTHPDSSpolu.SetValue(
         FormatujCisloFloat(globals()['temp'], 4))
