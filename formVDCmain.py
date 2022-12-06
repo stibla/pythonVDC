@@ -1366,6 +1366,7 @@ class VDCmain ( wx.Frame ):
 		self.ButtonNovyVypocet.Bind( wx.EVT_BUTTON, self.NovyVypocet )
 		self.ButtonOtvoritFromFile.Bind( wx.EVT_BUTTON, self.OtvorZoSuboru )
 		self.ButtonUlozitToFile.Bind( wx.EVT_BUTTON, self.ButtonUlozitToFileOnButtonClick )
+		self.ButtonNNO_Tlac.Bind( wx.EVT_BUTTON, self.ButtonNNO_TlacOnButtonClick )
 		self.DateTimePickerDatumPU.Bind( wx.adv.EVT_DATE_CHANGED, self.DateTimePickerDatumPUOnDateChanged )
 		self.TextBoxDatumPU.Bind( wx.EVT_KILL_FOCUS, self.TextBoxDatumPUOnKillFocus )
 		self.TextBoxPrideleneECV.Bind( wx.EVT_KILL_FOCUS, self.TextBoxPrideleneECVOnKillFocus )
@@ -1502,6 +1503,9 @@ class VDCmain ( wx.Frame ):
 		pass
 
 	def ButtonUlozitToFileOnButtonClick( self, event ):
+		pass
+
+	def ButtonNNO_TlacOnButtonClick( self, event ):
 		pass
 
 	def DateTimePickerDatumPUOnDateChanged( self, event ):

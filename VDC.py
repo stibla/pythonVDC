@@ -1,6 +1,7 @@
 # importing wx files
 import json
 import wx
+from reportlab.pdfgen import canvas
 
 # import the newly created GUI file
 import formVDCmain
@@ -55,8 +56,8 @@ class VDCFrame(formVDCmain.VDCmain):
 			if(item[0][0:8] == "CheckBox"):
 				item[1].SetValue(False)
 		
-		self.ComboBoxKategoriaMV.SetSelection(2)		
-		self.ComboBoxKPV_poskodenie.SetSelection(0)
+		self.ComboBoxKategoriaMV.SetSelection(2)
+		self.ComboBoxKategoriaMVOnChoice(None)				
 		functionVDC.VypocitajDobuPrevadzky(self)
 
 	def OtvorZoSuboru(self, event):
@@ -108,6 +109,14 @@ class VDCFrame(formVDCmain.VDCmain):
 					json.dump(dictData, file, ensure_ascii=False)
 			except IOError:
 				wx.LogError("Cannot save current data in file '%s'." % pathname)
+
+	def ButtonNNO_TlacOnButtonClick(self, event):
+		c = canvas.Canvas("hello.pdf")
+		print(c.getAvailableFonts())
+		c.setFont('Times-Bold', 12)
+		c.drawCentredString(c._pagesize[0]/2, c._pagesize[1] - 100, u'Výpočet všeobecnej hodnoty'.decode("utf-8"))
+		c.showPage()
+		c.save()
 
 	def ComboBoxKategoriaMVOnChoice(self, event):
 		self.ComboBoxPodkategoriaMV.Clear()

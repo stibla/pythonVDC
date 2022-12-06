@@ -3,6 +3,7 @@ Python 3 GUI aplication for Vehicle value calculation. The application was devel
 
 # Depencies
  - wxPython (https://wxpython.org/) use pip install -U wxPython
+ - reportlab (https://docs.reportlab.com/) use pip install -U reportlab
 
 # Run
 python VDC.py
