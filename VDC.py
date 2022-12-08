@@ -1,7 +1,6 @@
 # importing wx files
 import json
 import wx
-from reportlab.pdfgen import canvas
 
 # import the newly created GUI file
 import formVDCmain
@@ -111,12 +110,41 @@ class VDCFrame(formVDCmain.VDCmain):
 				wx.LogError("Cannot save current data in file '%s'." % pathname)
 
 	def ButtonNNO_TlacOnButtonClick(self, event):
-		c = canvas.Canvas("hello.pdf")
-		print(c.getAvailableFonts())
-		c.setFont('Times-Bold', 12)
-		c.drawCentredString(c._pagesize[0]/2, c._pagesize[1] - 100, u'Výpočet všeobecnej hodnoty'.decode("utf-8"))
-		c.showPage()
-		c.save()
+		from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+		from reportlab.platypus import Paragraph, SimpleDocTemplate, Table, TableStyle
+		from reportlab.lib.enums import TA_JUSTIFY, TA_LEFT, TA_CENTER, TA_RIGHT
+		from reportlab.pdfbase import pdfmetrics
+		from reportlab.pdfbase.ttfonts import TTFont
+		from reportlab.lib import colors
+		
+		my_doc = SimpleDocTemplate('hello.pdf') 	
+		pdfmetrics.registerFont(TTFont('Arial', 'Arial.ttf'))
+		sample_style_sheet = getSampleStyleSheet()
+		sample_style_sheet.add(ParagraphStyle(name='MyHeading1', parent=sample_style_sheet['Heading1'], fontName='Arial', alignment = TA_CENTER))
+		sample_style_sheet.add(ParagraphStyle(name='MyBodyText', parent=sample_style_sheet['BodyText'], fontName='Arial'))
+		flowables = []
+		flowables.append(Paragraph("Výpočet všeobecnej hodnoty", sample_style_sheet['MyHeading1']))
+		flowables.append(Paragraph("", sample_style_sheet['MyBodyText']))
+		flowables.append(Paragraph("Číslo poistnej udalosti: " + self.TextBoxCPU.GetValue(), sample_style_sheet['MyBodyText']))
+
+		data= [['00', '01', '02', '03', '04', '05'],
+			['10', '11', '12', '13', '14', '15'],
+			['20', '21', '22', '23', '24', '25'],
+			['30', '31', '32', '33', Paragraph('Here is large field retrieve from database', sample_style_sheet['Normal']), '25']]
+		t=Table(data, hAlign='LEFT', colWidths = [my_doc.width*8/100,
+												my_doc.width*28/100,
+												my_doc.width*16/100,
+												my_doc.width*16/100,
+												my_doc.width*16/100,
+												my_doc.width*16/100])
+		t.setStyle(TableStyle(
+			[('GRID', (0,0), (-1,-1), 1, colors.black),  
+			('FONT', (0,0), (-1,-1), 'Arial', 10, 12),
+			('ALIGN', (0,0), (-1,0), 'CENTER'),
+			('ALIGN', (0,1), (-1,-1), 'RIGHT')])) # (column, row)
+		flowables.append(t)
+
+		my_doc.build(flowables)
 
 	def ComboBoxKategoriaMVOnChoice(self, event):
 		self.ComboBoxPodkategoriaMV.Clear()
