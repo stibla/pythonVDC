@@ -111,17 +111,7 @@ def VypocitajDobuPrevadzky(parent):
             wx.MessageBox(
         'Nekorektne zadaný dátum v prevádzke od alebo dátum hodnotenia ', 'Upozornenie', wx.OK)
         else:
-            parent.TextBoxDobaPrevadzkyMesiac.SetValue(FormatujCisloFloat(rozdielDatumovVmesiacoch(parent.TextBoxVprevadzkeOd.GetValue(), parent.TextBoxDatumPU.GetValue()),4))
-    #try:
-        #datumPU = datetime.strptime(
-        #    parent.TextBoxDatumPU.GetValue(), "%d.%m.%Y")
-        #vPrevadzkeOd = datetime.strptime(
-        #    parent.TextBoxVprevadzkeOd.GetValue(), "%d.%m.%Y")
-        #parent.TextBoxDobaPrevadzkyMesiac.SetValue(FormatujCisloFloat((datumPU.year*12 + datumPU.month + datumPU.day / 31) - (
-        #    vPrevadzkeOd.year*12 + vPrevadzkeOd.month + vPrevadzkeOd.day / 31), 4))
-        
-    #except ValueError:
-        
+            parent.TextBoxDobaPrevadzkyMesiac.SetValue(FormatujCisloFloat(rozdielDatumovVmesiacoch(parent.TextBoxVprevadzkeOd.GetValue(), parent.TextBoxDatumPU.GetValue()),4))        
 
     parent.TextBoxTHdobaPrevadzky.SetValue(
         parent.TextBoxDobaPrevadzkyMesiac.GetValue())

@@ -111,7 +111,7 @@ class VDCFrame(formVDCmain.VDCmain):
 
 	def ButtonNNO_TlacOnButtonClick(self, event):
 		from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-		from reportlab.platypus import Paragraph, SimpleDocTemplate, Table, TableStyle
+		from reportlab.platypus import Paragraph, SimpleDocTemplate, Table, TableStyle, Spacer
 		from reportlab.lib.enums import TA_JUSTIFY, TA_LEFT, TA_CENTER, TA_RIGHT
 		from reportlab.pdfbase import pdfmetrics
 		from reportlab.pdfbase.ttfonts import TTFont
@@ -120,31 +120,82 @@ class VDCFrame(formVDCmain.VDCmain):
 		my_doc = SimpleDocTemplate('hello.pdf') 	
 		pdfmetrics.registerFont(TTFont('Arial', 'Arial.ttf'))
 		sample_style_sheet = getSampleStyleSheet()
-		sample_style_sheet.add(ParagraphStyle(name='MyHeading1', parent=sample_style_sheet['Heading1'], fontName='Arial', alignment = TA_CENTER))
+		sample_style_sheet.add(ParagraphStyle(name='Heading1Center', parent=sample_style_sheet['Heading1'], fontName='Arial', alignment = TA_CENTER))
+		sample_style_sheet.add(ParagraphStyle(name='Heading1Left', parent=sample_style_sheet['Heading1'], fontName='Arial'))
+		sample_style_sheet.add(ParagraphStyle(name='Heading3Left', parent=sample_style_sheet['Heading3'], fontName='Arial'))
 		sample_style_sheet.add(ParagraphStyle(name='MyBodyText', parent=sample_style_sheet['BodyText'], fontName='Arial'))
+		sample_style_sheet.add(ParagraphStyle(name='TabHeader', parent=sample_style_sheet['Normal'], fontName='Arial', fontSize=7, alignment = TA_CENTER))
+		sample_style_sheet.add(ParagraphStyle(name='TabTextRight', parent=sample_style_sheet['Normal'], fontName='Arial', fontSize=8, alignment = TA_RIGHT))
+		sample_style_sheet.add(ParagraphStyle(name='TabTextLeft', parent=sample_style_sheet['Normal'], fontName='Arial', fontSize=8, alignment = TA_LEFT))
 		flowables = []
-		flowables.append(Paragraph("Výpočet všeobecnej hodnoty", sample_style_sheet['MyHeading1']))
-		flowables.append(Paragraph("", sample_style_sheet['MyBodyText']))
+		flowables.append(Paragraph("Výpočet všeobecnej hodnoty", sample_style_sheet['Heading1Center']))
+		flowables.append(Spacer(1,5))
 		flowables.append(Paragraph("Číslo poistnej udalosti: " + self.TextBoxCPU.GetValue(), sample_style_sheet['MyBodyText']))
+		flowables.append(Paragraph("Dátum vzniku poistnej udalosti: " + self.TextBoxDatumPU.GetValue(), sample_style_sheet['MyBodyText']))
+		flowables.append(Paragraph("Poškodený: " + self.TextBoxPoskodeny.GetValue() + "; " + self.TextBoxPoskodenyAdresa.GetValue() + "; Plátca DPH: " + ("Áno" if self.CheckBoxPlatcaDPH.IsChecked() else "Nie"), sample_style_sheet['MyBodyText']))
+		flowables.append(Spacer(1,30))
 
-		data= [['00', '01', '02', '03', '04', '05'],
-			['10', '11', '12', '13', '14', '15'],
-			['20', '21', '22', '23', '24', '25'],
-			['30', '31', '32', '33', Paragraph('Here is large field retrieve from database', sample_style_sheet['Normal']), '25']]
-		t=Table(data, hAlign='LEFT', colWidths = [my_doc.width*8/100,
+		flowables.append(Paragraph("Vozidlo", sample_style_sheet['Heading1Left']))
+		flowables.append(Spacer(1,5))
+		flowables.append(Paragraph("Evidenčné číslo vozidla: " + self.TextBoxECV.GetValue() + "; Evidenčné číslo pridelené po prvý raz: " + self.TextBoxPrideleneECV.GetValue(), sample_style_sheet['MyBodyText']))
+		flowables.append(Paragraph("Kategória vozidla: " + self.ComboBoxKategoriaMV.GetStringSelection(), sample_style_sheet['MyBodyText']))
+		flowables.append(Paragraph("Podkategória vozidla: " + self.ComboBoxPodkategoriaMV.GetStringSelection(), sample_style_sheet['MyBodyText']))
+		flowables.append(Paragraph("Značka, model, typ: " + self.TextBoxZnackaMV.GetValue(), sample_style_sheet['MyBodyText']))
+		flowables.append(Paragraph("Výrobné číslo vozidla - VIN (Vehicle Identification Number): " + self.TextBoxVIN.GetValue(), sample_style_sheet['MyBodyText']))
+		flowables.append(Paragraph("Technický preukaz číslo: " + self.TextBoxCisloTP.GetValue(), sample_style_sheet['MyBodyText']))
+		flowables.append(Paragraph("Objem valcov motora (ccm): " + self.TextBoxObjemMotora.GetValue(), sample_style_sheet['MyBodyText']))
+		flowables.append(Paragraph("Výkon  (kW): " + self.TextBoxVykon.GetValue() + "; Pri otáčkach: " + self.TextBoxOtacky.GetValue(), sample_style_sheet['MyBodyText']))
+		flowables.append(Paragraph("Výrobné číslo motora: " + self.TextBoxCisloMotora.GetValue(), sample_style_sheet['MyBodyText']))
+		flowables.append(Paragraph("Výrobné číslo rámu: " + self.TextBoxCisloRamu.GetValue(), sample_style_sheet['MyBodyText']))
+		flowables.append(Paragraph("Palivo: " + self.ComboBoxPalivo.GetStringSelection(), sample_style_sheet['MyBodyText']))
+		flowables.append(Paragraph("Celková hmotnosť (kg): " + self.TextBoxHmotnostCelkova.GetValue() + "; Pohotovostná hmotnosť (kg): " + self.TextBoxPohotovostnaHmotnost.GetValue(), sample_style_sheet['MyBodyText']))
+		flowables.append(Paragraph("Počet náprav / kolies: " + self.TextBoxPocetNaprav.GetValue(), sample_style_sheet['MyBodyText']))
+		flowables.append(Paragraph("Celková dĺžka (mm): " + self.TextBoxCelkovaDlzka.GetValue(), sample_style_sheet['MyBodyText']))
+		flowables.append(Paragraph("Rázvor (mm): " + self.TextBoxRazvor.GetValue(), sample_style_sheet['MyBodyText']))
+		flowables.append(Paragraph("Počet dverí / miest: " + self.TextBoxPocetDveri.GetValue(), sample_style_sheet['MyBodyText']))
+		flowables.append(Paragraph("Počet odjazdených km (motohodín) celkom: " + self.TextBoxOdjazdene.GetValue(), sample_style_sheet['MyBodyText']))
+		flowables.append(Paragraph("Farba laku karosérie: " + self.TextBoxFarba.GetValue(), sample_style_sheet['MyBodyText']))
+		flowables.append(Paragraph("Rok výroby / modelový rok: " + self.TextBoxRokVyrobyMV.GetValue() + "; Dátum prvého uvedenia vozidla do prevádzky: " + self.TextBoxVprevadzkeOd.GetValue(), sample_style_sheet['MyBodyText']))
+		flowables.append(Spacer(1,20))
+
+		flowables.append(Paragraph("Pneumatiky", sample_style_sheet['Heading3Left']))
+		data = [[Paragraph('Počet', sample_style_sheet['TabHeader']), 
+		        Paragraph('Značka / rozmer / popis', sample_style_sheet['TabHeader']), 
+				Paragraph('Priama TH %', sample_style_sheet['TabHeader']), 
+				Paragraph('Nový dezén (mm)', sample_style_sheet['TabHeader']), 
+				Paragraph('Nameraný (mm)', sample_style_sheet['TabHeader']), 
+				Paragraph('TH %', sample_style_sheet['TabHeader'])]]
+
+		for i in range(1, 4):
+ 			exec('''if self.TextBoxPneuPocet''' + str(i) + '''.GetValue() != "":
+			data.append([Paragraph(self.TextBoxPneuPocet''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
+						Paragraph(self.TextBoxPneuPopis''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextLeft']), 
+						Paragraph(self.TextBoxPneuPriamaTH''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
+						Paragraph(self.TextBoxPneuNove''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
+						Paragraph(self.TextBoxPneuNamerane''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
+						Paragraph(self.TextBoxPneuTH''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight'])])''')	
+						
+		data.append(["", 
+					"", 
+					"", 
+					"", 
+					"", 
+					Paragraph(self.TextBoxPneuTH.GetValue(), sample_style_sheet['TabTextRight'])])
+
+		t=Table(data, colWidths = [my_doc.width*8/100,
 												my_doc.width*28/100,
 												my_doc.width*16/100,
 												my_doc.width*16/100,
 												my_doc.width*16/100,
 												my_doc.width*16/100])
 		t.setStyle(TableStyle(
-			[('GRID', (0,0), (-1,-1), 1, colors.black),  
-			('FONT', (0,0), (-1,-1), 'Arial', 10, 12),
-			('ALIGN', (0,0), (-1,0), 'CENTER'),
-			('ALIGN', (0,1), (-1,-1), 'RIGHT')])) # (column, row)
+			[('GRID', (0,0), (-1,-2), 1, colors.black),
+			('GRID', (-1,-1), (-1,-1), 1, colors.black)])) # (column, row)
 		flowables.append(t)
 
 		my_doc.build(flowables)
+
+
 
 	def ComboBoxKategoriaMVOnChoice(self, event):
 		self.ComboBoxPodkategoriaMV.Clear()
