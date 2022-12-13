@@ -10,6 +10,8 @@ import functionVDC
 import os
 
 # inherit from the MainFrame created in wxFowmBuilder
+
+
 class VDCFrame(formVDCmain.VDCmain):
     # constructor
     def __init__(self, parent):
@@ -226,6 +228,81 @@ class VDCFrame(formVDCmain.VDCmain):
             [('GRID', (0, 0), (-1, -2), 1, colors.black),
              ('GRID', (-1, -1), (-1, -1), 1, colors.black)]))  # (column, row)
         flowables.append(t)
+
+        flowables.append(Spacer(1, 30))
+
+        flowables.append(
+            Paragraph("Technický stav vozidla (TSV) %", sample_style_sheet['Heading1Left']))
+        flowables.append(Spacer(1, 5))
+        flowables.append(Paragraph("T - doba prevádzky v mesiacoch = " +
+                                   self.TextBoxTHdobaPrevadzky.GetValue(), sample_style_sheet['MyBodyText']))
+        flowables.append(Paragraph("PKV - predpokladaný ročný jazdný výkon v km resp. motohodinách = " +
+                                   self.TextBoxTHPKV.GetValue(), sample_style_sheet['MyBodyText']))
+        flowables.append(Paragraph("PSKM - počet skutočne najazdených kilometrov = " +
+                                   self.TextBoxOdjazdene.GetValue(), sample_style_sheet['MyBodyText']))
+        flowables.append(Paragraph("PZTS - predpokladaný zostatkový technický stav v % = " +
+                                   self.TextBoxTHPZTS.GetValue(), sample_style_sheet['MyBodyText']))
+        flowables.append(Paragraph("PEZ - predpokladaná efektívna životnosť v rokoch = " +
+                                   self.TextBoxTHPEZ.GetValue(), sample_style_sheet['MyBodyText']))
+        flowables.append(Paragraph("PRKM - Predpokladaný počet najazdených kilometrov = (PKV . T) / 12 = " +
+                                   self.TextBoxTHPRKM.GetValue(), sample_style_sheet['MyBodyText']))
+        flowables.append(Paragraph("RKM - Rozdiel v počte najazdených kilometrov (PSKM - PRKM) = " +
+                                   self.TextBoxTHRKM.GetValue(), sample_style_sheet['MyBodyText']))
+        flowables.append(Paragraph("kKM - Koeficient najazdených kilometrov = " +
+                                   self.TextBoxTHkKM.GetValue(), sample_style_sheet['MyBodyText']))
+        flowables.append(Paragraph("kAM - Koeficient amortizácie za skutočne najazdené kilometre = (RKM . kKM) / 1000 = " +
+                                   self.TextBoxTHkAM.GetValue(), sample_style_sheet['MyBodyText']))
+
+        flowables.append(Spacer(1, 20))
+
+        flowables.append(
+            Paragraph("Tabuľka vypočítaných hodnôt", sample_style_sheet['Heading3Left']))
+        data = [[Paragraph('Skupina', sample_style_sheet['TabHeader']),
+                 Paragraph('VTSS %', sample_style_sheet['TabHeader']),
+                 Paragraph('PDS %', sample_style_sheet['TabHeader']),
+                 Paragraph('ZAV %', sample_style_sheet['TabHeader']),
+                 Paragraph('ZA %', sample_style_sheet['TabHeader']),
+                 Paragraph('ZP %', sample_style_sheet['TabHeader']),
+                 Paragraph('TSS %', sample_style_sheet['TabHeader']),
+                 Paragraph('PTSS %', sample_style_sheet['TabHeader'])]]
+
+        for i in range(1, 10):
+            exec('''if self.TextBoxTHSkupina''' + str(i) + '''.GetValue() != "":
+			data.append([Paragraph(self.TextBoxTHSkupina''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextLeft']), 
+						Paragraph(self.TextBoxTHVTSS''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
+						Paragraph(self.TextBoxTHPDS''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
+						Paragraph(self.TextBoxTHZAV''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
+						Paragraph(self.TextBoxTHZA''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
+						Paragraph(self.TextBoxTHZP''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
+						Paragraph(self.TextBoxTHTSS''' + str(i) + '''edit.GetValue() + ("*" if self.TextBoxTHTSS''' + str(i) + '''.GetValue() != self.TextBoxTHTSS''' + str(i) + '''edit.GetValue() else ""), sample_style_sheet['TabTextRight']), 
+						Paragraph(self.TextBoxTHPTSS''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight'])])''')
+
+        data.append(["",
+                     "",
+                     "",
+                     "",
+                     "",
+                     "",
+                     Paragraph(
+                         'TSV:', sample_style_sheet['TabTextRight']),
+                     Paragraph(self.TextBoxTHTSV.GetValue(), sample_style_sheet['TabTextRight'])])
+
+        t = Table(data, colWidths=[my_doc.width*29/100,
+                                   my_doc.width*11/100,
+                                   my_doc.width*10/100,
+                                   my_doc.width*10/100,
+                                   my_doc.width*10/100,
+                                   my_doc.width*10/100,
+                                   my_doc.width*10/100,
+                                   my_doc.width*10/100])
+        t.setStyle(TableStyle(
+            [('GRID', (0, 0), (-1, -2), 1, colors.black),
+             ('GRID', (-1, -1), (-1, -1), 1, colors.black)]))  # (column, row)
+        flowables.append(t)
+
+        if (self.TextBoxTHSkupina1.GetValue() != "" or self.TextBoxTHSkupina2.GetValue() != "" or self.TextBoxTHSkupina3.GetValue() != "" or self.TextBoxTHSkupina4.GetValue() != "" or self.TextBoxTHSkupina5.GetValue() != "" or self.TextBoxTHSkupina6.GetValue() != "" or self.TextBoxTHSkupina7.GetValue() != "" or self.TextBoxTHSkupina8.GetValue() != "" or self.TextBoxTHSkupina9.GetValue() != ""):
+            flowables.append(
+                Paragraph("* hodnota zadaná priamo", sample_style_sheet['MyBodyText']))
 
         my_doc.build(flowables)
 
