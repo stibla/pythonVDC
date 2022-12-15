@@ -120,7 +120,7 @@ class VDCFrame(formVDCmain.VDCmain):
         from reportlab.pdfbase.ttfonts import TTFont
         from reportlab.lib import colors
 
-        my_doc = SimpleDocTemplate('hello.pdf')
+        my_doc = SimpleDocTemplate('hello.pdf', rightMargin=40, leftMargin=40)
         pdfmetrics.registerFont(TTFont('Arial', 'Arial.ttf'))
         sample_style_sheet = getSampleStyleSheet()
         sample_style_sheet.add(ParagraphStyle(
