@@ -130,7 +130,7 @@ class VDCFrame(formVDCmain.VDCmain):
         sample_style_sheet.add(ParagraphStyle(
             name='Heading3Left', parent=sample_style_sheet['Heading3'], fontName='Arial'))
         sample_style_sheet.add(ParagraphStyle(
-            name='MyBodyText', parent=sample_style_sheet['BodyText'], fontName='Arial'))
+            name='NormalText', parent=sample_style_sheet['Normal'], fontName='Arial'))
         sample_style_sheet.add(ParagraphStyle(
             name='TabHeader', parent=sample_style_sheet['Normal'], fontName='Arial', fontSize=7, alignment=TA_CENTER))
         sample_style_sheet.add(ParagraphStyle(
@@ -142,55 +142,55 @@ class VDCFrame(formVDCmain.VDCmain):
                          sample_style_sheet['Heading1Center']))
         flowables.append(Spacer(1, 5))
         flowables.append(Paragraph("Číslo poistnej udalosti: " +
-                         self.TextBoxCPU.GetValue(), sample_style_sheet['MyBodyText']))
+                         self.TextBoxCPU.GetValue(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("Dátum vzniku poistnej udalosti: " +
-                         self.TextBoxDatumPU.GetValue(), sample_style_sheet['MyBodyText']))
+                         self.TextBoxDatumPU.GetValue(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("Poškodený: " + self.TextBoxPoskodeny.GetValue() + "; " + self.TextBoxPoskodenyAdresa.GetValue() +
-                         "; Plátca DPH: " + ("Áno" if self.CheckBoxPlatcaDPH.IsChecked() else "Nie"), sample_style_sheet['MyBodyText']))
+                         "; Plátca DPH: " + ("Áno" if self.CheckBoxPlatcaDPH.IsChecked() else "Nie"), sample_style_sheet['NormalText']))
         flowables.append(Spacer(1, 30))
 
         flowables.append(
             Paragraph("Vozidlo", sample_style_sheet['Heading1Left']))
         flowables.append(Spacer(1, 5))
         flowables.append(Paragraph("Evidenčné číslo vozidla: " + self.TextBoxECV.GetValue() +
-                         "; Evidenčné číslo pridelené po prvý raz: " + self.TextBoxPrideleneECV.GetValue(), sample_style_sheet['MyBodyText']))
+                         "; Evidenčné číslo pridelené po prvý raz: " + self.TextBoxPrideleneECV.GetValue(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("Kategória vozidla: " +
-                         self.ComboBoxKategoriaMV.GetStringSelection(), sample_style_sheet['MyBodyText']))
+                         self.ComboBoxKategoriaMV.GetStringSelection(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("Podkategória vozidla: " +
-                         self.ComboBoxPodkategoriaMV.GetStringSelection(), sample_style_sheet['MyBodyText']))
+                         self.ComboBoxPodkategoriaMV.GetStringSelection(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("Značka, model, typ: " +
-                         self.TextBoxZnackaMV.GetValue(), sample_style_sheet['MyBodyText']))
+                         self.TextBoxZnackaMV.GetValue(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("Výrobné číslo vozidla - VIN (Vehicle Identification Number): " +
-                         self.TextBoxVIN.GetValue(), sample_style_sheet['MyBodyText']))
+                         self.TextBoxVIN.GetValue(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("Technický preukaz číslo: " +
-                         self.TextBoxCisloTP.GetValue(), sample_style_sheet['MyBodyText']))
+                         self.TextBoxCisloTP.GetValue(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("Objem valcov motora (ccm): " +
-                         self.TextBoxObjemMotora.GetValue(), sample_style_sheet['MyBodyText']))
+                         self.TextBoxObjemMotora.GetValue(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("Výkon  (kW): " + self.TextBoxVykon.GetValue() +
-                         "; Pri otáčkach: " + self.TextBoxOtacky.GetValue(), sample_style_sheet['MyBodyText']))
+                         "; Pri otáčkach: " + self.TextBoxOtacky.GetValue(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("Výrobné číslo motora: " +
-                         self.TextBoxCisloMotora.GetValue(), sample_style_sheet['MyBodyText']))
+                         self.TextBoxCisloMotora.GetValue(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("Výrobné číslo rámu: " +
-                         self.TextBoxCisloRamu.GetValue(), sample_style_sheet['MyBodyText']))
+                         self.TextBoxCisloRamu.GetValue(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph(
-            "Palivo: " + self.ComboBoxPalivo.GetStringSelection(), sample_style_sheet['MyBodyText']))
+            "Palivo: " + self.ComboBoxPalivo.GetStringSelection(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("Celková hmotnosť (kg): " + self.TextBoxHmotnostCelkova.GetValue() +
-                         "; Pohotovostná hmotnosť (kg): " + self.TextBoxPohotovostnaHmotnost.GetValue(), sample_style_sheet['MyBodyText']))
+                         "; Pohotovostná hmotnosť (kg): " + self.TextBoxPohotovostnaHmotnost.GetValue(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("Počet náprav / kolies: " +
-                         self.TextBoxPocetNaprav.GetValue(), sample_style_sheet['MyBodyText']))
+                         self.TextBoxPocetNaprav.GetValue(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("Celková dĺžka (mm): " +
-                         self.TextBoxCelkovaDlzka.GetValue(), sample_style_sheet['MyBodyText']))
+                         self.TextBoxCelkovaDlzka.GetValue(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph(
-            "Rázvor (mm): " + self.TextBoxRazvor.GetValue(), sample_style_sheet['MyBodyText']))
+            "Rázvor (mm): " + self.TextBoxRazvor.GetValue(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("Počet dverí / miest: " +
-                         self.TextBoxPocetDveri.GetValue(), sample_style_sheet['MyBodyText']))
+                         self.TextBoxPocetDveri.GetValue(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("Počet odjazdených km (motohodín) celkom: " +
-                         self.TextBoxOdjazdene.GetValue(), sample_style_sheet['MyBodyText']))
+                         self.TextBoxOdjazdene.GetValue(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("Farba laku karosérie: " +
-                         self.TextBoxFarba.GetValue(), sample_style_sheet['MyBodyText']))
+                         self.TextBoxFarba.GetValue(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("Rok výroby / modelový rok: " + self.TextBoxRokVyrobyMV.GetValue() +
-                         "; Dátum prvého uvedenia vozidla do prevádzky: " + self.TextBoxVprevadzkeOd.GetValue(), sample_style_sheet['MyBodyText']))
-        flowables.append(Spacer(1, 20))
+                         "; Dátum prvého uvedenia vozidla do prevádzky: " + self.TextBoxVprevadzkeOd.GetValue(), sample_style_sheet['NormalText']))
+        flowables.append(Spacer(1, 10))
 
         flowables.append(
             Paragraph("Pneumatiky", sample_style_sheet['Heading3Left']))
@@ -204,12 +204,12 @@ class VDCFrame(formVDCmain.VDCmain):
 
         for i in range(1, 4):
             exec('''if self.TextBoxPneuPocet''' + str(i) + '''.GetValue() != "":
-			data.append([Paragraph(self.TextBoxPneuPocet''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
-						Paragraph(self.TextBoxPneuPopis''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextLeft']), 
-						Paragraph(self.TextBoxPneuPriamaTH''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
-						Paragraph(self.TextBoxPneuNove''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
-						Paragraph(self.TextBoxPneuNamerane''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
-						Paragraph(self.TextBoxPneuTH''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight'])])''')
+            data.append([Paragraph(self.TextBoxPneuPocet''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
+                        Paragraph(self.TextBoxPneuPopis''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextLeft']), 
+                        Paragraph(self.TextBoxPneuPriamaTH''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
+                        Paragraph(self.TextBoxPneuNove''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
+                        Paragraph(self.TextBoxPneuNamerane''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
+                        Paragraph(self.TextBoxPneuTH''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight'])])''')
 
         data.append(["",
                      "",
@@ -235,23 +235,23 @@ class VDCFrame(formVDCmain.VDCmain):
             Paragraph("Technický stav vozidla (TSV) %", sample_style_sheet['Heading1Left']))
         flowables.append(Spacer(1, 5))
         flowables.append(Paragraph("T - doba prevádzky v mesiacoch = " +
-                                   self.TextBoxTHdobaPrevadzky.GetValue(), sample_style_sheet['MyBodyText']))
+                                   self.TextBoxTHdobaPrevadzky.GetValue(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("PKV - predpokladaný ročný jazdný výkon v km resp. motohodinách = " +
-                                   self.TextBoxTHPKV.GetValue(), sample_style_sheet['MyBodyText']))
+                                   self.TextBoxTHPKV.GetValue(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("PSKM - počet skutočne najazdených kilometrov = " +
-                                   self.TextBoxOdjazdene.GetValue(), sample_style_sheet['MyBodyText']))
+                                   self.TextBoxOdjazdene.GetValue(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("PZTS - predpokladaný zostatkový technický stav v % = " +
-                                   self.TextBoxTHPZTS.GetValue(), sample_style_sheet['MyBodyText']))
+                                   self.TextBoxTHPZTS.GetValue(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("PEZ - predpokladaná efektívna životnosť v rokoch = " +
-                                   self.TextBoxTHPEZ.GetValue(), sample_style_sheet['MyBodyText']))
+                                   self.TextBoxTHPEZ.GetValue(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("PRKM - Predpokladaný počet najazdených kilometrov = (PKV . T) / 12 = " +
-                                   self.TextBoxTHPRKM.GetValue(), sample_style_sheet['MyBodyText']))
+                                   self.TextBoxTHPRKM.GetValue(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("RKM - Rozdiel v počte najazdených kilometrov (PSKM - PRKM) = " +
-                                   self.TextBoxTHRKM.GetValue(), sample_style_sheet['MyBodyText']))
+                                   self.TextBoxTHRKM.GetValue(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("kKM - Koeficient najazdených kilometrov = " +
-                                   self.TextBoxTHkKM.GetValue(), sample_style_sheet['MyBodyText']))
+                                   self.TextBoxTHkKM.GetValue(), sample_style_sheet['NormalText']))
         flowables.append(Paragraph("kAM - Koeficient amortizácie za skutočne najazdené kilometre = (RKM . kKM) / 1000 = " +
-                                   self.TextBoxTHkAM.GetValue(), sample_style_sheet['MyBodyText']))
+                                   self.TextBoxTHkAM.GetValue(), sample_style_sheet['NormalText']))
 
         flowables.append(Spacer(1, 20))
 
@@ -268,14 +268,15 @@ class VDCFrame(formVDCmain.VDCmain):
 
         for i in range(1, 10):
             exec('''if self.TextBoxTHSkupina''' + str(i) + '''.GetValue() != "":
-			data.append([Paragraph(self.TextBoxTHSkupina''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextLeft']), 
-						Paragraph(self.TextBoxTHVTSS''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
-						Paragraph(self.TextBoxTHPDS''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
-						Paragraph(self.TextBoxTHZAV''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
-						Paragraph(self.TextBoxTHZA''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
-						Paragraph(self.TextBoxTHZP''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
-						Paragraph(self.TextBoxTHTSS''' + str(i) + '''edit.GetValue() + ("*" if self.TextBoxTHTSS''' + str(i) + '''.GetValue() != self.TextBoxTHTSS''' + str(i) + '''edit.GetValue() else ""), sample_style_sheet['TabTextRight']), 
-						Paragraph(self.TextBoxTHPTSS''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight'])])''')
+            data.append([Paragraph(self.TextBoxTHSkupina''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextLeft']), 
+                        Paragraph(self.TextBoxTHVTSS''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
+                        Paragraph(self.TextBoxTHPDS''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
+                        Paragraph(self.TextBoxTHZAV''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
+                        Paragraph(self.TextBoxTHZA''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
+                        Paragraph(self.TextBoxTHZP''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
+                        Paragraph(self.TextBoxTHTSS''' + str(i) + '''edit.GetValue() + ("*" if self.TextBoxTHTSS'''
+                 + str(i) + '''.GetValue() != self.TextBoxTHTSS''' + str(i) + '''edit.GetValue() else ""), sample_style_sheet['TabTextRight']), 
+                        Paragraph(self.TextBoxTHPTSS''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight'])])''')
 
         data.append(["",
                      "",
@@ -300,9 +301,55 @@ class VDCFrame(formVDCmain.VDCmain):
              ('GRID', (-1, -1), (-1, -1), 1, colors.black)]))  # (column, row)
         flowables.append(t)
 
-        if (self.TextBoxTHSkupina1.GetValue() != "" or self.TextBoxTHSkupina2.GetValue() != "" or self.TextBoxTHSkupina3.GetValue() != "" or self.TextBoxTHSkupina4.GetValue() != "" or self.TextBoxTHSkupina5.GetValue() != "" or self.TextBoxTHSkupina6.GetValue() != "" or self.TextBoxTHSkupina7.GetValue() != "" or self.TextBoxTHSkupina8.GetValue() != "" or self.TextBoxTHSkupina9.GetValue() != ""):
+        if (self.TextBoxTHTSS1.GetValue() != self.TextBoxTHTSS1edit.GetValue()
+            or self.TextBoxTHTSS2.GetValue() != self.TextBoxTHTSS2edit.GetValue()
+            or self.TextBoxTHTSS3.GetValue() != self.TextBoxTHTSS3edit.GetValue()
+            or self.TextBoxTHTSS4.GetValue() != self.TextBoxTHTSS4edit.GetValue()
+            or self.TextBoxTHTSS5.GetValue() != self.TextBoxTHTSS5edit.GetValue()
+            or self.TextBoxTHTSS6.GetValue() != self.TextBoxTHTSS6edit.GetValue()
+            or self.TextBoxTHTSS7.GetValue() != self.TextBoxTHTSS7edit.GetValue()
+            or self.TextBoxTHTSS8.GetValue() != self.TextBoxTHTSS8edit.GetValue()
+            or self.TextBoxTHTSS9.GetValue() != self.TextBoxTHTSS9edit.GetValue()):
             flowables.append(
-                Paragraph("* hodnota zadaná priamo", sample_style_sheet['MyBodyText']))
+                Paragraph("* hodnota zadaná priamo", sample_style_sheet['NormalText']))
+
+        flowables.append(Spacer(1, 10))
+        
+        tempVzorec = ""
+        if self.LabelTHZAVd.GetLabel() == "":
+            if self.LabelTHZAVa.GetLabel() != "0":
+                tempVzorec += self.LabelTHZAVa.GetLabel() + ' + '
+            if self.LabelTHZAVb.GetLabel() != "0":
+                tempVzorec += 'Odmocnina((T + ' + self.LabelTHZAVb.GetLabel() + \
+                    ') / ' + self.LabelTHZAVc.GetLabel() + ')'
+            if self.LabelTHZAVb.GetLabel() == "0":
+                tempVzorec += 'Odmocnina(T / ' + \
+                    self.LabelTHZAVc.GetLabel() + ')'
+        else:
+            tempVzorec += self.LabelTHZAVd.GetLabel() + ' . T'
+
+        data = [[Paragraph('VTSS - Východiskový technický stav skupiny', sample_style_sheet['TabTextLeft'])],
+                [Paragraph('PDS - Pomerný diel skupiny',
+                           sample_style_sheet['TabTextLeft'])],
+                [Paragraph('ZAV - Základná  amortizácia za dobu prevádzky skupiny = ' +
+                           tempVzorec, sample_style_sheet['TabTextLeft'])],
+                [Paragraph('ZA - Základná amortizácia = (VTSS - (VTSS / 100 . ZAV)) . kAM / 100 + ZAV',
+                           sample_style_sheet['TabTextLeft'])],
+                [Paragraph('ZP - Zrážka, prirážka za technický stav',
+                           sample_style_sheet['TabTextLeft'])],
+                [Paragraph('TSS - Skutočný technický stav skupiny = (VTSS . (100 - ZA)) . (100 + ZP) / 10000',
+                           sample_style_sheet['TabTextLeft'])],
+                [Paragraph('PTSS - Pomerný technický stav skupiny = (TSS . PDS) / 100',
+                           sample_style_sheet['TabTextLeft'])],
+                [Paragraph('TSV - Technický stav vozidla = PTSS1 + ... + PTSSn',
+                           sample_style_sheet['TabTextLeft'])],
+                ]
+
+        t = Table(data, colWidths=[my_doc.width])
+
+        t.setStyle(TableStyle(
+            [('GRID', (0, 0), (-1, -1), 1, colors.black)]))  # (column, row)
+        flowables.append(t)
 
         my_doc.build(flowables)
 
@@ -543,8 +590,9 @@ class VDCFrame(formVDCmain.VDCmain):
 
     def TextBoxKPV_K5VHVOnKillFocus(self, event):
         if (functionVDC.KontrolujFloatCislo(event.GetEventObject(), 2)):
-            exec('''if (self.TextBoxKPV_K5VHV''' + event.GetEventObject().GetName() + '''.GetValue() == '' and self.TextBoxKPV_K5Zdroj''' + event.GetEventObject().GetName() + '''.GetValue() != ''):
-	self.TextBoxKPV_K5VHV''' + event.GetEventObject().GetName() + '''.SetValue(self.TextBoxHV_VHV.GetValue())''')
+            exec('''if (self.TextBoxKPV_K5VHV''' + event.GetEventObject().GetName() + '''.GetValue() == '' 
+            and self.TextBoxKPV_K5Zdroj''' + event.GetEventObject().GetName() + '''.GetValue() != ''):
+                self.TextBoxKPV_K5VHV''' + event.GetEventObject().GetName() + '''.SetValue(self.TextBoxHV_VHV.GetValue())''')
             functionVDC.PocitajVSH(self, "TextBoxKPV_K5VHVOnKillFocus")
             event.Skip()
 
