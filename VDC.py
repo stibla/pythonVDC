@@ -309,12 +309,12 @@ class VDCFrame(formVDCmain.VDCmain):
             or self.TextBoxTHTSS6.GetValue() != self.TextBoxTHTSS6edit.GetValue()
             or self.TextBoxTHTSS7.GetValue() != self.TextBoxTHTSS7edit.GetValue()
             or self.TextBoxTHTSS8.GetValue() != self.TextBoxTHTSS8edit.GetValue()
-            or self.TextBoxTHTSS9.GetValue() != self.TextBoxTHTSS9edit.GetValue()):
+                or self.TextBoxTHTSS9.GetValue() != self.TextBoxTHTSS9edit.GetValue()):
             flowables.append(
                 Paragraph("* hodnota zadaná priamo", sample_style_sheet['NormalText']))
 
         flowables.append(Spacer(1, 10))
-        
+
         tempVzorec = ""
         if self.LabelTHZAVd.GetLabel() == "":
             if self.LabelTHZAVa.GetLabel() != "0":
@@ -370,7 +370,7 @@ class VDCFrame(formVDCmain.VDCmain):
                     Paragraph(self.TextBoxHV_TH.GetValue() + " €", sample_style_sheet['TabTextRight'])]]
 
             t = Table(data, colWidths=[my_doc.width*85/100,
-                                    my_doc.width*15/100])
+                                       my_doc.width*15/100])
             t.setStyle(TableStyle(
                 [('GRID', (0, 0), (-1, -1), 1, colors.black)]))  # (column, row)
             flowables.append(t)
@@ -379,12 +379,12 @@ class VDCFrame(formVDCmain.VDCmain):
 
             flowables.append(
                 Paragraph("Koeficient predajnosti vozidla", sample_style_sheet['Heading3Left']))
-            print(("Nepreukázané" if self.CheckBoxKPVk3Nezistene.IsChecked() else self.TextBoxKPVPocetDrzitelov.GetValue()))
+
             data = [[Paragraph("k1 - koeficient platnosti kontroly technického stavu vozidla, koniec platnosti TK: " + self.TextBoxKPV_koniecTK.GetValue(), sample_style_sheet['TabTextLeft']),
                     Paragraph(self.TextBoxKPV_K1.GetValue(), sample_style_sheet['TabTextRight'])],
                     [Paragraph("k2 - koeficient poškodenia vozidla haváriou - " + self.ComboBoxKPV_poskodenie.GetStringSelection(), sample_style_sheet['TabTextLeft']),
                     Paragraph(self.TextBoxKPV_K2.GetValue(), sample_style_sheet['TabTextRight'])],
-                    [Paragraph("k3 - koeficient počtu držiteľov vozidla, súčasný držiteľ poradie: " + str("Nepreukázané" if self.CheckBoxKPVk3Nezistene.IsChecked() else self.TextBoxKPVPocetDrzitelov.GetValue()) , sample_style_sheet['TabTextLeft']),
+                    [Paragraph("k3 - koeficient počtu držiteľov vozidla, súčasný držiteľ poradie: " + str("Nepreukázané" if self.CheckBoxKPVk3Nezistene.IsChecked() else self.TextBoxKPVPocetDrzitelov.GetValue()), sample_style_sheet['TabTextLeft']),
                     Paragraph(self.TextBoxKPV_K3.GetValue(), sample_style_sheet['TabTextRight'])],
                     [Paragraph("k4 - koeficient spôsobu prevádzky vozidla: " + self.ComboBoxKPV_prevadzka.GetStringSelection(), sample_style_sheet['TabTextLeft']),
                     Paragraph(self.TextBoxKPV_K4.GetValue(), sample_style_sheet['TabTextRight'])],
@@ -392,7 +392,93 @@ class VDCFrame(formVDCmain.VDCmain):
                     Paragraph(self.TextBoxKPV_K5.GetValue(), sample_style_sheet['TabTextRight'])]]
 
             t = Table(data, colWidths=[my_doc.width*85/100,
-                                    my_doc.width*15/100])
+                                       my_doc.width*15/100])
+            t.setStyle(TableStyle(
+                [('GRID', (0, 0), (-1, -1), 1, colors.black)]))  # (column, row)
+            flowables.append(t)
+
+            flowables.append(Spacer(1, 20))
+
+            flowables.append(
+                Paragraph("Porovnateľné vozidlá", sample_style_sheet['Heading3Left']))
+            data = [[Paragraph('Zdroj', sample_style_sheet['TabHeader']),
+                    Paragraph('VHV', sample_style_sheet['TabHeader']),
+                    Paragraph('v prevádzke od',
+                              sample_style_sheet['TabHeader']),
+                    Paragraph('km', sample_style_sheet['TabHeader']),
+                    Paragraph('Predajná cena',
+                              sample_style_sheet['TabHeader']),
+                    Paragraph('TSV', sample_style_sheet['TabHeader']),
+                    Paragraph('VHMV', sample_style_sheet['TabHeader']),
+                    Paragraph('TSMV', sample_style_sheet['TabHeader']),
+                    Paragraph('TH', sample_style_sheet['TabHeader'])]]
+
+            for i in range(1, 5):
+                exec('''if self.TextBoxKPV_K5Zdroj''' + str(i) + '''.GetValue() != "":
+                data.append([Paragraph(self.TextBoxKPV_K5Zdroj''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextLeft']), 
+                            Paragraph(self.TextBoxKPV_K5VHV''' + str(i) + '''.GetValue() + " €" + ("*" if self.TextBoxKPV_K5VHV'''
+                     + str(i) + '''.GetValue() != self.TextBoxHV_VHV.GetValue() else ""), sample_style_sheet['TabTextRight']), 
+                            Paragraph(self.TextBoxKPV_K5vPrevadzke''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
+                            Paragraph(self.TextBoxKPV_K5km''' + str(i) + '''.GetValue(), sample_style_sheet['TabTextRight']), 
+                            Paragraph(self.TextBoxKPV_K5Cena''' + str(i) + '''.GetValue() + " €", sample_style_sheet['TabTextRight']), 
+                            Paragraph(self.TextBoxKPV_K5TSVedit''' + str(i) + '''.GetValue() + " %" + ("*" if self.TextBoxKPV_K5TSV'''
+                     + str(i) + '''.GetValue() != self.TextBoxKPV_K5TSVedit''' + str(i) + '''.GetValue() else ""), sample_style_sheet['TabTextRight']), 
+                            Paragraph(self.TextBoxKPV_K5VHMV''' + str(i) + '''.GetValue() + " €", sample_style_sheet['TabTextRight']), 
+                            Paragraph(self.TextBoxKPV_K5TSMV''' + str(i) + '''.GetValue() + " %", sample_style_sheet['TabTextRight']), 
+                            Paragraph(self.TextBoxKPV_K5TH''' + str(i) + '''.GetValue() + " €", sample_style_sheet['TabTextRight'])])''')
+
+            data.append([Paragraph(
+                "Priemerná predajná cena", sample_style_sheet['TabTextRight']),
+                "",
+                "",
+                "",
+                Paragraph(self.TextBoxKPVpriemPredajCena.GetValue(
+                ) + " €", sample_style_sheet['TabTextRight']),
+                Paragraph(
+                "Priemerná TH vozidiel", sample_style_sheet['TabTextRight']),
+                "",
+                "",
+                Paragraph(self.TextBoxKPVpriemTechHodnVozidla.GetValue() + " €", sample_style_sheet['TabTextRight'])])
+
+            t = Table(data, colWidths=[my_doc.width*16/100,
+                                       my_doc.width*12/100,
+                                       my_doc.width*11/100,
+                                       my_doc.width*9/100,
+                                       my_doc.width*11/100,
+                                       my_doc.width*10/100,
+                                       my_doc.width*11/100,
+                                       my_doc.width*10/100,
+                                       my_doc.width*10/100])
+            t.setStyle(TableStyle(
+                [('GRID', (0, 0), (-1, -2), 1, colors.black),
+                 ('GRID', (-1, -1), (-1, -1), 1, colors.black),
+                 ('GRID', (4, -1), (4, -1), 1, colors.black),
+                 ('SPAN', (0, -1), (3, -1)),
+                 ('SPAN', (5, -1), (7, -1))]))  # (column, row)
+            flowables.append(t)
+
+            if (self.TextBoxKPV_K5TSVedit1.GetValue() != self.TextBoxKPV_K5TSV1.GetValue()
+                or self.TextBoxKPV_K5TSVedit2.GetValue() != self.TextBoxKPV_K5TSV2.GetValue()
+                or self.TextBoxKPV_K5TSVedit3.GetValue() != self.TextBoxKPV_K5TSV3.GetValue()
+                or self.TextBoxKPV_K5TSVedit4.GetValue() != self.TextBoxKPV_K5TSV4.GetValue()
+                or self.TextBoxKPV_K5TSVedit5.GetValue() != self.TextBoxKPV_K5TSV5.GetValue()
+                or (self.TextBoxKPV_K5VHV1.GetValue() != "" and self.TextBoxKPV_K5VHV1.GetValue() != self.TextBoxHV_VHV.GetValue())
+                or (self.TextBoxKPV_K5VHV2.GetValue() != "" and self.TextBoxKPV_K5VHV2.GetValue() != self.TextBoxHV_VHV.GetValue())
+                or (self.TextBoxKPV_K5VHV3.GetValue() != "" and self.TextBoxKPV_K5VHV3.GetValue() != self.TextBoxHV_VHV.GetValue())
+                or (self.TextBoxKPV_K5VHV4.GetValue() != "" and self.TextBoxKPV_K5VHV4.GetValue() != self.TextBoxHV_VHV.GetValue())
+                    or (self.TextBoxKPV_K5VHV5.GetValue() != "" and self.TextBoxKPV_K5VHV5.GetValue() != self.TextBoxHV_VHV.GetValue())):
+                flowables.append(
+                    Paragraph("* hodnota zadaná priamo", sample_style_sheet['NormalText']))
+
+            flowables.append(Spacer(1, 10))
+
+            data = [[Paragraph("kp = k1 . k2 . k3 . k4 . k5 - koeficientu predajnosti vozidla bezprostredne pred poškodením", sample_style_sheet['TabTextLeft']),
+                    Paragraph(self.TextBoxKPV_Kp.GetValue(), sample_style_sheet['TabTextRight'])],
+                    [Paragraph("VŠH - výpočet všeobecnej hodnoty vozidla  = TH . kp", sample_style_sheet['TabTextLeft']),
+                    Paragraph(self.TextBoxHV_VSH.GetValue() + " €", sample_style_sheet['TabTextRight'])],]
+
+            t = Table(data, colWidths=[my_doc.width*85/100,
+                                       my_doc.width*15/100])
             t.setStyle(TableStyle(
                 [('GRID', (0, 0), (-1, -1), 1, colors.black)]))  # (column, row)
             flowables.append(t)
