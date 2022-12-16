@@ -366,6 +366,7 @@
                         <property name="window_extra_style"></property>
                         <property name="window_name"></property>
                         <property name="window_style"></property>
+                        <event name="OnButtonClick">ButtonOtvoritZdbOnButtonClick</event>
                     </object>
                 </object>
                 <object class="gbsizeritem" expanded="0">
@@ -441,6 +442,7 @@
                         <property name="window_extra_style"></property>
                         <property name="window_name"></property>
                         <property name="window_style"></property>
+                        <event name="OnButtonClick">ButtonUlozitDOdbOnButtonClick</event>
                     </object>
                 </object>
                 <object class="gbsizeritem" expanded="0">
@@ -519,14 +521,14 @@
                         <event name="OnButtonClick">ButtonNNO_TlacOnButtonClick</event>
                     </object>
                 </object>
-                <object class="gbsizeritem" expanded="1">
+                <object class="gbsizeritem" expanded="0">
                     <property name="border">5</property>
                     <property name="colspan">6</property>
                     <property name="column">0</property>
                     <property name="flag">wxEXPAND | wxALL</property>
                     <property name="row">1</property>
                     <property name="rowspan">1</property>
-                    <object class="wxNotebook" expanded="1">
+                    <object class="wxNotebook" expanded="0">
                         <property name="BottomDockable">1</property>
                         <property name="LeftDockable">1</property>
                         <property name="RightDockable">1</property>
@@ -579,11 +581,11 @@
                         <property name="window_extra_style"></property>
                         <property name="window_name"></property>
                         <property name="window_style"></property>
-                        <object class="notebookpage" expanded="1">
+                        <object class="notebookpage" expanded="0">
                             <property name="bitmap"></property>
                             <property name="label">Základné údaje</property>
-                            <property name="select">1</property>
-                            <object class="wxPanel" expanded="1">
+                            <property name="select">0</property>
+                            <object class="wxPanel" expanded="0">
                                 <property name="BottomDockable">1</property>
                                 <property name="LeftDockable">1</property>
                                 <property name="RightDockable">1</property>
@@ -14916,7 +14918,7 @@
                         <object class="notebookpage" expanded="0">
                             <property name="bitmap"></property>
                             <property name="label">Hodnota vozidla</property>
-                            <property name="select">0</property>
+                            <property name="select">1</property>
                             <object class="wxPanel" expanded="0">
                                 <property name="BottomDockable">1</property>
                                 <property name="LeftDockable">1</property>

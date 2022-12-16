@@ -154,7 +154,7 @@ class VDCmain ( wx.Frame ):
 		self.PageZakladneUdaje.SetSizer( GbSizerPageZakladneUdaje )
 		self.PageZakladneUdaje.Layout()
 		GbSizerPageZakladneUdaje.Fit( self.PageZakladneUdaje )
-		self.MultiPageVDC.AddPage( self.PageZakladneUdaje, u"Základné údaje", True )
+		self.MultiPageVDC.AddPage( self.PageZakladneUdaje, u"Základné údaje", False )
 		self.PageVozidlo = wx.Panel( self.MultiPageVDC, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		GbSizerPageVozidlo = wx.GridBagSizer( 0, 0 )
 		GbSizerPageVozidlo.SetFlexibleDirection( wx.BOTH )
@@ -1339,7 +1339,7 @@ class VDCmain ( wx.Frame ):
 		self.PageHodnotaVozidla.SetSizer( GbSizerPageHodnotaVozidla )
 		self.PageHodnotaVozidla.Layout()
 		GbSizerPageHodnotaVozidla.Fit( self.PageHodnotaVozidla )
-		self.MultiPageVDC.AddPage( self.PageHodnotaVozidla, u"Hodnota vozidla", False )
+		self.MultiPageVDC.AddPage( self.PageHodnotaVozidla, u"Hodnota vozidla", True )
 		self.PageNakladyNaOpravu = wx.Panel( self.MultiPageVDC, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		self.PageNakladyNaOpravu.Enable( False )
 
@@ -1366,6 +1366,8 @@ class VDCmain ( wx.Frame ):
 		self.ButtonNovyVypocet.Bind( wx.EVT_BUTTON, self.NovyVypocet )
 		self.ButtonOtvoritFromFile.Bind( wx.EVT_BUTTON, self.OtvorZoSuboru )
 		self.ButtonUlozitToFile.Bind( wx.EVT_BUTTON, self.ButtonUlozitToFileOnButtonClick )
+		self.ButtonOtvoritZdb.Bind( wx.EVT_BUTTON, self.ButtonOtvoritZdbOnButtonClick )
+		self.ButtonUlozitDOdb.Bind( wx.EVT_BUTTON, self.ButtonUlozitDOdbOnButtonClick )
 		self.ButtonNNO_Tlac.Bind( wx.EVT_BUTTON, self.ButtonNNO_TlacOnButtonClick )
 		self.DateTimePickerDatumPU.Bind( wx.adv.EVT_DATE_CHANGED, self.DateTimePickerDatumPUOnDateChanged )
 		self.TextBoxDatumPU.Bind( wx.EVT_KILL_FOCUS, self.TextBoxDatumPUOnKillFocus )
@@ -1503,6 +1505,12 @@ class VDCmain ( wx.Frame ):
 		pass
 
 	def ButtonUlozitToFileOnButtonClick( self, event ):
+		pass
+
+	def ButtonOtvoritZdbOnButtonClick( self, event ):
+		pass
+
+	def ButtonUlozitDOdbOnButtonClick( self, event ):
 		pass
 
 	def ButtonNNO_TlacOnButtonClick( self, event ):
