@@ -468,3 +468,28 @@ def PocitajTSV(parent, TBKPV_K5vPrevadzke, KPV_K5km, TBKPV_K5TSV, TextBoxKPV_K5T
 
     if (TextBoxKPV_K5TSVedit.GetValue() == "" or tempOldTBKPV_K5TSV != (TBKPV_K5TSV.GetValue())):
         TextBoxKPV_K5TSVedit.SetValue(TBKPV_K5TSV.GetValue())
+
+def GetVDCdata(parent):
+    dictData = {}
+    for item in vars(parent).items():
+        if (item[0][0:7] == "TextBox"):
+            if (item[1].GetValue() != ""):
+                dictData[item[0]] = item[1].GetValue()
+        if (item[0][0:8] == "ComboBox"):
+            if (item[1].GetStringSelection() != ""):
+                dictData[item[0]] = item[1].GetStringSelection()
+        if (item[0][0:8] == "CheckBox"):
+            dictData[item[0]] = item[1].IsChecked()
+    return dictData
+
+def SetVDCdata(parent, dictData):
+    parent.NovyVypocet(None)
+    for item in vars(parent).items():
+        if item[0] in dictData:
+            if (item[0][0:7] == "TextBox"):
+                item[1].SetValue(dictData[item[0]])
+            if (item[0][0:8] == "ComboBox"):
+                item[1].SetStringSelection(dictData[item[0]])
+            if (item[0][0:8] == "CheckBox"):
+                    item[1].SetValue(dictData[item[0]])
+    VypocitajDobuPrevadzky(parent)

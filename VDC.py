@@ -8,7 +8,7 @@ import constantVDC
 import functionVDC
 
 import os
-import subprocess
+import sqlite3
 
 # inherit from the MainFrame created in wxFowmBuilder
 
@@ -64,24 +64,12 @@ class VDCFrame(formVDCmain.VDCmain):
     def OtvorZoSuboru(self, event):
         with wx.FileDialog(self, "VDC JSON fil", wildcard="VDC JSON files (*.vdcJSON)|*.vdcJson",
                            style=wx.FD_OPEN | wx.FD_FILE_MUST_EXIST) as fileDialog:
-
             if fileDialog.ShowModal() == wx.ID_CANCEL:
                 return
-
             pathname = fileDialog.GetPath()
             try:
                 with open(pathname, 'r') as json_file:
-                    dictData = json.load(json_file)
-                    self.NovyVypocet(None)
-                    for item in vars(self).items():
-                        if item[0] in dictData:
-                            if (item[0][0:7] == "TextBox"):
-                                item[1].SetValue(dictData[item[0]])
-                            if (item[0][0:8] == "ComboBox"):
-                                item[1].SetStringSelection(dictData[item[0]])
-                            if (item[0][0:8] == "CheckBox"):
-                                item[1].SetValue(dictData[item[0]])
-                functionVDC.VypocitajDobuPrevadzky(self)
+                    functionVDC.SetVDCdata(self, json.load(json_file))                    
             except IOError:
                 wx.LogError("Cannot open file '%s'." % pathname)
             except Exception as err:
@@ -89,17 +77,6 @@ class VDCFrame(formVDCmain.VDCmain):
                               wx.ICON_ERROR | wx.OK, self)
 
     def ButtonUlozitToFileOnButtonClick(self, event):
-        dictData = {}
-        for item in vars(self).items():
-            if (item[0][0:7] == "TextBox"):
-                if (item[1].GetValue() != ""):
-                    dictData[item[0]] = item[1].GetValue()
-            if (item[0][0:8] == "ComboBox"):
-                if (item[1].GetStringSelection() != ""):
-                    dictData[item[0]] = item[1].GetStringSelection()
-            if (item[0][0:8] == "CheckBox"):
-                dictData[item[0]] = item[1].IsChecked()
-
         with wx.FileDialog(self, "Save VDC JSON file", wildcard="VDC JSON files (*.vdcJSON)|*.vdcJson",
                            style=wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT) as fileDialog:
             if fileDialog.ShowModal() == wx.ID_CANCEL:
@@ -107,7 +84,7 @@ class VDCFrame(formVDCmain.VDCmain):
             pathname = fileDialog.GetPath()
             try:
                 with open(pathname, 'w') as file:
-                    json.dump(dictData, file, ensure_ascii=False)
+                    json.dump(functionVDC.GetVDCdata(self), file, ensure_ascii=False)
             except IOError:
                 wx.LogError(
                     "Cannot save current data in file '%s'." % pathname)
@@ -493,7 +470,6 @@ class VDCFrame(formVDCmain.VDCmain):
                     flowables.append(t)
 
                 my_doc.build(flowables)
-                # subprocess.Popen(pathname)
                 os.startfile(pathname)
             except IOError:
                 wx.LogError(
@@ -502,6 +478,22 @@ class VDCFrame(formVDCmain.VDCmain):
                 wx.MessageBox("Error: " + err.__str__(), "Attention",
                               wx.ICON_ERROR | wx.OK, self)
 
+    def ButtonUlozitDOdbOnButtonClick(self, event):
+        con = sqlite3.connect("vdc.db")
+        cur = con.cursor()
+        cur.execute("CREATE TABLE IF NOT EXISTS vdc(n_id_vdc INTEGER PRIMARY KEY AUTOINCREMENT, s_cpu TEXT, s_ecv TEXT, s_data TEXT)")
+
+        cur.execute("""INSERT INTO vdc(s_cpu, s_ecv, s_data)
+                       VALUES ('""" + self.TextBoxCPU.GetValue() + """', '""" + self.TextBoxECV.GetValue() + """', '""" + json.dumps(functionVDC.GetVDCdata(self), ensure_ascii=False) + """')""")
+        
+        cur.execute('''INSERT INTO vdc(s_cpu, s_ecv, s_data)
+                       VALUES ("''' + self.TextBoxCPU.GetValue() + '''", "''' + self.TextBoxECV.GetValue() + '''", "''' + str(functionVDC.GetVDCdata(self)) + '''")''')
+
+        con.commit()
+
+    def ButtonOtvoritZdbOnButtonClick(self, event):
+        dlg = VDCdbDlg(self)
+        dlg.ShowModal()
 
     def ComboBoxKategoriaMVOnChoice(self, event):
         self.ComboBoxPodkategoriaMV.Clear()
@@ -780,6 +772,14 @@ class VDCFrame(formVDCmain.VDCmain):
         if (functionVDC.KontrolujFloatCislo(event.GetEventObject(), 4)):
             functionVDC.PocitajVSH(self, "TextBoxKPV_K5TSMVOnKillFocus")
             event.Skip()
+
+
+class VDCdbDlg(formVDCmain.VDCdb):
+    # constructor
+    def __init__(self, parent):
+        # initialize parent class
+        formVDCmain.VDCdb.__init__(self, parent)
+        print("init dialog")
 
 
 # mandatory in wx, create an app

@@ -154,7 +154,7 @@ class VDCmain ( wx.Frame ):
 		self.PageZakladneUdaje.SetSizer( GbSizerPageZakladneUdaje )
 		self.PageZakladneUdaje.Layout()
 		GbSizerPageZakladneUdaje.Fit( self.PageZakladneUdaje )
-		self.MultiPageVDC.AddPage( self.PageZakladneUdaje, u"Základné údaje", False )
+		self.MultiPageVDC.AddPage( self.PageZakladneUdaje, u"Základné údaje", True )
 		self.PageVozidlo = wx.Panel( self.MultiPageVDC, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		GbSizerPageVozidlo = wx.GridBagSizer( 0, 0 )
 		GbSizerPageVozidlo.SetFlexibleDirection( wx.BOTH )
@@ -1339,7 +1339,7 @@ class VDCmain ( wx.Frame ):
 		self.PageHodnotaVozidla.SetSizer( GbSizerPageHodnotaVozidla )
 		self.PageHodnotaVozidla.Layout()
 		GbSizerPageHodnotaVozidla.Fit( self.PageHodnotaVozidla )
-		self.MultiPageVDC.AddPage( self.PageHodnotaVozidla, u"Hodnota vozidla", True )
+		self.MultiPageVDC.AddPage( self.PageHodnotaVozidla, u"Hodnota vozidla", False )
 		self.PageNakladyNaOpravu = wx.Panel( self.MultiPageVDC, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		self.PageNakladyNaOpravu.Enable( False )
 
@@ -1710,5 +1710,23 @@ class VDCmain ( wx.Frame ):
 
 
 
+
+
+###########################################################################
+## Class VDCdb
+###########################################################################
+
+class VDCdb ( wx.Dialog ):
+
+	def __init__( self, parent ):
+		wx.Dialog.__init__ ( self, parent, id = wx.ID_ANY, title = u"Otvoriť z databázy", pos = wx.DefaultPosition, size = wx.DefaultSize, style = wx.DEFAULT_DIALOG_STYLE )
+
+		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+
+
+		self.Centre( wx.BOTH )
+
+	def __del__( self ):
+		pass
 
 
