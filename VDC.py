@@ -482,14 +482,26 @@ class VDCFrame(formVDCmain.VDCmain):
         con = sqlite3.connect("vdc.db")
         cur = con.cursor()
         cur.execute("CREATE TABLE IF NOT EXISTS vdc(n_id_vdc INTEGER PRIMARY KEY AUTOINCREMENT, s_cpu TEXT, s_ecv TEXT, s_data TEXT)")
-
-        cur.execute("""INSERT INTO vdc(s_cpu, s_ecv, s_data)
-                       VALUES ('""" + self.TextBoxCPU.GetValue() + """', '""" + self.TextBoxECV.GetValue() + """', '""" + json.dumps(functionVDC.GetVDCdata(self), ensure_ascii=False) + """')""")
-        
-        cur.execute('''INSERT INTO vdc(s_cpu, s_ecv, s_data)
-                       VALUES ("''' + self.TextBoxCPU.GetValue() + '''", "''' + self.TextBoxECV.GetValue() + '''", "''' + str(functionVDC.GetVDCdata(self)) + '''")''')
-
-        con.commit()
+        try:
+            if self.TextBoxCisloPripadu.GetValue() == "":
+                res = cur.execute("""INSERT INTO vdc(s_cpu, s_ecv, s_data)
+                        VALUES ('""" + self.TextBoxCPU.GetValue() + """', '""" + self.TextBoxECV.GetValue() + """', '""" + json.dumps(functionVDC.GetVDCdata(self), ensure_ascii=False) 
+                        + """') RETURNING n_id_vdc""")
+                self.TextBoxCisloPripadu.SetValue(str(res.fetchone()[0]))
+                con.commit()
+            else:
+                cur.execute("""UPDATE vdc
+                        SET s_cpu = '""" + self.TextBoxCPU.GetValue() + """',
+                            s_ecv = '""" + self.TextBoxECV.GetValue() + """',
+                            s_data = '""" + json.dumps(functionVDC.GetVDCdata(self), ensure_ascii=False) + """'
+                            WHERE n_id_vdc = """ + self.TextBoxCisloPripadu.GetValue())
+                con.commit()
+        except Exception as err:
+            wx.MessageBox("Error: " + err.__str__(), "Attention",
+                              wx.ICON_ERROR | wx.OK, self)
+        else:
+            wx.MessageBox("Údaje uložené do databázy", "Information",
+                              wx.ICON_INFORMATION | wx.OK, self)
 
     def ButtonOtvoritZdbOnButtonClick(self, event):
         dlg = VDCdbDlg(self)
