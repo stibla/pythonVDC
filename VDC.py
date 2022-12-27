@@ -481,15 +481,15 @@ class VDCFrame(formVDCmain.VDCmain):
     def ButtonUlozitDOdbOnButtonClick(self, event):
         con = sqlite3.connect("vdc.db")
         cur = con.cursor()
-        cur.execute("CREATE TABLE IF NOT EXISTS vdc(n_id_vdc INTEGER PRIMARY KEY AUTOINCREMENT, s_cpu TEXT, s_ecv TEXT, s_data TEXT)")
+        cur.execute("CREATE TABLE IF NOT EXISTS vdc(n_id_vdc INTEGER PRIMARY KEY AUTOINCREMENT, s_cpu TEXT, s_ecv TEXT, s_data TEXT, s_date_create TEXT, s_date_last_change TEXT)")
         try:
             if self.TextBoxCisloPripadu.GetValue() == "":
-                res = cur.execute("""INSERT INTO vdc(s_cpu, s_ecv, s_data)
-                        VALUES (?, ?, ?) RETURNING n_id_vdc""", (self.TextBoxCPU.GetValue(), self.TextBoxECV.GetValue(), json.dumps(functionVDC.GetVDCdata(self), ensure_ascii=False)))
+                res = cur.execute("""INSERT INTO vdc(s_cpu, s_ecv, s_data, s_date_create, s_date_last_change)
+                        VALUES (?, ?, ?, datetime('now', 'localtime'), datetime('now', 'localtime')) RETURNING n_id_vdc""", (self.TextBoxCPU.GetValue(), self.TextBoxECV.GetValue(), json.dumps(functionVDC.GetVDCdata(self), ensure_ascii=False)))
                 self.TextBoxCisloPripadu.SetValue(str(res.fetchone()[0]))
                 con.commit()
             else:
-                cur.execute("""UPDATE vdc SET s_cpu = ?, s_ecv = ?, s_data = ?
+                cur.execute("""UPDATE vdc SET s_cpu = ?, s_ecv = ?, s_data = ?, s_date_last_change = datetime('now', 'localtime')
                             WHERE n_id_vdc = ?""", (self.TextBoxCPU.GetValue(), self.TextBoxECV.GetValue(), json.dumps(functionVDC.GetVDCdata(self), ensure_ascii=False), self.TextBoxCisloPripadu.GetValue()))
                 con.commit()
         except Exception as err:
