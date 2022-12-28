@@ -10,6 +10,7 @@
 import wx
 import wx.xrc
 import wx.adv
+import wx.grid
 
 ###########################################################################
 ## Class VDCmain
@@ -18,7 +19,7 @@ import wx.adv
 class VDCmain ( wx.Frame ):
 
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"VDC - Vehicle Damage Calculation", pos = wx.DefaultPosition, size = wx.Size( 1243,968 ), style = wx.CAPTION|wx.CLOSE_BOX|wx.MINIMIZE_BOX|wx.RESIZE_BORDER|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"VDC - Vehicle Damage Calculation", pos = wx.DefaultPosition, size = wx.Size( 1032,755 ), style = wx.CAPTION|wx.CLOSE_BOX|wx.MINIMIZE_BOX|wx.RESIZE_BORDER|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.Size( -1,-1 ) )
 		self.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_3DLIGHT ) )
@@ -1719,14 +1720,105 @@ class VDCmain ( wx.Frame ):
 class VDCdb ( wx.Dialog ):
 
 	def __init__( self, parent ):
-		wx.Dialog.__init__ ( self, parent, id = wx.ID_ANY, title = u"Otvoriť z databázy", pos = wx.DefaultPosition, size = wx.DefaultSize, style = wx.DEFAULT_DIALOG_STYLE )
+		wx.Dialog.__init__ ( self, parent, id = wx.ID_ANY, title = u"Otvoriť z databázy", pos = wx.DefaultPosition, size = wx.Size( 682,320 ), style = wx.DEFAULT_DIALOG_STYLE )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
 
+		GbSizerOpenDB = wx.GridBagSizer( 0, 0 )
+		GbSizerOpenDB.SetFlexibleDirection( wx.BOTH )
+		GbSizerOpenDB.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+		self.LabelVyhladavanieID = wx.StaticText( self, wx.ID_ANY, u"ID VDC:", wx.DefaultPosition, wx.Size( 70,-1 ), wx.ALIGN_RIGHT )
+		self.LabelVyhladavanieID.Wrap( -1 )
+
+		GbSizerOpenDB.Add( self.LabelVyhladavanieID, wx.GBPosition( 0, 0 ), wx.GBSpan( 1, 1 ), wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_RIGHT|wx.ALL, 5 )
+
+		self.TextBoxVyhladavanieID = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), 0 )
+		GbSizerOpenDB.Add( self.TextBoxVyhladavanieID, wx.GBPosition( 0, 1 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.LabelVyhladavanieCPU = wx.StaticText( self, wx.ID_ANY, u"Číslo PU:", wx.DefaultPosition, wx.Size( 70,-1 ), wx.ALIGN_RIGHT )
+		self.LabelVyhladavanieCPU.Wrap( -1 )
+
+		GbSizerOpenDB.Add( self.LabelVyhladavanieCPU, wx.GBPosition( 0, 2 ), wx.GBSpan( 1, 1 ), wx.ALIGN_CENTER_VERTICAL|wx.ALL, 5 )
+
+		self.TextBoxVyhladavanieCisloPU = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), 0 )
+		GbSizerOpenDB.Add( self.TextBoxVyhladavanieCisloPU, wx.GBPosition( 0, 3 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.LabelVyhladavanieECV = wx.StaticText( self, wx.ID_ANY, u"EČV:", wx.DefaultPosition, wx.Size( 70,-1 ), wx.ALIGN_RIGHT )
+		self.LabelVyhladavanieECV.Wrap( -1 )
+
+		GbSizerOpenDB.Add( self.LabelVyhladavanieECV, wx.GBPosition( 0, 4 ), wx.GBSpan( 1, 1 ), wx.ALIGN_CENTER_VERTICAL|wx.ALL, 5 )
+
+		self.TextBoxVyhladavanieECV = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), 0 )
+		GbSizerOpenDB.Add( self.TextBoxVyhladavanieECV, wx.GBPosition( 0, 5 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		gSizerTlacidla = wx.GridSizer( 0, 3, 0, 0 )
+
+		self.ButtonVyhladat = wx.Button( self, wx.ID_ANY, u"Vyhladať", wx.DefaultPosition, wx.Size( -1,-1 ), 0 )
+		gSizerTlacidla.Add( self.ButtonVyhladat, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL|wx.ALL, 5 )
+
+		self.ButtonNoveVyhladavanie = wx.Button( self, wx.ID_ANY, u"Nové vyhľadávanie", wx.DefaultPosition, wx.Size( -1,-1 ), 0 )
+		gSizerTlacidla.Add( self.ButtonNoveVyhladavanie, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL|wx.ALL, 5 )
+
+		self.ButtonZobrazit = wx.Button( self, wx.ID_ANY, u"Zobraziť", wx.DefaultPosition, wx.Size( -1,-1 ), 0 )
+		gSizerTlacidla.Add( self.ButtonZobrazit, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL|wx.ALL, 5 )
+
+
+		GbSizerOpenDB.Add( gSizerTlacidla, wx.GBPosition( 1, 0 ), wx.GBSpan( 1, 7 ), wx.EXPAND, 5 )
+
+		self.GridVysledkyVyhladavania = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( 650,200 ), 0 )
+
+		# Grid
+		self.GridVysledkyVyhladavania.CreateGrid( 0, 5 )
+		self.GridVysledkyVyhladavania.EnableEditing( False )
+		self.GridVysledkyVyhladavania.EnableGridLines( True )
+		self.GridVysledkyVyhladavania.EnableDragGridSize( False )
+		self.GridVysledkyVyhladavania.SetMargins( 0, 0 )
+
+		# Columns
+		self.GridVysledkyVyhladavania.SetColSize( 0, 30 )
+		self.GridVysledkyVyhladavania.SetColSize( 1, 100 )
+		self.GridVysledkyVyhladavania.SetColSize( 2, 100 )
+		self.GridVysledkyVyhladavania.SetColSize( 3, 200 )
+		self.GridVysledkyVyhladavania.SetColSize( 4, 200 )
+		self.GridVysledkyVyhladavania.EnableDragColMove( False )
+		self.GridVysledkyVyhladavania.EnableDragColSize( True )
+		self.GridVysledkyVyhladavania.SetColLabelSize( 20 )
+		self.GridVysledkyVyhladavania.SetColLabelValue( 0, u"ID" )
+		self.GridVysledkyVyhladavania.SetColLabelValue( 1, u"CPU" )
+		self.GridVysledkyVyhladavania.SetColLabelValue( 2, u"ECV" )
+		self.GridVysledkyVyhladavania.SetColLabelValue( 3, u"Dátum vytvorenia" )
+		self.GridVysledkyVyhladavania.SetColLabelValue( 4, u"Dátum zmeny" )
+		self.GridVysledkyVyhladavania.SetColLabelValue( 5, wx.EmptyString )
+		self.GridVysledkyVyhladavania.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+
+		# Rows
+		self.GridVysledkyVyhladavania.AutoSizeRows()
+		self.GridVysledkyVyhladavania.EnableDragRowSize( True )
+		self.GridVysledkyVyhladavania.SetRowLabelSize( 0 )
+		self.GridVysledkyVyhladavania.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+
+		# Label Appearance
+
+		# Cell Defaults
+		self.GridVysledkyVyhladavania.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
+		GbSizerOpenDB.Add( self.GridVysledkyVyhladavania, wx.GBPosition( 2, 0 ), wx.GBSpan( 1, 8 ), wx.ALL, 5 )
+
+
+		self.SetSizer( GbSizerOpenDB )
+		self.Layout()
 
 		self.Centre( wx.BOTH )
 
+		# Connect Events
+		self.ButtonVyhladat.Bind( wx.EVT_BUTTON, self.ButtonVyhladatOnButtonClick )
+
 	def __del__( self ):
+		pass
+
+
+	# Virtual event handlers, overide them in your derived class
+	def ButtonVyhladatOnButtonClick( self, event ):
 		pass
 
 

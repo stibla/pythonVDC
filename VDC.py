@@ -787,8 +787,27 @@ class VDCdbDlg(formVDCmain.VDCdb):
     def __init__(self, parent):
         # initialize parent class
         formVDCmain.VDCdb.__init__(self, parent)
-        print("init dialog")
 
+    def ButtonVyhladatOnButtonClick( self, event ):
+        if self.GridVysledkyVyhladavania.GetNumberRows() > 0:
+            self.GridVysledkyVyhladavania.DeleteRows(0, self.GridVysledkyVyhladavania.GetNumberRows())
+        con = sqlite3.connect("vdc.db")
+        cur = con.cursor()
+
+        try:                   
+            res = cur.execute("SELECT _rowid_, n_id_vdc, s_cpu, s_ecv, s_date_create, s_date_last_change FROM vdc")
+            datavdc = res.fetchall()
+
+            for row in datavdc:
+                self.GridVysledkyVyhladavania.AppendRows(1)
+                self.GridVysledkyVyhladavania.SetCellValue(row[0] - 1, 0, str(row[1]))
+                self.GridVysledkyVyhladavania.SetCellValue(row[0] - 1, 1, str(row[2]))
+                self.GridVysledkyVyhladavania.SetCellValue(row[0] - 1, 2, str(row[3]))
+                self.GridVysledkyVyhladavania.SetCellValue(row[0] - 1, 3, str(row[4]))
+                self.GridVysledkyVyhladavania.SetCellValue(row[0] - 1, 4, str(row[5]))
+        except Exception as err:
+            wx.MessageBox("Error: " + err.__str__(), "Attention",
+                              wx.ICON_ERROR | wx.OK, self)
 
 # mandatory in wx, create an app
 app = wx.App(False)
