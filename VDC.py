@@ -787,6 +787,7 @@ class VDCdbDlg(formVDCmain.VDCdb):
     def __init__(self, parent):
         # initialize parent class
         formVDCmain.VDCdb.__init__(self, parent)
+        self.GridVysledkyVyhladavania.SetSelectionMode(wx.grid.Grid.GridSelectRows)
 
     def ButtonVyhladatOnButtonClick( self, event ):
         if self.GridVysledkyVyhladavania.GetNumberRows() > 0:
