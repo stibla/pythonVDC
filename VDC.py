@@ -793,9 +793,16 @@ class VDCdbDlg(formVDCmain.VDCdb):
             self.GridVysledkyVyhladavania.DeleteRows(0, self.GridVysledkyVyhladavania.GetNumberRows())
         con = sqlite3.connect("vdc.db")
         cur = con.cursor()
+        sqlquery = "SELECT _rowid_, n_id_vdc, s_cpu, s_ecv, s_date_create, s_date_last_change FROM vdc WHERE 1=1"
+        if self.TextBoxVyhladavanieID.GetValue() != "":
+            sqlquery += " AND n_id_vdc = " + self.TextBoxVyhladavanieID.GetValue()
+        if self.TextBoxVyhladavanieCisloPU.GetValue() != "":
+            sqlquery += " AND s_cpu LIKE '" + self.TextBoxVyhladavanieCisloPU.GetValue() + "'"
+        if self.TextBoxVyhladavanieECV.GetValue() != "":
+            sqlquery += " AND s_ecv LIKE '" + self.TextBoxVyhladavanieECV.GetValue() + "'"
 
         try:                   
-            res = cur.execute("SELECT _rowid_, n_id_vdc, s_cpu, s_ecv, s_date_create, s_date_last_change FROM vdc")
+            res = cur.execute(sqlquery)
             datavdc = res.fetchall()
 
             for row in datavdc:
