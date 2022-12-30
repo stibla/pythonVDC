@@ -1812,6 +1812,7 @@ class VDCdb ( wx.Dialog ):
 
 		# Connect Events
 		self.ButtonVyhladat.Bind( wx.EVT_BUTTON, self.ButtonVyhladatOnButtonClick )
+		self.ButtonZobrazit.Bind( wx.EVT_BUTTON, self.ButtonZobrazitOnButtonClick )
 
 	def __del__( self ):
 		pass
@@ -1819,6 +1820,9 @@ class VDCdb ( wx.Dialog ):
 
 	# Virtual event handlers, overide them in your derived class
 	def ButtonVyhladatOnButtonClick( self, event ):
+		pass
+
+	def ButtonZobrazitOnButtonClick( self, event ):
 		pass
 
 

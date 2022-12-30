@@ -500,8 +500,10 @@ class VDCFrame(formVDCmain.VDCmain):
                               wx.ICON_INFORMATION | wx.OK, self)
 
     def ButtonOtvoritZdbOnButtonClick(self, event):
-        dlg = VDCdbDlg(self)
-        dlg.ShowModal()
+        self.child_frame = None
+        VDCdbDlg(self).ShowModal()
+        if self.child_frame.datavdc is not None:
+            functionVDC.SetVDCdata(self, json.loads(self.child_frame.datavdc))          
 
     def ComboBoxKategoriaMVOnChoice(self, event):
         self.ComboBoxPodkategoriaMV.Clear()
@@ -788,6 +790,8 @@ class VDCdbDlg(formVDCmain.VDCdb):
         # initialize parent class
         formVDCmain.VDCdb.__init__(self, parent)
         self.GridVysledkyVyhladavania.SetSelectionMode(wx.grid.Grid.GridSelectRows)
+        parent.child_frame = self
+        self.datavdc = None
 
     def ButtonVyhladatOnButtonClick( self, event ):
         if self.GridVysledkyVyhladavania.GetNumberRows() > 0:
@@ -815,6 +819,19 @@ class VDCdbDlg(formVDCmain.VDCdb):
                 self.GridVysledkyVyhladavania.SetCellValue(row[0] - 1, 4, str(row[5]))
         except Exception as err:
             wx.MessageBox("Error: " + err.__str__(), "Attention",
+                              wx.ICON_ERROR | wx.OK, self)
+
+    def ButtonZobrazitOnButtonClick( self, event ):
+        if self.GridVysledkyVyhladavania.GetSelectedRows():
+            con = sqlite3.connect("vdc.db")
+            cur = con.cursor()
+            try:                   
+                res = cur.execute("SELECT s_data FROm vdc WHERE n_id_vdc = ?", self.GridVysledkyVyhladavania.GetCellValue(self.GridVysledkyVyhladavania.GetSelectedRows()[0],0))
+                self.datavdc = res.fetchone()[0]
+                self.Close()
+
+            except Exception as err:
+                wx.MessageBox("Error: " + err.__str__(), "Attention",
                               wx.ICON_ERROR | wx.OK, self)
 
 # mandatory in wx, create an app

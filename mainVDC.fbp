@@ -22578,6 +22578,7 @@
                                 <property name="window_extra_style"></property>
                                 <property name="window_name"></property>
                                 <property name="window_style"></property>
+                                <event name="OnButtonClick">ButtonZobrazitOnButtonClick</event>
                             </object>
                         </object>
                     </object>
@@ -22664,7 +22665,7 @@
                         <property name="row_sizes"></property>
                         <property name="rows">0</property>
                         <property name="show">1</property>
-                        <property name="size">660,200</property>
+                        <property name="size">650,200</property>
                         <property name="subclass">; ; forward_declare</property>
                         <property name="toolbar_pane">0</property>
                         <property name="tooltip"></property>
