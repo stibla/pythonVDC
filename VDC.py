@@ -834,6 +834,13 @@ class VDCdbDlg(formVDCmain.VDCdb):
                 wx.MessageBox("Error: " + err.__str__(), "Attention",
                               wx.ICON_ERROR | wx.OK, self)
 
+    def ButtonNoveVyhladavanieOnButtonClick( self, event ):
+        if self.GridVysledkyVyhladavania.GetNumberRows() > 0:
+            self.GridVysledkyVyhladavania.DeleteRows(0, self.GridVysledkyVyhladavania.GetNumberRows())
+        self.TextBoxVyhladavanieCisloPU.SetValue("")
+        self.TextBoxVyhladavanieECV.SetValue("")
+        self.TextBoxVyhladavanieID.SetValue("")
+
 # mandatory in wx, create an app
 app = wx.App(False)
 app.ResetLocale()  # aby fungovalo datetime.strptime
