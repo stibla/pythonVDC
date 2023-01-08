@@ -594,7 +594,7 @@ class VDCmain ( wx.Frame ):
 		GbSizerPageTechnickaHodnota.Add( self.LabelTHRozdelitNaSkupiny, wx.GBPosition( 8, 0 ), wx.GBSpan( 1, 1 ), wx.ALL|wx.ALIGN_CENTER_VERTICAL, 2 )
 
 		ComboBoxTHRozdelitSkupinyChoices = []
-		self.ComboBoxTHRozdelitSkupiny = wx.Choice( self.PageTechnickaHodnota, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, ComboBoxTHRozdelitSkupinyChoices, 0 )
+		self.ComboBoxTHRozdelitSkupiny = wx.Choice( self.PageTechnickaHodnota, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, ComboBoxTHRozdelitSkupinyChoices, 0, wx.DefaultValidator, u"ComboBoxTHRozdelitSkupiny" )
 		self.ComboBoxTHRozdelitSkupiny.SetSelection( 0 )
 		GbSizerPageTechnickaHodnota.Add( self.ComboBoxTHRozdelitSkupiny, wx.GBPosition( 8, 1 ), wx.GBSpan( 1, 2 ), wx.ALL|wx.EXPAND, 2 )
 
@@ -1270,7 +1270,7 @@ class VDCmain ( wx.Frame ):
 		self.TextBoxKPV_K5TH4 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_READONLY|wx.TE_RIGHT, wx.DefaultValidator, u"TextBoxKPV_K5TH#4" )
 		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5TH4, wx.GBPosition( 4, 8 ), wx.GBSpan( 1, 1 ), wx.ALL|wx.EXPAND, 0 )
 
-		self.TextBoxKPV_K5Zdroj5 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0, wx.DefaultValidator, u"TextBoxKPV_K5Zdroj#4" )
+		self.TextBoxKPV_K5Zdroj5 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0, wx.DefaultValidator, u"TextBoxKPV_K5Zdroj#5" )
 		GbSizerFrameHV_KK.Add( self.TextBoxKPV_K5Zdroj5, wx.GBPosition( 5, 0 ), wx.GBSpan( 1, 1 ), wx.ALL, 0 )
 
 		self.TextBoxKPV_K5VHV5 = wx.TextCtrl( FrameHV_KK.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 100,-1 ), wx.TE_RIGHT, wx.DefaultValidator, u"TextBoxKPV_K5VHV#5" )

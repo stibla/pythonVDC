@@ -590,7 +590,7 @@
                         <object class="notebookpage" expanded="0">
                             <property name="bitmap"></property>
                             <property name="label">Základné údaje</property>
-                            <property name="select">0</property>
+                            <property name="select">1</property>
                             <object class="wxPanel" expanded="0">
                                 <property name="BottomDockable">1</property>
                                 <property name="LeftDockable">1</property>
@@ -7271,7 +7271,7 @@
                         <object class="notebookpage" expanded="0">
                             <property name="bitmap"></property>
                             <property name="label">Technická hodnota</property>
-                            <property name="select">1</property>
+                            <property name="select">0</property>
                             <object class="wxPanel" expanded="0">
                                 <property name="BottomDockable">1</property>
                                 <property name="LeftDockable">1</property>
@@ -20907,7 +20907,7 @@
                                                                             <property name="validator_variable"></property>
                                                                             <property name="value"></property>
                                                                             <property name="window_extra_style"></property>
-                                                                            <property name="window_name">TextBoxKPV_K5Zdroj#4</property>
+                                                                            <property name="window_name">TextBoxKPV_K5Zdroj#5</property>
                                                                             <property name="window_style"></property>
                                                                             <event name="OnKillFocus">TextBoxKPV_K5ZdrojOnKillFocus</event>
                                                                             <event name="OnSetFocus">SetFocus</event>
