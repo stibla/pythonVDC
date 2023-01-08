@@ -182,3 +182,639 @@ pouzitiek4 = (("k4", "3.1", "3.2", "3.3", "3.4", "3.5", "3.6", "3.7", "3.8", "4.
 ("banská záchranná služba", "0,96", "0,94", "0,94", "0,93", "0,95", "1", "0,96", "0,94", "1", "1", "1", "1", "", "0,92", "0,01", "1"), 
 ("poruchová služba plynárenských zariadení", "0,96", "0,94", "0,94", "0,93", "0,95", "1", "0,96", "0,94", "1", "1", "1", "1", "", "0,92", "0,01", "1"), 
 ("medzinárodná prepravu osôb", "", "", "", "", "", "", "", "", "", "", "", "", "1", "0,96", "0,01", "0"))
+
+informacia = {"ButtonNNO_Tlac": "",
+"ButtonNovyVypocet": "",
+"ButtonOtvoritFromFile": "",
+"ButtonOtvoritZdb": "",
+"ButtonUlozitDOdb": "",
+"ButtonUlozitToFile": "",
+"ComboBoxKategoriaMV": """Kategória cestného vozidla podľa prílohy č. 6 k vyhláške č. 492/2004 Z. z.
+Povinné zadať pre výpočet základnej amortizácie""",
+"ComboBoxKPV_poskodenie": """Koeficient poškodenia vozidla haváriou - k2
+k2 vyjadruje vplyv prípadných opráv poškodení vozidla na jeho predajnosť. Jeho hodnota sa stanovuje nasledujúcim postupom:
+1. Oprava poškodenia  skupín okrem pneumatík a brzdového systému haváriou výmenou dielov len za použitia rozoberateľných spojov predpísanou technológiou:
+   a vozidlá s dobou prevádzky kratšou ako 1 rok                                k2 = 0,98
+   b vozidlá s dobou prevádzky dlhšou ako 1 rok a kratšou ako 3 roky            k2 = 0,99
+   c vozidlá s dobou prevádzky dlhšou ako 3 roky                                k2 = 1,0
+
+
+2. Oprava výmenou celých dielov za použitia zváracej  technológie bez použitia vyrovnávacieho  zariadenia:
+    a vozidlá s dobou prevádzky kratšou ako  3 roky                            k2 = 0,97
+    b vozidlá s dobou prevádzky dlhšou ako 3 roky a kratšou ako 4 roky         k2 = 0,99
+    c vozidlá s dobou prevádzky dlhšou ako 4 roky                              k2 = 1,0
+
+
+3. Oprava nosných častí skeletu karosérie na vyrovnávacom zariadení:
+    a vozidlá s dobou prevádzky kratšou ako 3 roky                             k2 = 0,95
+    b vozidlá s dobou prevádzky dlhšou ako 3 roky a kratšou ako 8 rokov        k2 = 0,97
+    c vozidlá s dobou prevádzky dlhšou ako 8 rokov                             k2 = 0,98
+
+4.  Žiadna významnejšia oprava                                                 k2 = 1,00""",
+"ComboBoxKPV_prevadzka": """Koeficient spôsobu prevádzky vozidla - k4 
+Zohľadňuje vplyv spôsobu používania vozidla. 
+
+Koeficienty spôsobu použitia vozidiel  zaradených do 3. kategórie:
+                                               3.1    3.2    3.3    3.4    3.5    3.6    3.7    3.8
+Referentské vozidlo                            0,96   0,94   0,94   0,93   0,95   1      0,96   0,94
+Vozidlo používané na zásobovanie               0,95   0,93   0,93   0,92   0,95   1      0,95   0,93
+Vozidlo autoškoly                              0,94   0,92   0,92   0,91   0,94   1      0,94   0,92
+Vozidlo používané na taxislužbu                0,97   0,95   0,95   0,94   0,96   0,98   0,97   0,95
+Vozidlo požičovne automobilov                  0,95   0,93   0,93   0,92   0,95   0,96   0,95   0,93
+Vozidlo používané len na reprezentáciu         1      1      1      1,06   1,05   1,02   1      1
+Motorové vozidlo používané na súkromné účely   1      1      1      1      1      1      1     1
+
+Koeficienty spôsobu použitia vozidiel  zaradených do 4. kategórie:
+                      4.1    4.2    4.3    4.4
+Normálne podmienky    1      1      1      1
+Sťažené podmienky     0,93   0,95   0,97   1
+
+Koeficient  spôsobu  použitia vozidla  zaradeného  do ostatných  kategórií sa rovná 1 k4 = 1.""",
+"ComboBoxPalivo": "Palivo",
+"ComboBoxPodkategoriaMV": """Podkategória cestného vozidla podľa prílohy č. 6 k vyhláške č. 492/2004 Z. z.
+Povinné zadať pre výpočet základnej amortizácie""",
+"ComboBoxTHRozdelitSkupiny": "Výber koncepcie pohonu a druhu vozidla pre rozdelenie na skupiny",
+"ComboBoxZnehodnRozsah": "Výber rozsahu opravy pre Technicko-ekonomické zrážky za znehodnotenie skeletu karosérie kabíny, skriňovej nadstavby opravou ",
+"ComboBoxZnehodnSkupina": "",
+"CheckBoxPlatcaDPH": "Vyberte Áno, ak je poškodený plátcom DPH a má sa suma DPH z nákladov na opravu poškodenia odpočítať ako odpočítateľná položka daňovníka",
+"SpinButtonKPV_drzitel": """Koeficient počtu držiteľov vozidla - k3 
+vyjadruje vplyv počtu  držiteľov na jeho predajnosť, pri jeho stanovení postupuje znalec podľa vzorca:
+
+k3 =1.01 - 0.01D,
+
+D - počet držiteľov vozidla""",
+"TextBoxCelkovaDlzka": "Celková dĺžka vozidla v milimetroch",
+"TextBoxCisloMotora": "Číslo motora",
+"TextBoxCisloPripadu": "Číslo výpočtu vygenerované automaticky",
+"TextBoxCisloRamu": "Číslo rámu",
+"TextBoxCisloTP": "Séria a číslo technického preukazu",
+"TextBoxCPU": "Číslo poistnej udalosti",
+"TextBoxDatumPU": "Dátum vzniku poistnej udalosti. Povinný údaj na výpočet doby prevádzky vozidla",
+"TextBoxDatumVytvorenia": "Dátum prvého vytvorenia výpočtu",
+"TextBoxDatumZmeny": "Dátum poslednej zmeny výpočtu",
+"TextBoxDobaPrevadzkyMesiac": "Doba prevádzky vozidla od prvého uvedenia do prevádzy po dátum vzniku škody",
+"TextBoxECV": "Evidenčné číslo vozidla",
+"TextBoxFarba": "Farba, odtieň a druh laku vozidla",
+"TextBoxHmotnostCelkova": "Celková hmotnosť vozidla v kilogramoch",
+"TextBoxHV_TH": """Technická hodnota vyjadruje zvyšok technickej životnosti vozidla a nie sú v nej zahrnuté vplyvy zohľadňujúce trhové a ekonomické podmienky.
+TH = TSV . VHV / 100 + THMV
+
+TSV - technický stav vozidla [%]
+VHV - východisková hodnota vozidla
+THMV - technická hodnota mimoriadnej výbavy""",
+"TextBoxHV_TSMV": "TSMV -technický stav mimoriadnej výbavy [%]",
+"TextBoxHV_TSV": "TSV - technický stav vozidla [%]",
+"TextBoxHV_VHMV": "VHMV - východisková hodnota mimoriadnej výbavy ",
+"TextBoxHV_VHV": "VHV - východisková hodnota vozidla ",
+"TextBoxHV_VSH": """Všeobecná hodnota vozidla je hodnota, ktorej výpočet zahŕňa okrem vplyvov opotrebenia aj vplyvy trhu predajnosť typu vozidla.
+
+Vypočíta sa ako súčin technickej hodnoty vozidla TH s koeficientom predajnosti kP.
+
+VŠH = TH . kP
+keď:
+TH - technická hodnota vozidla,
+kP - koeficient predajnosti.""",
+"TextBoxKPV_K1": """k1 vyjadruje vplyv platnosti kontroly technického stavu vozidla, prípadne iných povinných kontrol na predajnosť vozidla k dátumu jeho ohodnotenia. Hodnota k1 sa stanovuje nasledujúcim spôsobom:
+
+a Vozidlá kategórie 2.1
+    Do absolvovania prvej kontroly technického stavu vozidla od jeho prvého uvedenia do prevádzky  
+    k1 = 1.00   .
+
+V nasledujúcom období prevádzky vozidla postupuje znalec podľa vzorca:
+    k1 = 0,93 + 0,002 . M
+
+keď:
+M - počet mesiacov platnosti kontroly technického stavu vozidla [mesiace].
+
+
+b Vozidlá kategórií 2.2, 2.3, 3, 4.1, 5.1 a 7
+     Do absolvovania prvej kontroly technického stavu vozidla od jeho prvého uvedenia do prevádzky 
+     k1 = 1.00  
+
+V nasledujúcom období prevádzky vozidla postupuje znalec podľa vzorca
+    k1 = 0,91 + 0,005 . M
+
+keď:
+M - počet mesiacov platnosti kontroly technického stavu vozidla [mesiace].
+
+
+c Vozidlá kategórií 4.2, 4.3, 4.4, 6, 8, vozidlá používané na zdravotnícku službu, banskú záchrannú službu, poruchovú službu plynárenských zariadení, vozidlá používané na taxislužbu, vozidlá požičovne automobilov a vozidlá autoškoly schválené na cvičné účely
+     Do absolvovania prvej kontroly technického stavu vozidla od jeho prvého uvedenia do prevádzky 
+     k1 = 1.00  
+
+V nasledujúcom období prevádzky vozidla postupuje znalec podľa vzorca
+    k1 = 0,92 + 0,01 . M
+
+keď:
+M - počet mesiacov platnosti kontroly technického stavu vozidla [mesiace].
+
+
+d Vozidlá kategórie 6.4 používané na medzinárodnú prepravu osôb
+     Do absolvovania prvej kontroly technického stavu vozidla od jeho prvého uvedenia do evidencie 
+    k1 = 1.00  
+
+V nasledujúcom období prevádzky vozidla postupuje znalec podľa vzorca
+    k1 = 0,96 + 0,01 . M
+
+keď:
+M - počet mesiacov platnosti kontroly technického stavu vozidla [mesiace].
+
+
+e  Pri vozidlách ostatných kategórií  k1 = 1.00  .""",
+"TextBoxKPV_K2": """Koeficient poškodenia vozidla haváriou - k2
+k2 vyjadruje vplyv prípadných opráv poškodení vozidla na jeho predajnosť. Jeho hodnota sa stanovuje nasledujúcim postupom:
+1. Oprava poškodenia  skupín okrem pneumatík a brzdového systému haváriou výmenou dielov len za použitia rozoberateľných spojov predpísanou technológiou:
+   a vozidlá s dobou prevádzky kratšou ako 1 rok                                k2 = 0,98
+   b vozidlá s dobou prevádzky dlhšou ako 1 rok a kratšou ako 3 roky            k2 = 0,99
+   c vozidlá s dobou prevádzky dlhšou ako 3 roky                                k2 = 1,0
+
+
+2. Oprava výmenou celých dielov za použitia zváracej  technológie bez použitia vyrovnávacieho  zariadenia:
+    a vozidlá s dobou prevádzky kratšou ako  3 roky                            k2 = 0,97
+    b vozidlá s dobou prevádzky dlhšou ako 3 roky a kratšou ako 4 roky         k2 = 0,99
+    c vozidlá s dobou prevádzky dlhšou ako 4 roky                              k2 = 1,0
+
+
+3. Oprava nosných častí skeletu karosérie na vyrovnávacom zariadení:
+    a vozidlá s dobou prevádzky kratšou ako 3 roky                             k2 = 0,95
+    b vozidlá s dobou prevádzky dlhšou ako 3 roky a kratšou ako 8 rokov        k2 = 0,97
+    c vozidlá s dobou prevádzky dlhšou ako 8 rokov                             k2 = 0,98
+
+4.  Žiadna významnejšia oprava                                                 k2 = 1,00""",
+"TextBoxKPV_K3": """Koeficient počtu držiteľov vozidla - k3 
+vyjadruje vplyv počtu  držiteľov na jeho predajnosť, pri jeho stanovení postupuje znalec podľa vzorca:
+
+k3 =1.01 - 0.01D,
+
+D - počet držiteľov vozidla""",
+"TextBoxKPV_K4": """Koeficient spôsobu prevádzky vozidla - k4 
+Zohľadňuje vplyv spôsobu používania vozidla. 
+
+Koeficienty spôsobu použitia vozidiel  zaradených do 3. kategórie:
+                                               3.1    3.2    3.3    3.4    3.5    3.6    3.7    3.8
+Referentské vozidlo                            0,96   0,94   0,94   0,93   0,95   1      0,96   0,94
+Vozidlo používané na zásobovanie               0,95   0,93   0,93   0,92   0,95   1      0,95   0,93
+Vozidlo autoškoly                              0,94   0,92   0,92   0,91   0,94   1      0,94   0,92
+Vozidlo používané na taxislužbu                0,97   0,95   0,95   0,94   0,96   0,98   0,97   0,95
+Vozidlo požičovne automobilov                  0,95   0,93   0,93   0,92   0,95   0,96   0,95   0,93
+Vozidlo používané len na reprezentáciu         1      1      1      1,06   1,05   1,02   1      1
+Motorové vozidlo používané na súkromné účely   1      1      1      1       1     1      1      1
+
+Koeficienty spôsobu použitia vozidiel  zaradených do 4. kategórie:
+                      4.1    4.2    4.3    4.4
+Normálne podmienky    1      1      1      1
+Sťažené podmienky     0,93   0,95   0,97   1
+
+Koeficient  spôsobu  použitia vozidla  zaradeného  do ostatných  kategórií sa rovná 1 k4 = 1.""",
+"TextBoxKPV_K5": """Koeficient dopytu trhu - k5 
+k5 vyjadruje pomer medzi priemernou predajnou cenou predmetného typu vozidla v porovnaní s  jeho priemernou technickou hodnotou TH k rozhodnému dátumu. 
+Priamo zadaná hodnota koeficientu dopytu trhu zruší automaticky zadaný a vypočítaný koeficient dopytu trhu k5.
+k5 = priemerná predajná cena / priemerná TH
+keď:  
+priemerná predajná cena - suma reálnych predajných cien súboru n vozidile / počet skúmaných vozidiel 
+TH  -  technická hodnota vozidla""",
+"TextBoxKPV_K5Cena": "Reálna predajná cena porovnateľného vozidla",
+"TextBoxKPV_K5cenapoKK1": "Predajná cena po kilometrovej korekcii = cena + korekcia",
+"TextBoxKPV_K5cenapoKK2": "Predajná cena po kilometrovej korekcii = cena + korekcia",
+"TextBoxKPV_K5cenapoKK3": "Predajná cena po kilometrovej korekcii = cena + korekcia",
+"TextBoxKPV_K5cenapoKK4": "Predajná cena po kilometrovej korekcii = cena + korekcia",
+"TextBoxKPV_K5cenapoKK5": "Predajná cena po kilometrovej korekcii = cena + korekcia",
+"TextBoxKPV_K5km": "Počet odjazdených kilometrov porovnateľného vozidla",
+"TextBoxKPV_K5korekcia1": """Kilometrová korekcia KK
+Pri väčšom počte odjazdených kilometrov porovnateľného vozidla:
+KK =  km1 - km2  . PCV / 300 000
+keď:
+km1 - počet odjazdených kilometrov porovnateľného vozidla
+km2 - počet odjazdených kilometrov poškodeného vozidla
+PCV - predajná cena porovnateľného vozidla
+
+Pri menšom počte odjazdených kilometrov porovnateľného vozidla:
+KK =  km1 - km2  . PCV / 600 000
+keď:
+km1 - počet odjazdených kilometrov porovnateľného vozidla
+km2 - počet odjazdených kilometrov poškodeného vozidla
+PCV - predajná cena porovnateľného vozidla
+
+Maximálna korekcie je 20% z ceny porovnateľného vozidla
+
+
+Ak nie je zadaný počet kilometrov porovnateľného vozidla, tak sa kilometrová korekcia nevykoná""",
+"TextBoxKPV_K5korekcia2": """Kilometrová korekcia KK
+Pri väčšom počte odjazdených kilometrov porovnateľného vozidla:
+KK =  km1 - km2  . PCV / 300 000
+keď:
+km1 - počet odjazdených kilometrov porovnateľného vozidla
+km2 - počet odjazdených kilometrov poškodeného vozidla
+PCV - predajná cena porovnateľného vozidla
+
+Pri menšom počte odjazdených kilometrov porovnateľného vozidla:
+KK =  km1 - km2  . PCV / 600 000
+keď:
+km1 - počet odjazdených kilometrov porovnateľného vozidla
+km2 - počet odjazdených kilometrov poškodeného vozidla
+PCV - predajná cena porovnateľného vozidla
+
+Maximálna korekcie je 20% z ceny porovnateľného vozidla
+
+Ak nie je zadaný počet kilometrov porovnateľného vozidla, tak sa kilometrová korekcia nevykoná""",
+"TextBoxKPV_K5korekcia3": """Kilometrová korekcia KK
+Pri väčšom počte odjazdených kilometrov porovnateľného vozidla:
+KK =  km1 - km2  . PCV / 300 000
+keď:
+km1 - počet odjazdených kilometrov porovnateľného vozidla
+km2 - počet odjazdených kilometrov poškodeného vozidla
+PCV - predajná cena porovnateľného vozidla
+
+Pri menšom počte odjazdených kilometrov porovnateľného vozidla:
+KK =  km1 - km2  . PCV / 600 000
+keď:
+km1 - počet odjazdených kilometrov porovnateľného vozidla
+km2 - počet odjazdených kilometrov poškodeného vozidla
+PCV - predajná cena porovnateľného vozidla
+
+Maximálna korekcie je 20% z ceny porovnateľného vozidla
+
+
+Ak nie je zadaný počet kilometrov porovnateľného vozidla, tak sa kilometrová korekcia nevykoná""",
+"TextBoxKPV_K5korekcia4": """Kilometrová korekcia KK
+Pri väčšom počte odjazdených kilometrov porovnateľného vozidla:
+KK =  km1 - km2  . PCV / 300 000
+keď:
+km1 - počet odjazdených kilometrov porovnateľného vozidla
+km2 - počet odjazdených kilometrov poškodeného vozidla
+PCV - predajná cena porovnateľného vozidla
+
+Pri menšom počte odjazdených kilometrov porovnateľného vozidla:
+KK =  km1 - km2  . PCV / 600 000
+keď:
+km1 - počet odjazdených kilometrov porovnateľného vozidla
+km2 - počet odjazdených kilometrov poškodeného vozidla
+PCV - predajná cena porovnateľného vozidla
+
+Maximálna korekcie je 20% z ceny porovnateľného vozidla
+
+
+Ak nie je zadaný počet kilometrov porovnateľného vozidla, tak sa kilometrová korekcia nevykoná""",
+"TextBoxKPV_K5korekcia5": """Kilometrová korekcia KK
+Pri väčšom počte odjazdených kilometrov porovnateľného vozidla:
+KK =  km1 - km2  . PCV / 300 000
+keď:
+km1 - počet odjazdených kilometrov porovnateľného vozidla
+km2 - počet odjazdených kilometrov poškodeného vozidla
+PCV - predajná cena porovnateľného vozidla
+
+Pri menšom počte odjazdených kilometrov porovnateľného vozidla:
+KK =  km1 - km2  . PCV / 600 000
+keď:
+km1 - počet odjazdených kilometrov porovnateľného vozidla
+km2 - počet odjazdených kilometrov poškodeného vozidla
+PCV - predajná cena porovnateľného vozidla
+
+Maximálna korekcie je 20% z ceny porovnateľného vozidla
+
+
+Ak nie je zadaný počet kilometrov porovnateľného vozidla, tak sa kilometrová korekcia nevykoná""",
+"TextBoxKPV_K5Zdroj": "Zdroj, z ktorého je čerpaná informácia o cene porovnateľného vozidla",
+"TextBoxKPV_K5vPrevadzke": "Dátum uvedenia porovnateľného vozidla do prevádzky",
+"TextBoxKPV_K5TSV": "Technický stav porovnateľného vozidla",
+"TextBoxKPV_K5VHMV": "Východisková hodnota mimoriadnej výbavy porovnateľného vozidla",
+"TextBoxKPV_K5TSMV": "Technický stav mimoriadnej výbavy porovnateľného vozidla",
+"TextBoxKPV_K5TH": "Technická hodnota porovnateľného vozidla",
+"TextBoxKPVpriemTechHodnVozidla": "Priemerná technická hodnota porovnateľných vozidiel",
+"TextBoxKPV_koniecTK": """Dátum konca platnosti technickej kontroly
+k1 vyjadruje vplyv platnosti kontroly technického stavu vozidla, prípadne iných povinných kontrol na predajnosť vozidla k dátumu jeho ohodnotenia. Hodnota k1 sa stanovuje nasledujúcim spôsobom:
+
+a Vozidlá kategórie 2.1
+    Do absolvovania prvej kontroly technického stavu vozidla od jeho prvého uvedenia do prevádzky  
+    k1 = 1.00   .
+
+V nasledujúcom období prevádzky vozidla postupuje znalec podľa vzorca:
+    k1 = 0,93 + 0,002 . M
+
+keď:
+M - počet mesiacov platnosti kontroly technického stavu vozidla [mesiace].
+
+
+b Vozidlá kategórií 2.2, 2.3, 3, 4.1, 5.1 a 7
+     Do absolvovania prvej kontroly technického stavu vozidla od jeho prvého uvedenia do prevádzky 
+     k1 = 1.00  
+
+V nasledujúcom období prevádzky vozidla postupuje znalec podľa vzorca
+    k1 = 0,91 + 0,005 . M
+
+keď:
+M - počet mesiacov platnosti kontroly technického stavu vozidla [mesiace].
+
+
+c Vozidlá kategórií 4.2, 4.3, 4.4, 6, 8, vozidlá používané na zdravotnícku službu, banskú záchrannú službu, poruchovú službu plynárenských zariadení, vozidlá používané na taxislužbu, vozidlá požičovne automobilov a vozidlá autoškoly schválené na cvičné účely
+     Do absolvovania prvej kontroly technického stavu vozidla od jeho prvého uvedenia do prevádzky 
+     k1 = 1.00  
+
+V nasledujúcom období prevádzky vozidla postupuje znalec podľa vzorca
+    k1 = 0,92 + 0,01 . M
+
+keď:
+M - počet mesiacov platnosti kontroly technického stavu vozidla [mesiace].
+
+
+d Vozidlá kategórie 6.4 používané na medzinárodnú prepravu osôb
+     Do absolvovania prvej kontroly technického stavu vozidla od jeho prvého uvedenia do evidencie 
+    k1 = 1.00  
+
+V nasledujúcom období prevádzky vozidla postupuje znalec podľa vzorca
+    k1 = 0,96 + 0,01 . M
+
+keď:
+M - počet mesiacov platnosti kontroly technického stavu vozidla [mesiace].
+
+
+e  Pri vozidlách ostatných kategórií  k1 = 1.00  .""",
+"TextBoxKPV_Kp": """Koeficient predajnosti kp
+kp = k1 . k2 . k3 . k4 . k5
+keď:
+k1 - koeficient platnosti kontroly technického stavu vozidla
+k2 - koeficient poškodenia vozidla haváriou 
+k3 - koeficient počtu držiteľov vozidla
+k4 - koeficient spôsobu prevádzky vozidla
+k5 - koeficient dopytu  trhu""",
+"TextBoxKPVPocetDrzitelov": """Koeficient počtu držiteľov vozidla - k3 
+vyjadruje vplyv počtu  držiteľov na jeho predajnosť, pri jeho stanovení postupuje znalec podľa vzorca:
+
+k3 =1.01 - 0.01D,
+
+D - počet držiteľov vozidla""",
+"CheckBoxKPVk3Nezistene": "Označiť ak nie je možné hodnoverne preukázať skutočný počet držiteľov",
+"TextBoxKPVpriemPredajCena": "Priemerná predajná cena = suma reálnych predajných cien súboru n vozidile / počet skúmaných vozidiel",
+"TextBoxNNO_TSV": "TSV - technický stav vozidla ",
+"TextBoxNNO_VSH": "VŠH - všeobecná hodnota vozidla ",
+"TextBoxNNO_ZA": """ZAV - základná amortizácia vozidla
+ZAvozidla = 100 - TSV
+keď
+TSV - technický stav vozidla""",
+"TextBoxNNOamortizaciaOstatneKaros": """Výška amortizácie za materiál karoséria, výbava
+ZAmat1 = NOmat1 . ZAV . k1 / 100 
+keď:
+NOmat1 - náklady na výmenu poškodeného materiálu karoséria, výbava
+ZAV - základná amortizácia vozidla
+k1 - koeficient zhodnotenia nahradzovaných dielov určený nasledovne:
+TSV  %       k1
+100 - 40     0
+40 - 30      0,1
+30 - 20      0,2
+20 - 0       0,4""",
+"TextBoxNNOamortizaciaOstatneMotor": """Výška amortizácie za materiál podvozok, motor
+ZAmat2 = NOmat2 .ZAV . k2
+keď:
+NOmat2 - náklady na výmenu poškodeného materiálu podvozok, motor
+ZAV - základná amortizácia vozidla
+k2 - koeficient zhodnotenia nahradzovaných dielov určený nasledovne:
+TSV  %        k2
+100 - 40     0
+40 - 30      0,2
+30 - 20      0,4
+20 - 0       0,5""",
+"TextBoxNNOamortizaciaZasklenia": """Výška amortizácie za materiál zasklenie
+ZAsklo = NOsklo . ZAV . k1 . 0,5
+keď:
+NOsklo - náklady na výmenu poškodeného materiálu zasklenie
+ZAV - základná amortizácia vozidla
+k1 - koeficient zhodnotenia nahradzovaných dielov určený nasledovne:
+TSV  %        k1
+100 - 40     0
+40 - 30      0,1
+30 - 20      0,2
+20 - 0       0,4""",
+"TextBoxNNOCenaBezDPHlakovanie": "Cena bez DPH za lakovanie",
+"TextBoxNNOCenaBezDPHmaterialKaros": "Cena bez DPH za výmenu poškodeného materiálu karoséria, výbava",
+"TextBoxNNOCenaBezDPHmaterialMotor": "Cena bez DPH za výmenu poškodeného materiálu podvozok, motor",
+"TextBoxNNOCenaBezDPHmaterialBezAmor": "Cena bez DPH za výmenu poškodeného materiálu, ktorého výmenou nedôjde k zhodnoteniu vozidla",
+"TextBoxNNOCenaBezDPHpraca": "Cena bez DPH za prácu",
+"TextBoxNNOCenaBezDPHspolu": "Cena bez DPH spolu",
+"TextBoxNNOCenaBezDPHzasklenie": "Cena bez DPH za výmenu poškodeného materiálu zasklenie",
+"TextBoxNNOCenasDPHlakovanie": "Cena s DPH za lakovanie",
+"TextBoxNNOCenasDPHmaterialKaros": "Cena s DPH za výmenu poškodeného materiálu karoséria, výbava",
+"TextBoxNNOCenasDPHmaterialMotor": "Cena s DPH za výmenu poškodeného materiálu podvozok, motor",
+"TextBoxNNOCenasDPHmaterialBezAmor": "Cena s DPH za výmenu poškodeného materiálu, ktorého výmenou nedôjde k zhodnoteniu vozidla",
+"TextBoxNNOCenasDPHPraca": "Cena s DPH za prácu",
+"TextBoxNNOCenasDPHspolu": "Cena s DPH spolu",
+"TextBoxNNOCenasDPHzasklenie": "Cena s DPH za výmenu poškodeného materiálu zasklenie",
+"TextBoxNNODPH": "Sadzba DPH v percentách. V prípade dodávateľa, ktorý nie je platca DPH nezadajte nič",
+"TextBoxNNODruhLakovanie": "Druh nákladu na opravu",
+"TextBoxNNODruhMaterialKaros": "Druh nákladu na opravu",
+"TextBoxNNODruhMaterialMotor": "Druh nákladu na opravu",
+"TextBoxNNODruhMaterialBezAmor": "Druh nákladu na opravu",
+"TextBoxNNODruhZasklenie": "Druh nákladu na opravu",
+"TextBoxNNODruhPraca": "Druh nákladu na opravu",
+"TextBoxNNOhranicaTS": "Hranica totálnej škody",
+"TextBoxNNOOdpocitaneDPH": """Odpočítateľná DPH z nákladov na opravu poškodenia vozidla.
+Odpočítava sa len ak si majiteľ vozidla, ako registrovaný plátca DPH, má právo uplatniť nárok na odpočet DPH u príslušného správcu dane""",
+"TextBoxNNOPoistnePlnenie": "Výsledné poistné plnenie = Výška škody - Odpočítateľná DPH",
+"TextBoxNNOPopisLakovanie": "Popis nákladu na opravu",
+"TextBoxNNOPopisMaterialKaros": "Popis nákladu na opravu",
+"TextBoxNNOPopisMaterialMotor": "Popis nákladu na opravu",
+"TextBoxNNOPopisMaterialBezAmor": "Popis nákladu na opravu",
+"TextBoxNNOPopisPraca": "Popis nákladu na opravu",
+"TextBoxNNOPopisZasklenie": "Popis nákladu na opravu",
+"TextBoxNNOPorovnanieNOaVSH": """Porovnanie nákladov na opravu voči všeobecnej hodnota vozidla.
+MALÁ ŠKODA - < 7 %
+TOTÁLNA ŠKODA - > Hranica totálnej škody""",
+"TextBoxNNOVyskaSkody": """Výška škody
+VŠ = NO - NOmat1.ZAmat1/100 - NOmat2.ZAmat2/100 - NOsklo.ZAsklo/100 - HZ
+NO - náklady na opravu
+NOmat1 - náklady na výmenu poškodeného materiálu karoséria, výbava
+ZAmat1 - % amortizácie za materiál karoséria, výbava 
+NOmat2 - náklady na výmenu poškodeného materiálu podvozok, motor
+ZAmat2 - % amortizácie za materiál materiál podvozok, motor
+NOsklo - náklady na výmenu poškodeného zasklanie
+ZAsklo - % amortizácie za materiál karoséria, výbava 
+HZ - hodnota použiteľných zvyškov""",
+"TextBoxNNOZvysky": "HZ - hodnota použiteľných zvyškov",
+"TextBoxObjemMotora": "Zdvihový objem valcov motora v ccm",
+"TextBoxOdjazdene": "Celkový počet odjazdených kilometrov alebo motohodiny pre výpočet základnej amortizácie vozidla. ",
+"TextBoxOtacky": "Počet otáčok pri maximálnom výkone ",
+"TextBoxPneuNamerane": "Nameraná alebo odhadnutá priemerná hĺbka drážky dezénu",
+"TextBoxPneuNove": """Radiálne plášte pre osobné automobily:
+séria 80 = 7,4 mm 
+séria 70 = 7,6 mm 
+séria 65 = 7,7 mm 
+séria 60 = 7,8 mm 
+séria 55 = 6,2 mm 
+séria 50 = 7,8 mm 
+
+Plášte pre ľahké nákladné vozidlá: 
+všetky rozmery = 10 mm 
+
+Radiálne plášte AS pre nákladnú dopravu: 
+séria 17,5 = 12,1 mm 
+séria 19,5 = 15,2 mm 
+séria 20,0 = 15,6 mm 
+séria 22,5 = 14,9 mm 
+séria 24,5 = 11,0 mm 
+
+Radiálne plášte ST pre nákladnú dopravu: 
+všetky rozmery = 16,6 mm 
+ 
+Diagonálne plášte pre nákladnú dopravu: 
+všetky rozmery = 18,3 mm 
+ 
+Plnogumové plášte 
+všetky rozmery = 14,8 mm """,
+"TextBoxPneuPocet": "Počet pneumatík pre výpočet technickej hodnoty",
+"TextBoxPneuPopis": "Popis pneumatík pre výpočet technickej hodnoty",
+"TextBoxPneuPriamaTH": "Priamo zadaná technická hodnota pneumatiky",
+"TextBoxPneuTHcelk": "Celková technická hodnota všetkých pneumatík",
+"TextBoxPneuTH": "Výsledná technická hodnota pneumatík",
+"TextBoxPocetDveri": "Počet dverí karosérie a počet miest na sedenie. Údaje oddeľte lomítkom.",
+"TextBoxPocetNaprav": "Počet náprav a celkový počet kolies vozidla vrátane plnohodnotného rezervného kolesa. Údaje oddeľte lomítkom.",
+"TextBoxPohotovostnaHmotnost": "Pohotovostnú hmotnosť vozidla v kilogramoch",
+"TextBoxPoskodeny": "Meno/názov poškodeného",
+"TextBoxPoskodenyAdresa": "Adresa poškodeného",
+"TextBoxPrideleneECV": "Dátum pridelenia EČV",
+"TextBoxRazvor": "Rázvor osí kolies v milimetroch",
+"TextBoxRokVyrobyMV": "Rok výroby vozidla",
+"TextBoxTHdobaPrevadzky": "Doba prevádzky vozidla od prvého uvedenia do prevádzy po dátum vzniku škody",
+"TextBoxTHkAM": """Koeficient amortizácie za skutočne najazdené kilometre - kAM
+Koeficient amortizácie za skutočne najazdené kilometre vyjadruje vplyv skutočne najazdených kilometrov na celkovú základnú amortizáciu vozidla. Rovná sa desaťtisícine súčinu rozdielu v počte najazdených kilometrov RKM s koeficientom najazdených kilometrov kKM.
+kAM = RKM . kKM / 1000
+keď:
+RKM - rozdiel v počte najazdených kilometrov [km],
+kKM - koeficient najazdených kilometrov [%].""",
+"TextBoxTHkKM": """Koeficient najazdených kilometrov - kKM
+Koeficient najazdených kilometrov vyjadruje amortizáciu vozidla vzhľadom na  predpokladaný počet najazdených kilometrov.
+Stanovené podľa bodu 8. príloha č. 6 k vyhláške č. 492/2004 Z. z.""",
+"TextBoxTHPDS": """Pomerný diel i-tej skupiny - PDSi 
+Je to percentuálne vyjadrenie podielu príslušnej skupiny na novom vozidle ako celku bez mimoriadnej výbavy. 
+PDSi = HNSi / SUMHNSi [%]
+keď:
+HNSi - hodnota i-tej skupiny ako nového náhradného dielu u autorizovaného predajcu
+SUMHNSi - súčet hodnôt všetkých technických skupín vozidla ako náhradných dielov u autorizovaného predajcu.""",
+"TextBoxTHPDSSpolu": "Suma PDSi - musí byť 100",
+"TextBoxTHPEZ": """Predpokladaná efektívna životnosť - PEZ 
+Predpokladaná efektívna životnosť vozidla skupiny je predpokladaná doba prevádzky, pri ktorej vozidlo skupina je schopné schopná plniť svoju funkciu do dosiahnutia predpokladaného zostatkového technického stavu.  
+Stanovené podľa bodu 8. príloha č. 6 k vyhláške č. 492/2004 Z. z.""",
+"TextBoxTHPKV": """Predpokladaný ročný jazdný výkon - PKV  
+PKV vyjadruje priebeh predpokladaného ročného jazdného výkonu určených kategórií vozidiel za ich predpokladanú dobu prevádzky. 
+Stanovené podľa bodu 8. príloha č. 6 k vyhláške č. 492/2004 Z. z.""",
+"TextBoxTHPRKM": """Predpokladaný počet najazdených kilometrov  -  PRKM   
+Predpokladaný počet najazdených kilometrov vyjadruje predpokladaný počet najazdených kilometrov určených kategórií vozidiel za ich skutočnú dobu prevádzky. Je daný dvanástinou súčinu predpokladaného ročného jazdného výkonu PKV s dobou prevádzky vozidla T.  
+PRKM = PKV . T / 12 [km]   
+keď:  
+PKV - predpokladaný ročný jazdný výkon [km/rok],  
+T - doba prevádzky [mesiace].  
+  
+Ak je predpokladaný počet najazdených  kilometrov PRKM väčší ako súčin predpokladanej efektívnej životnosti PEZ a predpokladaného ročného jazdného výkonu PKV, predpokladaný počet najazdených  kilometrov PRKM sa rovná súčinu predpokladanej efektívnej životnosti PEZ a predpokladaného ročného jazdného výkonu PKV.  
+Maximálna hodnota predpokladaného počtu najazdených kilometrov PRKM je určená násobkom predpokladaného kilometrického výkonu PKV s predpokladanou efektívnou životnosťou PEZ.  
+  
+PRKMmax n = PKVn . PEZn [km],  
+keď:  
+PRKMmax n - maximálny predpokladaný počet najazdených kilometrov pre n-tú kategóriu vozidla [km],  
+PKVn - predpokladaný ročný jazdný výkon pre n-tú kategóriu vozidla [km],  
+PEZn - predpokladaná efektívna životnosť pre n-tú kategóriu vozidla [roky].  """,
+"TextBoxTHPTSS": """Pomerný technický stav i-tej skupiny - PTSSi 
+Je to pomerný diel, ktorý predstavuje hodnota konkrétnej  i-tej technickej skupiny z nového vozidla.
+PTSSi = TSSi . PDSi / 100 [%],
+keď:
+TSSi - technický stav i-tej skupiny [%],
+PDSi - pomerný diel i-tej skupiny [%].""",
+"TextBoxTHPZTS": """Predpokladaný zostatkový technický stav - PZTS  
+Predpokladaný zostatkový technický stav vyjadruje predpokladané zostatkové percento prevádzkyschopnosti vozidla skupiny určitej kategórie pri určenej dobe prevádzky a pre niektoré kategórie vozidiel aj pri určenom počte najazdených kilometrov. 
+Stanovené podľa bodu 8. príloha č. 6 k vyhláške č. 492/2004 Z. z.""",
+"TextBoxTHRKM": """Rozdiel v počte najazdených kilometrov - RKM 
+Je to rozdiel medzi počtom skutočne najazdených kilometrov PSKM a predpokladaným počtom najazdených kilometrov PRKM.
+RKM = PSKM - PRKM [km]
+keď:
+PSKM - počet skutočne najazdených kilometrov [km],
+PRKM - predpokladaný počet najazdených kilometrov [km].""",
+"TextBoxTHSkupina": "Názov skupiny - pomerné diely podskupín",
+"TextBoxTHTSS": """Technický stav skupiny - TSS 
+TSS je zvyšok technickej životnosti skupiny v porovnaní s novou skupinou  vyjadrený v percentách.
+TSSi = [VTSSi.100 - ZAi].100 + ZPi / 10 000 [%],
+keď:
+VTSSi - východiskový technický stav i-tej skupiny [%],
+ZAi - celková základná amortizácia i-tej skupiny [%],
+ZPi - zrážka, prirážka za technický stav i-tej skupiny[%].""",
+"TextBoxTHTSV": """Je to zvyšok technickej životnosti vozidla vyjadrený v percentách. Určuje ju súčet pomerných technických stavov  PTSS jednotlivých skupín vozidla.
+TSV = SUMPTSSi  [%],
+keď:
+PTSSi - pomerný technický stav i-tej skupiny [%].""",
+"TextBoxTHVTSS": """Východiskový technický stav skupiny - VTSS 
+Je to technický stav skupiny vyjadrený v percentách v čase jej uvedenia do prevádzky, ktorý udáva jej technický stav v porovnaní s novou skupinou.
+Skupina sa začína amortizovať od svojho prvého uvedenia do prevádzky. Ak  na skupine nebola vykonaná  celková  oprava, tak východiskový technický stav sa rovná 100 %. """,
+"TextBoxTHZA": """Celková základná amortizácia vozidla - ZA
+Celková základná amortizácia vyjadruje opotrebenie, ktoré sa rovná priemernému opotrebeniu porovnateľného etalónového vozidla rovnakého veku, rovnakej doby prevádzky a rovnakého počtu najazdených kilometrov pri priemernej primeranej údržbe. Pretože každá kategória vozidiel zahŕňa pomerne veľký a rozmanitý súbor typov vozidiel, pri stanovení priebehu celkových základných amortizácií sa musí pri každej kategórii vozidiel zohľadniť priemerná amortizácia. 
+Celková základná amortizácia vozidla pri kategóriách vozidiel s predpísaným predpokladaným počtom najazdených kilometrov PRKM je súčtom základnej amortizácie za dobu prevádzky vozidla ZAV a vzťahu určujúceho zvýšenie, prípadne zníženie celkovej základnej amortizácie za počet skutočne najazdených kilometrov.
+ZA = VTSV - VTSV/100.ZAV.kAM/100 + ZAV  [%],
+keď:
+VTSV - východiskový technický stav vozidla [%],
+ZAV - základná amortizácia za dobu prevádzky vozidla [%],
+kAM  - koeficient amortizácie za skutočne najazdené kilometre [%].""",
+"TextBoxTHZAV": """Základná  amortizácia  za dobu  prevádzky  vozidla skupiny - ZAV 
+Je to amortizácia, ktorá vyjadruje predpokladaný  pokles technického stavu skupiny za dobu jeho jej prevádzky. Určuje sa pomocou amortizačných stupníc a vzorcov určených pre jednotlivé kategórie vozidiel na základe doby prevádzky ohodnocovaného vozidla.
+Maximálna hodnota základnej amortizácie za dobu prevádzky ZAV je limitovaná hodnotou predpokladaného zostatkového technického stavu. Základná   amortizácia za dobu prevádzky ZAV nemôže byť vyššia, ako je rozdiel sto percent  a hodnoty predpokladaného zostatkového technického stavu PZTS.
+ZAVmax n = 100 - PZTS n  [%].
+Stanovené podľa bodu 8. príloha č. 6 k vyhláške č. 492/2004 Z. z.""",
+"TextBoxTHZP": """Zrážka,  prirážka za technický stav - ZP 
+Zrážka, prirážka za technický stav vyjadruje lepší alebo horší technický stav skupiny, dielu mimoriadnej výbavy, prípadne vozidla ako celku, než je predpokladaný stav daný základnou amortizáciou skupiny, dielu mimoriadnej výbavy, prípadne vozidla.""",
+"TextBoxUzivatelVytvoril": "Meno uživateľa, ktorý výpočet vytvoril",
+"TextBoxUzivatelZmenil": "Meno uživateľa, ktorý výpočet posledný zmenil",
+"TextBoxVIN": "Sedemnásťmiestne výrobné číslo vozidla VIN",
+"TextBoxVprevadzkeOd": """Dátum uvedenia vozidla do prevádzky
+Dátum sa predvyplní po zadaní Roku výroby nasledovne:
+Ak rok výroby nie je zhodný s rokom zaradenia do prevádzky, tak 1.1. nasledujúceho roku od roku výroby
+Ak je rok výroby zhodný s rokom zaradenia a nevieme presný dátum zaradenia, tak 1.7. roku výroby""",
+"TextBoxVykon": "Maximálny výkon motora v kilowattoch",
+"TextBoxZnackaMV": "Úplný názov vozidla včítane modelu, typového označenia, prípadne označenia stupňa výbavy",
+"TextBoxZnehodCPP": "Celkové poistné plnenie = Poistné plnenie z Nákladov na opravu + znehodnotenie",
+"TextBoxZnehodnPDS": "Pomerný diel skupiny karoséria pred haváriou",
+"TextBoxZnehodnPPzaNO": "Poistné plnenie z nákladov na opravu",
+"TextBoxZnehodnPTSS": "PTSS - Pomerný technický stav skupiny karoséria pred haváriou",
+"TextBoxZnehodnPTSS1": """PTSS1 - Pomerný technický stav skupiny karoséria po havárii zohľadnené znehodnotenie
+PTSS1 = Z * PTSS
+keď:
+Z - % znehodnotenia
+PTSS -Pomerný technický stav skupiny karoséria pred haváriou""",
+"TextBoxZnehodnTSS": "Skutočný technický stab skupiny karoséria pred haváriou",
+"TextBoxZnehodnVHV": "VHV - východisková hodnota vozidla",
+"TextBoxZnehodnVTSS": "VTSS - Východiskový technický stav skupiny karoséria pred haváriou",
+"TextBoxZnehodnZ": """Znehodnotenie skeletu karosérie kabíny, skriňovej nadstavby opravou
+Z =PTSS-PTSS1/100 . VHV:
+keď: 
+PTSS -Pomerný technický stav skupiny karoséria pred haváriou
+PTSS1- Pomerný technický stav skupiny karoséria po havárii zohľadnené znehodnotenie
+VHV - východisková hodnota vozidla """,
+"TextBoxZnehodnZA": "ZA - Základná amortizácia skupiny karoséria pred haváriou",
+"TextBoxZnehodnZAV": "ZA - Základná  amortizácia za dobu prevádzky skupiny karoséria pred haváriou",
+"TextBoxZnehodnZP": "ZP - Zrážka, prirážka za technický stav skupiny karoséria pred haváriou",
+"TextBoxZnehodnZper": """Z - % znehodnotenia:
+TSV        Rozsah opravy karosérii poškodením 
+                A    B    C
+100 - 80   9    15   21
+ 80 - 70   6    10   14
+ 70 - 60   3    5    7
+
+Rozsah opravy typu A
+Oprava poškodenia skeletu karosérie kabíny, skriňovej nadstavby bola vykonaná bez výmeny jeho častí. Pôjde o opravy menšieho rozsahu nosných častí napr. strechy, blatníkov, podbehu, čela, prahov apod., a to i súčastne, max. ale na 3 dieloch.
+
+Rozsah opravy typu B
+Oprava skeletu karosérie kabíny, skriňovej nadstavby s výmenou jeho častí alebo boli vykonané opravy ad A na viacerých dieloch.
+
+Rozsah opravy typu C
+Oprava skeletu karosérie kabíny, skriňovej nadstavby vyžadovala vyrovnávaciu stolicu na opravu poškodených uzlových bodov styk prednej alebo zadnej steny kabíny  so stĺpikmi, podlahou, prahom, podbehom a pod.""",
+"TextBoxNNOPopisNelikvidnePolozky": "Popis nelikvidné položky",
+"TextBoxNNODruhNelikvidnePolozky": "Druh nelikvidné položky",
+"TextBoxNNOCenaBezDPHnelikvidnePolozky": "Cena s DPH nelikvidné položky",
+"TextBoxNNOCenasDPHnelikvidnePolozky": "Cena bez DPH nelikvidné položky",
+"TextBoxNNORozpocetNelikvidnePolozky": "Suma rozpočet nelikvidné položky",
+"TextBoxNNORozpocetLakovanie": "Suma rozpočet za lakovanie ",
+"TextBoxNNORozpocetPraca": "Suma rozpočet za prácu",
+"TextBoxNNORozpocetZasklenie": "Suma rozpočet za výmenu poškodeného materiálu zasklenie",
+"TextBoxNNORozpocetMaterialBezAmor": "Suma rozpočet za výmenu poškodeného materiálu, ktorého výmenou nedôjde k zhodnoteniu vozidla ",
+"TextBoxNNORozpocetMaterialMotor": "Suma rozpočet za výmenu poškodeného materiálu podvozok, motor ",
+"TextBoxNNORozpocetMaterialKaros": "Suma rozpočet za výmenu poškodeného materiálu karoséria, výbava ",
+"TextBoxNNORozpocetSpolu": "Spolu suma rozpočtu",
+"TextBoxPoznamka": "Poznámka alebo vyjadrenie k výpočtu výšky plnenia",
+"ButtonVozidloZdb": "Načítanie XML Eurotax",
+"TextBoxNNO_NO": "Náklady na opravu poškodeného vozidla bez nelikvidných položiek vrátane DPH",
+"ButtonLoadFromAudanet": "Načítanie údajov o škode a vozidle z Audanetu podľa zadaného čísla PU",
+"TextBoxKPV_K5VHV": "VHV - východisková hodnota porovnateľného vozidla vzorky, ak sa nezadá, použije sa VHV oceňovaného vozidla, ak zmaže, načíta sa VHV oceňovaného vozidla"
+}
