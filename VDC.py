@@ -639,19 +639,19 @@ class VDCFrame(formVDCmain.VDCmain):
     def TextBoxTHSkupinaOnKillFocus(self, event):
         if (event.GetEventObject().GetValue() == ""):
             exec("self.TextBoxTHVTSS" +
-                 event.GetEventObject().GetName() + ".SetValue('')")
+                 event.GetEventObject().GetName().split("#")[1] + ".SetValue('')")
             exec("self.TextBoxTHPDS" +
-                 event.GetEventObject().GetName() + ".SetValue('')")
+                 event.GetEventObject().GetName().split("#")[1] + ".SetValue('')")
             exec("self.TextBoxTHZAV" +
-                 event.GetEventObject().GetName() + ".SetValue('')")
+                 event.GetEventObject().GetName().split("#")[1] + ".SetValue('')")
             exec("self.TextBoxTHZA" +
-                 event.GetEventObject().GetName() + ".SetValue('')")
+                 event.GetEventObject().GetName().split("#")[1] + ".SetValue('')")
             exec("self.TextBoxTHZP" +
-                 event.GetEventObject().GetName() + ".SetValue('')")
+                 event.GetEventObject().GetName().split("#")[1] + ".SetValue('')")
             exec("self.TextBoxTHTSS" +
-                 event.GetEventObject().GetName() + ".SetValue('')")
+                 event.GetEventObject().GetName().split("#")[1] + ".SetValue('')")
             exec("self.TextBoxTHTSS" +
-                 event.GetEventObject().GetName() + "edit.SetValue('')")
+                 event.GetEventObject().GetName().split("#")[1] + "edit.SetValue('')")
 
         functionVDC.PocitajTH(self, "TextBoxTHSkupinaOnKillFocus")
         event.Skip()
@@ -674,7 +674,7 @@ class VDCFrame(formVDCmain.VDCmain):
     def TextBoxTHTSSeditOnKillFocus(self, event):
         if (event.GetEventObject().GetValue() == ""):
             exec("event.GetEventObject().SetValue(self.TextBoxTHTSS" +
-                 event.GetEventObject().GetName() + ".GetValue())")
+                 event.GetEventObject().GetName().split("#")[1] + ".GetValue())")
         if (functionVDC.KontrolujFloatCislo(event.GetEventObject(), 4)):
             functionVDC.PocitajTH(self, "TextBoxTHTSSeditOnKillFocus")
             event.Skip()
@@ -742,9 +742,9 @@ class VDCFrame(formVDCmain.VDCmain):
 
     def TextBoxKPV_K5VHVOnKillFocus(self, event):
         if (functionVDC.KontrolujFloatCislo(event.GetEventObject(), 2)):
-            exec('''if (self.TextBoxKPV_K5VHV''' + event.GetEventObject().GetName() + '''.GetValue() == '' 
-            and self.TextBoxKPV_K5Zdroj''' + event.GetEventObject().GetName() + '''.GetValue() != ''):
-                self.TextBoxKPV_K5VHV''' + event.GetEventObject().GetName() + '''.SetValue(self.TextBoxHV_VHV.GetValue())''')
+            exec('''if (self.TextBoxKPV_K5VHV''' + event.GetEventObject().GetName().split("#")[1] + '''.GetValue() == '' 
+            and self.TextBoxKPV_K5Zdroj''' + event.GetEventObject().GetName().split("#")[1] + '''.GetValue() != ''):
+                self.TextBoxKPV_K5VHV''' + event.GetEventObject().GetName().split("#")[1] + '''.SetValue(self.TextBoxHV_VHV.GetValue())''')
             functionVDC.PocitajVSH(self, "TextBoxKPV_K5VHVOnKillFocus")
             event.Skip()
 
@@ -783,6 +783,13 @@ class VDCFrame(formVDCmain.VDCmain):
             functionVDC.PocitajVSH(self, "TextBoxKPV_K5TSMVOnKillFocus")
             event.Skip()
 
+    def SetFocus( self, event ):
+        if event.GetEventObject().GetName().split("#")[0] in constantVDC.informacia:
+            self.TextBoxInformacia.SetValue(constantVDC.informacia[event.GetEventObject().GetName().split("#")[0]])
+        else:
+            self.TextBoxInformacia.SetValue(event.GetEventObject().GetName().split("#")[0])
+            print(event.GetEventObject().GetName().split("#")[0])
+        event.Skip()
 
 class VDCdbDlg(formVDCmain.VDCdb):
     # constructor
