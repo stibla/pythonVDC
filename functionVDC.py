@@ -491,5 +491,5 @@ def SetVDCdata(parent, dictData):
             if (item[0][0:8] == "ComboBox"):
                 item[1].SetStringSelection(dictData[item[0]])
             if (item[0][0:8] == "CheckBox"):
-                    item[1].SetValue(dictData[item[0]])
+                item[1].SetValue(dictData[item[0]])
     VypocitajDobuPrevadzky(parent)
