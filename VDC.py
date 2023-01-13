@@ -62,7 +62,7 @@ class VDCFrame(formVDCmain.VDCmain):
         functionVDC.VypocitajDobuPrevadzky(self)
 
     def OtvorZoSuboru(self, event):
-        with wx.FileDialog(self, "VDC JSON fil", wildcard="VDC JSON files (*.vdcJSON)|*.vdcJson",
+        with wx.FileDialog(self, "VDC JSON file", wildcard="VDC JSON files (*.vdcJSON)|*.vdcJson",
                            style=wx.FD_OPEN | wx.FD_FILE_MUST_EXIST) as fileDialog:
             if fileDialog.ShowModal() == wx.ID_CANCEL:
                 return
@@ -788,8 +788,46 @@ class VDCFrame(formVDCmain.VDCmain):
             self.TextBoxInformacia.SetValue(constantVDC.informacia[event.GetEventObject().GetName().split("#")[0]])
         else:
             self.TextBoxInformacia.SetValue(event.GetEventObject().GetName().split("#")[0])
-            print(event.GetEventObject().GetName().split("#")[0])
         event.Skip()
+
+    def ButtonTestOnButtonClick( self, event ):
+        import openpyxl
+        import re
+        with wx.FileDialog(self, "Test excel file", wildcard="Test excel file (*.xlsx)|*.xlsx",
+                           style=wx.FD_OPEN | wx.FD_FILE_MUST_EXIST) as fileDialog:
+            if fileDialog.ShowModal() == wx.ID_CANCEL:
+                return
+            pathname = fileDialog.GetPath()
+            wrkbk = openpyxl.load_workbook(pathname)
+            sh = wrkbk.active
+            for i in range(2, 100):
+                data = sh.cell(row=i, column=6).value
+                
+                dataTextBoxPoznamka = re.search(r'<TextBoxPoznamka>([\s\S]*?)</TextBoxPoznamka>', data, flags=re.MULTILINE)
+                dataStr = re.sub(r'<TextBoxPoznamka>([\s\S]*?)</TextBoxPoznamka>', r'', data, flags=re.MULTILINE)
+                if dataTextBoxPoznamka:
+                    dataTextBoxPoznamka = dataTextBoxPoznamka.group()
+                    dataTextBoxPoznamka = re.sub(r'\n', r'', dataTextBoxPoznamka)
+                    dataStr = dataTextBoxPoznamka + dataStr
+                dataStr = re.sub(r'^<', r'"', dataStr, flags=re.MULTILINE)
+                dataStr = re.sub(r'^(.*?)>', r'\1": "', dataStr, flags=re.MULTILINE)   
+                dataStr = re.sub(r'</\S*>_x000D_$', r'"', dataStr)         
+                dataStr = re.sub(r'</\S*>_x000D_\n', r'", ', dataStr) 
+                dataStr = re.sub(r'</\S*>\n$', r'"', dataStr)         
+                dataStr = re.sub(r'</\S*>\n', r'", ', dataStr)                
+                dataStr = re.sub(r'ComboBoxPlatcaDPH', r'CheckBoxPlatcaDPH', dataStr)
+                dataStr = re.sub(r'"CheckBoxPlatcaDPH": "Nie"', r'"CheckBoxPlatcaDPH": false', dataStr)
+                dataStr = re.sub(r'"CheckBoxPlatcaDPH": "Áno"', r'"CheckBoxPlatcaDPH": true', dataStr)
+                dataStr = re.sub(r'TextBoxKPV_K5TSV1edit', r'TextBoxKPV_K5TSVedit1', dataStr)
+                dataStr = re.sub(r'TextBoxKPV_K5TSV2edit', r'TextBoxKPV_K5TSVedit2', dataStr)
+                dataStr = re.sub(r'TextBoxKPV_K5TSV3edit', r'TextBoxKPV_K5TSVedit3', dataStr)
+                dataStr = re.sub(r'TextBoxKPV_K5TSV4edit', r'TextBoxKPV_K5TSVedit4', dataStr)
+                dataStr = re.sub(r'TextBoxKPV_K5TSV5edit', r'TextBoxKPV_K5TSVedit5', dataStr)
+                dataStr = re.sub(r'"CheckBoxKPVk3Nezistene": "True"', r'"CheckBoxKPVk3Nezistene": true', dataStr)
+                dataStr = re.sub(r'"CheckBoxKPVk3Nezistene": "False"', r'"CheckBoxKPVk3Nezistene": false', dataStr)  
+                if "TextBoxHV_VSH" in json.loads("{" + dataStr + "}"):
+                    functionVDC.SetVDCdata(self, json.loads("{" + dataStr + "}"))            
+                    print(i, json.loads("{" + dataStr + "}")["TextBoxHV_VSH"], self.TextBoxHV_VSH.GetValue(), "OK" if json.loads("{" + dataStr + "}")["TextBoxHV_VSH"] == self.TextBoxHV_VSH.GetValue() else "WRONG" )   
 
 class VDCdbDlg(formVDCmain.VDCdb):
     # constructor

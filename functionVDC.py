@@ -64,7 +64,10 @@ def FormatujCisloFloat(cisloFloat, noOfDecimal):
 
 
 def StringToFloat(cisloFloat):
-    return float(cisloFloat.replace(" ", "").replace(",", "."))
+    if cisloFloat.replace(" ", "").replace(",", ".") != "": 
+        return float(cisloFloat.replace(" ", "").replace(",", "."))
+    else:
+        return 0
 
 
 def rozdielDatumovVmesiacoch(odDatumString, doDatumString):
@@ -201,7 +204,7 @@ def PocitajTHPneuJedna(conPocet, conPriamaTH, conNamerane, conNove, conTH):
 
 
 def PocitajTH(parent, ktoVola):
-    print("pocitaj TH ", ktoVola)
+    # print("pocitaj TH ", ktoVola)
     parent.TextBoxTHkKM.SetValue("")
     parent.TextBoxTHPKV.SetValue("")
     parent.TextBoxTHPZTS.SetValue("")
@@ -347,7 +350,7 @@ if (parent.TextBoxTHSkupina''' + str(i) + '''.GetValue() != "" and parent.TextBo
 
 
 def PocitajVSH(parent, ktoVola):
-    print("pocitaj VSH ", ktoVola)
+    # print("pocitaj VSH ", ktoVola)
     parent.TextBoxHV_TH.SetValue("")
     if (parent.TextBoxHV_VHV.GetValue() != "" and parent.TextBoxHV_TSV.GetValue() != ""):
         if (parent.TextBoxHV_VHMV.GetValue() != "" and parent.TextBoxHV_TSMV.GetValue() != ""):
@@ -515,14 +518,34 @@ def GetVDCdata(parent):
 
 def SetVDCdata(parent, dictData):
     parent.NovyVypocet(None)
+    ComboBoxKategoriaMV = ""
+    ComboBoxPodkategoriaMV = ""
     for item in vars(parent).items():
         if item[0] in dictData:
             if (item[0][0:7] == "TextBox"):
                 item[1].SetValue(dictData[item[0]])
             if (item[0][0:8] == "ComboBox"):
-                item[1].SetStringSelection(dictData[item[0]])
-                if (item[0] == "ComboBoxKategoriaMV"):
-                    parent.ComboBoxKategoriaMVOnChoice(None)
+                if (item[0] == "ComboBoxKategoriaMV" or item[0] == "ComboBoxPodkategoriaMV"):
+                    if (item[0] == "ComboBoxKategoriaMV"):
+                        ComboBoxKategoriaMV = dictData[item[0]]
+                    if (item[0] == "ComboBoxPodkategoriaMV"):
+                        ComboBoxPodkategoriaMV = dictData[item[0]]
+                    if ComboBoxKategoriaMV != "" and ComboBoxPodkategoriaMV != "":
+                        if ComboBoxKategoriaMV[1:2] == ".":
+                            parent.ComboBoxKategoriaMV.SetStringSelection(ComboBoxKategoriaMV)
+                        else:
+                            parent.ComboBoxKategoriaMV.SetStringSelection(ComboBoxPodkategoriaMV[0:2] + " " + ComboBoxKategoriaMV)
+                        parent.ComboBoxKategoriaMVOnChoice(None)
+                        parent.ComboBoxPodkategoriaMV.SetStringSelection(ComboBoxPodkategoriaMV)
+                else:
+                    item[1].SetStringSelection(dictData[item[0]])
             if (item[0][0:8] == "CheckBox" and type(dictData[item[0]]) == bool):
                 item[1].SetValue(dictData[item[0]])
+    
+    chybajuce = []
+    for i in enumerate(dictData):        
+        if i[1] not in dict(vars(parent).items()):
+            chybajuce.append(i[1])
+    # print(chybajuce)
+    
     VypocitajDobuPrevadzky(parent)

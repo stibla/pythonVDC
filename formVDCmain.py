@@ -19,7 +19,7 @@ import wx.grid
 class VDCmain ( wx.Frame ):
 
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"VDC - Vehicle Damage Calculation", pos = wx.DefaultPosition, size = wx.Size( 1032,755 ), style = wx.CAPTION|wx.CLOSE_BOX|wx.MINIMIZE_BOX|wx.RESIZE_BORDER|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"VDC - Vehicle Damage Calculation", pos = wx.DefaultPosition, size = wx.Size( 981,755 ), style = wx.CAPTION|wx.CLOSE_BOX|wx.MINIMIZE_BOX|wx.RESIZE_BORDER|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.Size( -1,-1 ) )
 		self.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_3DLIGHT ) )
@@ -46,6 +46,9 @@ class VDCmain ( wx.Frame ):
 
 		self.ButtonNNO_Tlac = wx.Button( self, wx.ID_ANY, u"Tlač", wx.DefaultPosition, wx.Size( -1,-1 ), 0, wx.DefaultValidator, u"ButtonNNO_Tlac" )
 		mainGbSizer.Add( self.ButtonNNO_Tlac, wx.GBPosition( 0, 5 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
+
+		self.ButtonTest = wx.Button( self, wx.ID_ANY, u"Test", wx.DefaultPosition, wx.DefaultSize, 0 )
+		mainGbSizer.Add( self.ButtonTest, wx.GBPosition( 0, 6 ), wx.GBSpan( 1, 1 ), wx.ALL, 5 )
 
 		self.MultiPageVDC = wx.Notebook( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,-1 ), 0 )
 		self.MultiPageVDC.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_3DLIGHT ) )
@@ -148,8 +151,8 @@ class VDCmain ( wx.Frame ):
 
 		GbSizerPageZakladneUdaje.Add( self.LabelPoznamka, wx.GBPosition( 8, 0 ), wx.GBSpan( 1, 1 ), wx.ALIGN_LEFT|wx.ALL, 3 )
 
-		self.TextBoxPoznamka = wx.TextCtrl( self.PageZakladneUdaje, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 1000,300 ), wx.TE_MULTILINE, wx.DefaultValidator, u"TextBoxPoznamka" )
-		GbSizerPageZakladneUdaje.Add( self.TextBoxPoznamka, wx.GBPosition( 9, 0 ), wx.GBSpan( 1, 5 ), wx.ALL, 3 )
+		self.TextBoxPoznamka = wx.TextCtrl( self.PageZakladneUdaje, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( -1,-1 ), wx.TE_MULTILINE, wx.DefaultValidator, u"TextBoxPoznamka" )
+		GbSizerPageZakladneUdaje.Add( self.TextBoxPoznamka, wx.GBPosition( 9, 0 ), wx.GBSpan( 15, 27 ), wx.ALL|wx.EXPAND, 3 )
 
 
 		self.PageZakladneUdaje.SetSizer( GbSizerPageZakladneUdaje )
@@ -1350,10 +1353,10 @@ class VDCmain ( wx.Frame ):
 
 		self.MultiPageVDC.AddPage( self.PageZnehodnotenie, u"Znehodnotenie", False )
 
-		mainGbSizer.Add( self.MultiPageVDC, wx.GBPosition( 1, 0 ), wx.GBSpan( 1, 6 ), wx.EXPAND |wx.ALL, 5 )
+		mainGbSizer.Add( self.MultiPageVDC, wx.GBPosition( 1, 0 ), wx.GBSpan( 1, 7 ), wx.EXPAND |wx.ALL, 5 )
 
 		self.TextBoxInformacia = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.TE_MULTILINE|wx.TE_READONLY )
-		mainGbSizer.Add( self.TextBoxInformacia, wx.GBPosition( 2, 0 ), wx.GBSpan( 6, 6 ), wx.ALL|wx.EXPAND, 5 )
+		mainGbSizer.Add( self.TextBoxInformacia, wx.GBPosition( 2, 0 ), wx.GBSpan( 6, 7 ), wx.ALL|wx.EXPAND, 5 )
 
 
 		self.SetSizer( mainGbSizer )
@@ -1374,6 +1377,7 @@ class VDCmain ( wx.Frame ):
 		self.ButtonUlozitDOdb.Bind( wx.EVT_SET_FOCUS, self.SetFocus )
 		self.ButtonNNO_Tlac.Bind( wx.EVT_BUTTON, self.ButtonNNO_TlacOnButtonClick )
 		self.ButtonNNO_Tlac.Bind( wx.EVT_SET_FOCUS, self.SetFocus )
+		self.ButtonTest.Bind( wx.EVT_BUTTON, self.ButtonTestOnButtonClick )
 		self.TextBoxCisloPripadu.Bind( wx.EVT_SET_FOCUS, self.SetFocus )
 		self.TextBoxCPU.Bind( wx.EVT_SET_FOCUS, self.SetFocus )
 		self.DateTimePickerDatumPU.Bind( wx.adv.EVT_DATE_CHANGED, self.DateTimePickerDatumPUOnDateChanged )
@@ -1728,6 +1732,9 @@ class VDCmain ( wx.Frame ):
 	def ButtonNNO_TlacOnButtonClick( self, event ):
 		pass
 
+
+	def ButtonTestOnButtonClick( self, event ):
+		pass
 
 
 
