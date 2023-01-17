@@ -800,7 +800,7 @@ class VDCFrame(formVDCmain.VDCmain):
             pathname = fileDialog.GetPath()
             wrkbk = openpyxl.load_workbook(pathname)
             sh = wrkbk.active
-            for i in range(2, 100):
+            for i in range(2, 110):
                 data = sh.cell(row=i, column=6).value
                 
                 dataTextBoxPoznamka = re.search(r'<TextBoxPoznamka>([\s\S]*?)</TextBoxPoznamka>', data, flags=re.MULTILINE)
@@ -810,6 +810,7 @@ class VDCFrame(formVDCmain.VDCmain):
                     dataTextBoxPoznamka = re.sub(r'\n', r'', dataTextBoxPoznamka)
                     dataStr = dataTextBoxPoznamka + dataStr
                 dataStr = re.sub(r'_x000D_', r'', dataStr)      
+                # print(dataStr)
                 dataStr = re.sub(r'^<', r'"', dataStr, flags=re.MULTILINE)
                 dataStr = re.sub(r'^(.*?)>', r'\1": "', dataStr, flags=re.MULTILINE)   
                 dataStr = re.sub(r'</\S*>\n$', r'"', dataStr)         
@@ -826,7 +827,7 @@ class VDCFrame(formVDCmain.VDCmain):
                 dataStr = re.sub(r'"CheckBoxKPVk3Nezistene": "True"', r'"CheckBoxKPVk3Nezistene": true', dataStr)
                 dataStr = re.sub(r'"CheckBoxKPVk3Nezistene": "False"', r'"CheckBoxKPVk3Nezistene": false', dataStr)                  
                 if "TextBoxHV_VSH" in json.loads("{" + dataStr + "}"):
-                    functionVDC.SetVDCdata(self, json.loads("{" + dataStr + "}"))            
+                    functionVDC.SetVDCdata(self, json.loads("{" + dataStr + "}"))                                
                     print(i, json.loads("{" + dataStr + "}")["TextBoxHV_VSH"], self.TextBoxHV_VSH.GetValue(), "OK" if json.loads("{" + dataStr + "}")["TextBoxHV_VSH"] == self.TextBoxHV_VSH.GetValue() else "WRONG" )   
 
 class VDCdbDlg(formVDCmain.VDCdb):

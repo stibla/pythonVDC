@@ -349,7 +349,7 @@ if (parent.TextBoxTHSkupina''' + str(i) + '''.GetValue() != "" and parent.TextBo
     PocitajVSH(parent, "PocitajTH")
 
 
-def PocitajVSH(parent, ktoVola):
+def PocitajVSH(parent, ktoVola):    
     # print("pocitaj VSH ", ktoVola)
     parent.TextBoxHV_TH.SetValue("")
     if (parent.TextBoxHV_VHV.GetValue() != "" and parent.TextBoxHV_TSV.GetValue() != ""):
@@ -365,7 +365,7 @@ def PocitajVSH(parent, ktoVola):
 
     parent.TextBoxKPV_K1.SetValue("1,0000")
     if (parent.TextBoxDatumPU.GetValue() != "" and parent.TextBoxKPV_koniecTK.GetValue() != "" and parent.TextBoxVprevadzkeOd.GetValue() != ""):
-        if (parent.LabelKPV_k1lehotaTKsuStazPodm.GetLabel() != "1"):
+        if (parent.LabelKPV_k1lehotaTKsuStazPodm.GetLabel() == "1"):
             tempLehota = StringToFloat(
                 parent.LabelKPV_k1lehotaTKstazPodm.GetLabel())
         else:
@@ -374,9 +374,9 @@ def PocitajVSH(parent, ktoVola):
             if (parent.LabelKPV_k1a.GetLabel() != "" and parent.LabelKPV_k1b.GetLabel() != ""):
                 parent.TextBoxKPV_K1.SetValue(FormatujCisloFloat(StringToFloat(parent.LabelKPV_k1a.GetLabel()) + StringToFloat(
                     parent.LabelKPV_k1b.GetLabel()) * rozdielDatumovVmesiacoch(parent.TextBoxDatumPU.GetValue(), parent.TextBoxKPV_koniecTK.GetValue()), 4))
-            if (StringToFloat(parent.LabelKPV_k1a.GetLabel()) > StringToFloat(parent.TextBoxKPV_K1.GetValue())):
-                parent.TextBoxKPV_K1.SetValue(FormatujCisloFloat(
-                    StringToFloat(parent.LabelKPV_k1a.GetLabel()), 4))
+        if (StringToFloat(parent.LabelKPV_k1a.GetLabel()) > StringToFloat(parent.TextBoxKPV_K1.GetValue())):
+            parent.TextBoxKPV_K1.SetValue(FormatujCisloFloat(
+                StringToFloat(parent.LabelKPV_k1a.GetLabel()), 4))
 
     parent.TextBoxKPV_K2.SetValue("1,0000")
     if (parent.ComboBoxKPV_poskodenie.GetStringSelection() != "" and parent.TextBoxDobaPrevadzkyMesiac.GetValue() != ""):
@@ -520,23 +520,28 @@ def SetVDCdata(parent, dictData):
     parent.NovyVypocet(None)
     ComboBoxKategoriaMV = ""
     ComboBoxPodkategoriaMV = ""
+    ComboBoxTHRozdelitSkupiny = ""
     for item in vars(parent).items():
         if item[0] in dictData:
             if (item[0][0:7] == "TextBox"):
                 item[1].SetValue(dictData[item[0]])
             if (item[0][0:8] == "ComboBox"):
-                if (item[0] == "ComboBoxKategoriaMV" or item[0] == "ComboBoxPodkategoriaMV"):
+                if (item[0] == "ComboBoxKategoriaMV" or item[0] == "ComboBoxPodkategoriaMV" or item[0] == "ComboBoxTHRozdelitSkupiny"):
                     if (item[0] == "ComboBoxKategoriaMV"):
                         ComboBoxKategoriaMV = dictData[item[0]]
                     if (item[0] == "ComboBoxPodkategoriaMV"):
                         ComboBoxPodkategoriaMV = dictData[item[0]]
-                    if ComboBoxKategoriaMV != "" and ComboBoxPodkategoriaMV != "":
+                    if (item[0] == "ComboBoxTHRozdelitSkupiny"):
+                        ComboBoxTHRozdelitSkupiny = dictData[item[0]]
+                    if ComboBoxKategoriaMV != "" and ComboBoxPodkategoriaMV != "" and ComboBoxTHRozdelitSkupiny != "":
                         if ComboBoxKategoriaMV[1:2] == ".":
                             parent.ComboBoxKategoriaMV.SetStringSelection(ComboBoxKategoriaMV)
                         else:
                             parent.ComboBoxKategoriaMV.SetStringSelection(ComboBoxPodkategoriaMV[0:2] + " " + ComboBoxKategoriaMV)
                         parent.ComboBoxKategoriaMVOnChoice(None)
                         parent.ComboBoxPodkategoriaMV.SetStringSelection(ComboBoxPodkategoriaMV)
+                        parent.ComboBoxPodkategoriaMVOnChoice(None)
+                        parent.ComboBoxTHRozdelitSkupiny.SetStringSelection(ComboBoxTHRozdelitSkupiny)
                 else:
                     item[1].SetStringSelection(dictData[item[0]])
             if (item[0][0:8] == "CheckBox" and type(dictData[item[0]]) == bool):
@@ -547,5 +552,4 @@ def SetVDCdata(parent, dictData):
         if i[1] not in dict(vars(parent).items()):
             chybajuce.append(i[1])
     # print(chybajuce)
-    
     VypocitajDobuPrevadzky(parent)
