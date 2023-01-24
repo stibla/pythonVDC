@@ -73,7 +73,7 @@ def StringToFloat(cisloFloat):
 def rozdielDatumovVmesiacoch(odDatumString, doDatumString):
     odDatum = datetime.strptime(odDatumString, "%d.%m.%Y")
     doDatum = datetime.strptime(doDatumString, "%d.%m.%Y")
-    return (doDatum.year*12 + doDatum.month + doDatum.day / 31) - (odDatum.year*12 + odDatum.month + odDatum.day / 31)
+    return round((doDatum.year*12 + doDatum.month + doDatum.day / 31) - (odDatum.year*12 + odDatum.month + odDatum.day / 31), 4)
 
 
 def PocitajDatumVprevadzkeOd(parent):
